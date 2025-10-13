@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lms/core/utils/styling/text_style.dart';
+import 'package:lms/core/widgets/app_text_button.dart';
+import 'package:lms/core/widgets/app_text_form_field.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,9 +21,25 @@ class LmsApp extends StatelessWidget {
           Theme.of(context).textTheme,
         ),
       ),
-      home: const Scaffold(
+      home: Scaffold(
         body: Center(
-          child: Text('Hello, World!'),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text('Hello, World!'),
+              const SizedBox(height: 20),
+              const AppTextFormField(
+                hintText: 'Email',
+                keyboardType: TextInputType.emailAddress,
+              ),
+              const SizedBox(height: 20),
+              AppTextButton(
+                text: 'Press',
+                onTap: () {},
+                textStyle: Styles.style22,
+              ),
+            ],
+          ),
         ),
       ),
     );
