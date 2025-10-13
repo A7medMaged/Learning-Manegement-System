@@ -1,4 +1,4 @@
-class RegistrationRequest {
+class RegistrerRequestModel {
   final String email;
   final String password;
   final String firstName;
@@ -7,7 +7,7 @@ class RegistrationRequest {
   final int cityId;
   final String? avatar;
 
-  RegistrationRequest({
+  RegistrerRequestModel({
     required this.email,
     required this.password,
     required this.firstName,
@@ -29,8 +29,8 @@ class RegistrationRequest {
     };
   }
 
-  factory RegistrationRequest.fromJson(Map<String, dynamic> json) {
-    return RegistrationRequest(
+  factory RegistrerRequestModel.fromJson(Map<String, dynamic> json) {
+    return RegistrerRequestModel(
       email: json['email'] as String,
       password: json['password'] as String,
       firstName: json['firstName'] as String,
