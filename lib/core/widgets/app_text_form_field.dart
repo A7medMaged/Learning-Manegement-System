@@ -17,6 +17,8 @@ class AppTextFormField extends StatelessWidget {
   final TextInputType? keyboardType;
   final TextEditingController? controller;
   final String? Function(String?)? validator;
+  final AutovalidateMode autovalidateMode;
+
   const AppTextFormField({
     super.key,
     this.contentPadding,
@@ -32,12 +34,14 @@ class AppTextFormField extends StatelessWidget {
     this.controller,
     this.validator,
     this.keyboardType,
+    this.autovalidateMode = AutovalidateMode.disabled,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
+      autovalidateMode: autovalidateMode,
       keyboardType: keyboardType ?? TextInputType.text,
       textInputAction: TextInputAction.done,
       decoration: InputDecoration(
@@ -80,7 +84,6 @@ class AppTextFormField extends StatelessWidget {
         hintText: hintText ?? '',
         suffixIcon: suffixIcon,
         prefixIcon: prefixIcon,
-        // suffixIconColor: mainBlue,
         fillColor: backgroundColor ?? white,
         filled: true,
       ),

@@ -14,8 +14,8 @@ class AppTextButton extends StatelessWidget {
   final String text;
   final bool isLoading;
   final TextStyle? textStyle;
-  final int? width;
-  final int? height;
+  final double? width;
+  final double? height;
 
   @override
   Widget build(BuildContext context) {
