@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lms/core/routes/app_router.dart';
-import 'package:lms/features/auth/presentation/register_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

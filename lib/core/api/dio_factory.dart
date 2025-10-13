@@ -1,0 +1,63 @@
+import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
+import 'package:lms/core/api/api_endpoints.dart';
+import 'package:lms/core/utils/di.dart';
+import 'package:lms/core/utils/storage_helper.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
+
+class DioFactory {
+  DioFactory._();
+
+  static Dio? dio;
+
+  static Dio getDio() {
+    Duration timeOut = const Duration(seconds: 15);
+
+    if (dio == null) {
+      dio = Dio();
+      dio!
+        ..options.connectTimeout = timeOut
+        ..options.receiveTimeout = timeOut
+        ..options.baseUrl = ApiEndpoints.baseUrl;
+
+      addDioHeaders();
+      addDioInterceptor();
+      return dio!;
+    } else {
+      return dio!;
+    }
+  }
+
+  static void addDioHeaders() async {
+    final token = await getIt<StorageHelper>().getUserToken();
+    dio?.options.headers = {
+      'Accept': 'application/json',
+      'Authorization': 'Bearer $token',
+    };
+  }
+
+  static void removeDioHeaders() {
+    dio?.options.headers = {
+      'Accept': 'application/json',
+    };
+    debugPrint("Token has been removed from header");
+  }
+
+  static void setTokenIntoHeaderAfterLogin(String token) {
+    dio?.options.headers = {
+      'Accept': 'application/json',
+      'Authorization': 'Bearer $token',
+    };
+    debugPrint("Token has been set into header");
+  }
+
+  static void addDioInterceptor() {
+    dio?.interceptors.add(
+      PrettyDioLogger(
+        requestBody: true,
+        requestHeader: true,
+        responseHeader: true,
+      ),
+    );
+  }
+}
