@@ -6,7 +6,7 @@ import 'package:lms/features/home/presentation/home_screen.dart';
 
 class AppRouter {
   static final GoRouter router = GoRouter(
-    initialLocation: AppRoutes.initialRoute,
+    initialLocation: AppRoutes.loginRoute,
     routes: [
       GoRoute(
         path: AppRoutes.registerRoute,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lms/core/routes/app_router.dart';
 import 'package:lms/features/auth/presentation/register_screen.dart';
 
 void main() async {
@@ -12,14 +13,14 @@ class LmsApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         textTheme: GoogleFonts.ubuntuTextTheme(
           Theme.of(context).textTheme,
         ),
       ),
-      home: const RegisterScreen(),
+      routerConfig: AppRouter.router,
     );
   }
 }

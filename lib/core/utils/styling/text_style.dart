@@ -43,6 +43,6 @@ abstract class Styles {
 
   static TextStyle style14 = const TextStyle(
     fontSize: 14,
-    fontWeight: FontWeight.w600,
+    fontWeight: FontWeight.normal,
   );
 }

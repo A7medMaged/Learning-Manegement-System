@@ -6,8 +6,8 @@ import 'package:lms/core/utils/styling/app_colors.dart';
 import 'package:lms/core/widgets/app_text_form_field.dart';
 import 'package:lms/core/widgets/spacing_widgets.dart';
 
-class Fields extends StatefulWidget {
-  const Fields({
+class RegisterFields extends StatefulWidget {
+  const RegisterFields({
     super.key,
     this.firstName,
     this.lastName,
@@ -26,10 +26,10 @@ class Fields extends StatefulWidget {
   final TextEditingController? cityIdController;
 
   @override
-  State<Fields> createState() => _FieldsState();
+  State<RegisterFields> createState() => _RegisterFieldsState();
 }
 
-class _FieldsState extends State<Fields> {
+class _RegisterFieldsState extends State<RegisterFields> {
   bool isObscureText1 = true;
   bool isObscureText2 = true;
 

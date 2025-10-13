@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:lms/core/utils/styling/text_style.dart';
 import 'package:lms/core/widgets/app_text_button.dart';
 import 'package:lms/core/widgets/spacing_widgets.dart';
-import 'package:lms/features/auth/presentation/widgets/fields.dart';
+import 'package:lms/features/auth/presentation/widgets/already_have_an_account.dart';
+import 'package:lms/features/auth/presentation/widgets/register_fields.dart';
 import 'package:lms/features/auth/presentation/widgets/pick_avatar.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -48,21 +49,19 @@ class _RegisterScreenState extends State<RegisterScreen> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  Center(
-                    child: Text(
-                      'Register Screen',
-                      style: Styles.style25,
-                    ),
+                  Text(
+                    'Register Screen',
+                    style: Styles.style25,
                   ),
                   const HeightSpace(20),
                   Text(
                     '👋 Welcome!\n Create your account to get started with our app.',
                     style: Styles.style18Bold,
                   ),
-                  const HeightSpace(48),
+                  const HeightSpace(18),
                   const PickAvatar(),
-                  const HeightSpace(24),
-                  Fields(
+                  const HeightSpace(18),
+                  RegisterFields(
                     firstName: firstNameController,
                     lastName: lastNameController,
                     phoneNumber: phoneController,
@@ -71,7 +70,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     confirmPasswordController: confirmPasswordController,
                     cityIdController: cityIdController,
                   ),
-                  const HeightSpace(32),
+                  const HeightSpace(28),
                   AppTextButton(
                     text: 'Register',
                     width: double.infinity,
@@ -80,6 +79,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       if (formKey.currentState!.validate()) {}
                     },
                   ),
+                  const HeightSpace(8),
+                  const AlreadyHaveAnAccount(),
                 ],
               ),
             ),
