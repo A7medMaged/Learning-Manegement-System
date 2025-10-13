@@ -1,20 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(const LmsApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class LmsApp extends StatelessWidget {
+  const LmsApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        textTheme: GoogleFonts.ubuntuTextTheme(
+          Theme.of(context).textTheme,
+        ),
       ),
-      home: const Scaffold(body: Center(child: Text('Hello, World!'))),
+      home: const Scaffold(
+        body: Center(
+          child: Text('Hello, World!'),
+        ),
+      ),
     );
   }
 }
