@@ -43,6 +43,7 @@ class AuthRepoImpl extends AuthRepo {
     try {
       Response response = await dio.post(
         ApiKeys.login,
+        data: loginRequest.toJson(),
       );
       LoginResponseModel loginResponse = LoginResponseModel.fromJson(
         response.data,
