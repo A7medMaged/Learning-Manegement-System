@@ -11,6 +11,7 @@ import 'package:lms/features/auth/presentation/maneger/cubit/register_cubit.dart
 import 'package:lms/features/auth/presentation/widgets/already_have_an_account.dart';
 import 'package:lms/features/auth/presentation/widgets/register_fields.dart';
 import 'package:lms/features/auth/presentation/widgets/pick_avatar.dart';
+import 'package:toastification/toastification.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -88,19 +89,24 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   BlocConsumer<RegisterCubit, RegisterState>(
                     listener: (context, state) {
                       if (state is RegisterSuccess) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text('Registration Successful'),
+                        toastification.show(
+                          context: context,
+                          title: const Text('Registration Successful'),
+                          description: const Text(
+                            'You have registered successfully. verify your email to continue.',
                           ),
+                          type: ToastificationType.success,
                         );
                         context.pushReplacement(AppRoutes.loginRoute);
                       } else if (state is RegisterFailure) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text(
-                              'Registration Failed: ${state.errorMessage}',
-                            ),
+                        toastification.show(
+                          context: context,
+                          title: const Text('Registration Failed'),
+                          description: Text(
+                            state.errorMessage,
                           ),
+                          style: ToastificationStyle.minimal,
+                          type: ToastificationType.error,
                         );
                       }
                     },
