@@ -3,7 +3,8 @@ import 'package:lms/core/routes/app_routes.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lms/core/utils/di.dart';
 import 'package:lms/features/auth/presentation/login_screen.dart';
-import 'package:lms/features/auth/presentation/maneger/cubit/register_cubit.dart';
+import 'package:lms/features/auth/presentation/maneger/login_cubit/login_cubit.dart';
+import 'package:lms/features/auth/presentation/maneger/register_cubit/register_cubit.dart';
 import 'package:lms/features/auth/presentation/register_screen.dart';
 import 'package:lms/features/auth/presentation/verify_email_screen.dart';
 import 'package:lms/features/home/presentation/home_screen.dart';
@@ -21,7 +22,10 @@ class AppRouter {
       ),
       GoRoute(
         path: AppRoutes.loginRoute,
-        builder: (context, state) => const LoginScreen(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => getIt<LoginCubit>(),
+          child: const LoginScreen(),
+        ),
       ),
       GoRoute(
         path: AppRoutes.homeRoute,

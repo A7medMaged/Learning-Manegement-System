@@ -3,14 +3,16 @@ import 'package:dio/dio.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:lms/core/api/api_keys.dart';
 import 'package:lms/core/errors/failure.dart';
+import 'package:lms/features/auth/data/models/login_models/login_request_model.dart';
+import 'package:lms/features/auth/data/models/login_models/login_response_model/login_response_model.dart';
 import 'package:lms/features/auth/data/models/register_models/register_request_model.dart';
 import 'package:lms/features/auth/data/models/register_models/register_response_model/register_response_model.dart';
-import 'package:lms/features/auth/data/repos/register_repo.dart';
+import 'package:lms/features/auth/data/repos/auth_repo.dart';
 
-class RegisterRepoImpl extends RegisterRepo {
+class AuthRepoImpl extends AuthRepo {
   final Dio dio;
 
-  RegisterRepoImpl({required this.dio});
+  AuthRepoImpl({required this.dio});
   @override
   Future<Either<Failures, RegisterResponseModel>> registerUsers(
     RegistrerRequestModel registerRequest,
@@ -26,6 +28,26 @@ class RegisterRepoImpl extends RegisterRepo {
         response.data,
       );
       return Right(registerResponse);
+    } catch (e) {
+      if (e is DioException) {
+        return Left(ServerFailure.fromDioException(e));
+      }
+      return Left(ServerFailure(error: e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failures, LoginResponseModel>> login(
+    LoginRequestModel loginRequest,
+  ) async {
+    try {
+      Response response = await dio.post(
+        ApiKeys.login,
+      );
+      LoginResponseModel loginResponse = LoginResponseModel.fromJson(
+        response.data,
+      );
+      return Right(loginResponse);
     } catch (e) {
       if (e is DioException) {
         return Left(ServerFailure.fromDioException(e));

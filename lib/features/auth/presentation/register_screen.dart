@@ -7,7 +7,7 @@ import 'package:lms/core/utils/styling/text_style.dart';
 import 'package:lms/core/widgets/app_text_button.dart';
 import 'package:lms/core/widgets/spacing_widgets.dart';
 import 'package:lms/features/auth/data/models/register_models/register_request_model.dart';
-import 'package:lms/features/auth/presentation/maneger/cubit/register_cubit.dart';
+import 'package:lms/features/auth/presentation/maneger/register_cubit/register_cubit.dart';
 import 'package:lms/features/auth/presentation/widgets/already_have_an_account.dart';
 import 'package:lms/features/auth/presentation/widgets/register_fields.dart';
 import 'package:lms/features/auth/presentation/widgets/pick_avatar.dart';

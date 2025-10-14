@@ -50,9 +50,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   AppTextButton(
                     text: 'Login',
                     onTap: () {
-                      if (formKey.currentState!.validate()) {
-                      
-                      }
+                      if (formKey.currentState!.validate()) {}
                     },
                     width: double.infinity,
                   ),
