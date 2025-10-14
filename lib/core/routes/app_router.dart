@@ -8,11 +8,16 @@ import 'package:lms/features/auth/presentation/maneger/register_cubit/register_c
 import 'package:lms/features/auth/presentation/register_screen.dart';
 import 'package:lms/features/auth/presentation/verify_email_screen.dart';
 import 'package:lms/features/home/presentation/home_screen.dart';
+import 'package:lms/features/splash_screen/splash_screen.dart';
 
 class AppRouter {
   static final GoRouter router = GoRouter(
-    initialLocation: AppRoutes.registerRoute,
+    initialLocation: AppRoutes.splashRoute,
     routes: [
+      GoRoute(
+        path: AppRoutes.splashRoute,
+        builder: (context, state) => const SplashScreen(),
+      ),
       GoRoute(
         path: AppRoutes.registerRoute,
         builder: (context, state) => BlocProvider(

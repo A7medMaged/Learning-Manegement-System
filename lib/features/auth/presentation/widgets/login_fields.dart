@@ -52,9 +52,7 @@ class _LoginFieldsState extends State<LoginFields> {
           autovalidateMode: AutovalidateMode.onUserInteraction,
           keyboardType: TextInputType.visiblePassword,
           validator: (value) {
-            if (value == null ||
-                value.isEmpty ||
-                !AppRegex.isPasswordValid(value)) {
+            if (value == null || value.isEmpty) {
               return 'please enter your password';
             }
             return null;

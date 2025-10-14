@@ -21,6 +21,10 @@ class DioFactory {
         ..options.receiveTimeout = timeOut
         ..options.baseUrl = ApiKeys.baseUrl;
 
+      debugPrint('Dio baseUrl: ${dio!.options.baseUrl}');
+      // Platform.isAndroid check commented out earlier, but a runtime hint is helpful
+      debugPrint('Running on Android: ${false}');
+
       addDioHeaders();
       addDioInterceptor();
       return dio!;
@@ -32,12 +36,8 @@ class DioFactory {
   static void addDioHeaders() async {
     final token = await getIt<StorageHelper>().getUserToken();
     dio?.options.headers = {
+      'Accept': 'application/json',
       'Authorization': 'Bearer $token',
-      'Cache-Control': 'no-cache',
-      // Do NOT set a global Content-Type header for multipart requests.
-      // Dio will set the correct Content-Type with boundary when using FormData.
-      'Accept': '*/*',
-      'Connection': 'keep-alive',
     };
   }
 

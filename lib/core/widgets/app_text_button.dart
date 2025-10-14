@@ -34,6 +34,7 @@ class AppTextButton extends StatelessWidget {
           child: isLoading
               ? const CircularProgressIndicator(
                   color: Colors.white,
+                  strokeWidth: 0.5,
                 )
               : Text(
                   text,

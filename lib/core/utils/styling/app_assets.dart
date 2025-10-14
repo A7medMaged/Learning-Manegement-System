@@ -12,4 +12,6 @@ class AppAssets {
   static const String profile = '${imagesPath}profile.png';
 
   static const String avatar = '${imagesPath}avatar.png';
+
+  static const String splash = '${lottiesPath}splash.json';
 }

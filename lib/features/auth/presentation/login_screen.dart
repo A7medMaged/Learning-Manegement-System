@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:lms/core/api/dio_factory.dart';
 import 'package:lms/core/routes/app_routes.dart';
+import 'package:lms/core/utils/di.dart';
+import 'package:lms/core/utils/storage_helper.dart';
 import 'package:lms/core/utils/styling/text_style.dart';
 import 'package:lms/core/widgets/app_text_button.dart';
 import 'package:lms/core/widgets/spacing_widgets.dart';
@@ -65,6 +68,12 @@ class _LoginScreenState extends State<LoginScreen> {
                           type: ToastificationType.success,
                           style: ToastificationStyle.minimal,
                         );
+                        DioFactory.setTokenIntoHeaderAfterLogin(
+                          state.loginResponseModel.data!.token!,
+                        );
+                        getIt<StorageHelper>().saveUserToken(
+                          state.loginResponseModel.data!.token!,
+                        );
                         context.pushReplacement(AppRoutes.homeRoute);
                       } else if (state is LoginFailure) {
                         toastification.show(
@@ -79,6 +88,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     builder: (context, state) {
                       return AppTextButton(
                         text: 'Login',
+                        isLoading: state is LoginLoading ? true : false,
                         onTap: () {
                           if (formKey.currentState!.validate()) {
                             final loginRequest = LoginRequestModel(
