@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+// import 'dart:io' show Platform;
 import 'package:lms/core/api/api_endpoints.dart';
 import 'package:lms/core/utils/di.dart';
 import 'package:lms/core/utils/storage_helper.dart';
@@ -31,8 +32,11 @@ class DioFactory {
   static void addDioHeaders() async {
     final token = await getIt<StorageHelper>().getUserToken();
     dio?.options.headers = {
-      'Accept': 'application/json',
       'Authorization': 'Bearer $token',
+      'Cache-Control': 'no-cache',
+      'Content-Type': 'multipart/form-data',
+      'Accept': '*/*',
+      'Connection': 'keep-alive',
     };
   }
 

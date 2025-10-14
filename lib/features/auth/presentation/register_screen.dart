@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:lms/core/routes/app_routes.dart';
 import 'package:lms/core/utils/styling/text_style.dart';
 import 'package:lms/core/widgets/app_text_button.dart';
 import 'package:lms/core/widgets/spacing_widgets.dart';
+import 'package:lms/features/auth/data/models/register_models/register_request_model.dart';
+import 'package:lms/features/auth/presentation/maneger/cubit/register_cubit.dart';
 import 'package:lms/features/auth/presentation/widgets/already_have_an_account.dart';
 import 'package:lms/features/auth/presentation/widgets/register_fields.dart';
 import 'package:lms/features/auth/presentation/widgets/pick_avatar.dart';
@@ -24,6 +30,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final TextEditingController confirmPasswordController =
       TextEditingController();
   final TextEditingController cityIdController = TextEditingController();
+
+  XFile? _selectedAvatarFile;
+
+  void _updateAvatar(XFile? file) {
+    setState(() {
+      _selectedAvatarFile = file;
+    });
+  }
 
   @override
   void dispose() {
@@ -59,7 +73,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     style: Styles.style18Bold,
                   ),
                   const HeightSpace(18),
-                  const PickAvatar(),
+                  PickAvatar(onFilePicked: _updateAvatar),
                   const HeightSpace(18),
                   RegisterFields(
                     firstName: firstNameController,
@@ -71,12 +85,50 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     cityIdController: cityIdController,
                   ),
                   const HeightSpace(28),
-                  AppTextButton(
-                    text: 'Register',
-                    width: double.infinity,
-                    textStyle: Styles.style18Bold,
-                    onTap: () {
-                      if (formKey.currentState!.validate()) {}
+                  BlocConsumer<RegisterCubit, RegisterState>(
+                    listener: (context, state) {
+                      if (state is RegisterSuccess) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Registration Successful'),
+                          ),
+                        );
+                        context.pushReplacement(AppRoutes.loginRoute);
+                      } else if (state is RegisterFailure) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              'Registration Failed: ${state.errorMessage}',
+                            ),
+                          ),
+                        );
+                      }
+                    },
+                    builder: (context, state) {
+                      return AppTextButton(
+                        text: 'Register',
+                        isLoading: state is RegisterLoading,
+                        width: double.infinity,
+                        textStyle: Styles.style18Bold,
+                        onTap: () {
+                          if (formKey.currentState!.validate()) {
+                            final registerRequest = RegistrerRequestModel(
+                              firstName: firstNameController.text.trim(),
+                              lastName: lastNameController.text.trim(),
+                              phoneNumber: phoneController.text.trim(),
+                              email: emailController.text.trim(),
+                              password: passwordController.text.trim(),
+                              avatar: _selectedAvatarFile?.path,
+                              cityId: int.tryParse(
+                                cityIdController.text.trim(),
+                              )!,
+                            );
+                            context.read<RegisterCubit>().registerUsers(
+                              registerRequest,
+                            );
+                          }
+                        },
+                      );
                     },
                   ),
                   const HeightSpace(8),

@@ -16,7 +16,7 @@ class RegisterRepoImpl extends RegisterRepo {
   ) async {
     try {
       Response response = await dio.post(
-        ApiEndpoints.baseUrl,
+        ApiEndpoints.register,
         data: registerRequest.toJson(),
       );
       RegisterResponseModel registerResponse = RegisterResponseModel.fromJson(
