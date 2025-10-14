@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:lms/core/utils/styling/app_assets.dart';
+import 'package:lottie/lottie.dart';
 
 class AppTextButton extends StatelessWidget {
   const AppTextButton({
@@ -32,9 +34,8 @@ class AppTextButton extends StatelessWidget {
         ),
         child: Center(
           child: isLoading
-              ? const CircularProgressIndicator(
-                  color: Colors.white,
-                  strokeWidth: 0.8,
+              ? LottieBuilder.asset(
+                  AppAssets.loading,
                 )
               : Text(
                   text,

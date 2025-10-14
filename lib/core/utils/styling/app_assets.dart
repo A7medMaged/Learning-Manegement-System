@@ -22,4 +22,6 @@ class AppAssets {
   static const String timeManagement = '${lottiesPath}time_management.json';
 
   static const String go = '${lottiesPath}go.json';
+
+  static const String loading = '${lottiesPath}loading.json';
 }
