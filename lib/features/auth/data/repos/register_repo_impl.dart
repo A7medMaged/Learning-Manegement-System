@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:lms/core/api/api_endpoints.dart';
+import 'package:lms/core/api/api_keys.dart';
 import 'package:lms/core/errors/failure.dart';
 import 'package:lms/features/auth/data/models/register_models/register_request_model.dart';
 import 'package:lms/features/auth/data/models/register_models/register_response_model/register_response_model.dart';
@@ -16,7 +16,7 @@ class RegisterRepoImpl extends RegisterRepo {
   ) async {
     try {
       Response response = await dio.post(
-        ApiEndpoints.register,
+        ApiKeys.register,
         data: registerRequest.toJson(),
       );
       RegisterResponseModel registerResponse = RegisterResponseModel.fromJson(

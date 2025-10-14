@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 // import 'dart:io' show Platform;
-import 'package:lms/core/api/api_endpoints.dart';
+import 'package:lms/core/api/api_keys.dart';
 import 'package:lms/core/utils/di.dart';
 import 'package:lms/core/utils/storage_helper.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
@@ -19,7 +19,7 @@ class DioFactory {
       dio!
         ..options.connectTimeout = timeOut
         ..options.receiveTimeout = timeOut
-        ..options.baseUrl = ApiEndpoints.baseUrl;
+        ..options.baseUrl = ApiKeys.baseUrl;
 
       addDioHeaders();
       addDioInterceptor();
