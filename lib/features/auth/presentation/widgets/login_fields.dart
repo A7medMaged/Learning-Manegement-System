@@ -83,7 +83,6 @@ class _LoginFieldsState extends State<LoginFields> {
                   ),
           ),
         ),
-        const HeightSpace(16),
       ],
     );
   }

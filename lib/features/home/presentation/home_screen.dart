@@ -18,6 +18,7 @@ class HomeScreen extends StatelessWidget {
             icon: const Icon(Icons.logout),
             onPressed: () async {
               await getIt<StorageHelper>().deleteUserToken();
+              // ignore: use_build_context_synchronously
               context.pushReplacement(AppRoutes.loginRoute);
             },
           ),

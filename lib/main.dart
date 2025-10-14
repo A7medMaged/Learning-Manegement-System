@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lms/core/routes/app_router.dart';
 import 'package:lms/core/utils/di.dart';
+import 'package:lms/core/utils/styling/app_colors.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,6 +21,7 @@ class LmsApp extends StatelessWidget {
         textTheme: GoogleFonts.ubuntuTextTheme(
           Theme.of(context).textTheme,
         ),
+        scaffoldBackgroundColor: white,
       ),
       routerConfig: AppRouter.router,
     );

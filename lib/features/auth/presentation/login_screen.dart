@@ -5,12 +5,14 @@ import 'package:lms/core/api/dio_factory.dart';
 import 'package:lms/core/routes/app_routes.dart';
 import 'package:lms/core/utils/di.dart';
 import 'package:lms/core/utils/storage_helper.dart';
+import 'package:lms/core/utils/styling/app_colors.dart';
 import 'package:lms/core/utils/styling/text_style.dart';
 import 'package:lms/core/widgets/app_text_button.dart';
 import 'package:lms/core/widgets/spacing_widgets.dart';
 import 'package:lms/features/auth/data/models/login_models/login_request_model.dart';
 import 'package:lms/features/auth/presentation/maneger/login_cubit/login_cubit.dart';
 import 'package:lms/features/auth/presentation/widgets/do_not_have_account.dart';
+import 'package:lms/features/auth/presentation/widgets/forgot_password.dart';
 import 'package:lms/features/auth/presentation/widgets/login_fields.dart';
 import 'package:toastification/toastification.dart';
 
@@ -48,13 +50,20 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: [
                   Text(
                     'Login Screen',
-                    style: Styles.style25,
+                    style: Styles.style25Bold,
                   ),
-                  const HeightSpace(18),
+                  const HeightSpace(20),
+                  Text(
+                    '👋 Welcome back! Please login to your account.',
+                    style: Styles.style18.copyWith(color: grey),
+                  ),
+                  const HeightSpace(50),
                   LoginFields(
                     emailController: emailController,
                     passwordController: passwordController,
                   ),
+                  const HeightSpace(5),
+                  const ForgotPassword(),
                   const HeightSpace(24),
                   BlocConsumer<LoginCubit, LoginState>(
                     listener: (context, state) {
@@ -88,6 +97,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     builder: (context, state) {
                       return AppTextButton(
                         text: 'Login',
+                        textStyle: Styles.style18Bold.copyWith(
+                          color: white,
+                        ),
                         isLoading: state is LoginLoading ? true : false,
                         onTap: () {
                           if (formKey.currentState!.validate()) {

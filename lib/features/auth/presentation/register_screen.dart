@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:lms/core/routes/app_routes.dart';
+import 'package:lms/core/utils/styling/app_colors.dart';
 import 'package:lms/core/utils/styling/text_style.dart';
 import 'package:lms/core/widgets/app_text_button.dart';
 import 'package:lms/core/widgets/spacing_widgets.dart';
@@ -66,12 +67,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 children: [
                   Text(
                     'Register Screen',
-                    style: Styles.style25,
+                    style: Styles.style25Bold,
                   ),
                   const HeightSpace(20),
                   Text(
                     '👋 Welcome!\n Create your account to get started with our app.',
-                    style: Styles.style18Bold,
+                    style: Styles.style18.copyWith(
+                      color: grey,
+                    ),
                   ),
                   const HeightSpace(18),
                   PickAvatar(onFilePicked: _updateAvatar),
@@ -115,7 +118,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         text: 'Register',
                         isLoading: state is RegisterLoading,
                         width: double.infinity,
-                        textStyle: Styles.style18Bold,
+                        textStyle: Styles.style18Bold.copyWith(
+                          color: white,
+                        ),
                         onTap: () {
                           if (formKey.currentState!.validate()) {
                             // Safely parse city id

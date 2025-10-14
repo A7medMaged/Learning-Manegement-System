@@ -14,4 +14,12 @@ class AppAssets {
   static const String avatar = '${imagesPath}avatar.png';
 
   static const String splash = '${lottiesPath}splash.json';
+
+  static const String welcome = '${lottiesPath}welcome.json';
+
+  static const String done = '${lottiesPath}done.json';
+
+  static const String timeManagement = '${lottiesPath}time_management.json';
+
+  static const String go = '${lottiesPath}go.json';
 }
