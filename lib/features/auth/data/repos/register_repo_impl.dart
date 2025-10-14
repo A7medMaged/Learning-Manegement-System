@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:lms/core/api/api_keys.dart';
 import 'package:lms/core/errors/failure.dart';
 import 'package:lms/features/auth/data/models/register_models/register_request_model.dart';
@@ -13,11 +14,13 @@ class RegisterRepoImpl extends RegisterRepo {
   @override
   Future<Either<Failures, RegisterResponseModel>> registerUsers(
     RegistrerRequestModel registerRequest,
+    XFile? avatarFile,
   ) async {
     try {
+      final formData = await registerRequest.toFormData(avatarFile: avatarFile);
       Response response = await dio.post(
         ApiKeys.register,
-        data: registerRequest.toJson(),
+        data: formData,
       );
       RegisterResponseModel registerResponse = RegisterResponseModel.fromJson(
         response.data,

@@ -118,6 +118,23 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         textStyle: Styles.style18Bold,
                         onTap: () {
                           if (formKey.currentState!.validate()) {
+                            // Safely parse city id
+                            final cityId = int.tryParse(
+                              cityIdController.text.trim(),
+                            );
+                            if (cityId == null) {
+                              toastification.show(
+                                context: context,
+                                title: const Text('Registration Failed'),
+                                description: const Text(
+                                  'Please enter a valid city id',
+                                ),
+                                type: ToastificationType.error,
+                                style: ToastificationStyle.minimal,
+                              );
+                              return;
+                            }
+
                             final registerRequest = RegistrerRequestModel(
                               firstName: firstNameController.text.trim(),
                               lastName: lastNameController.text.trim(),
@@ -125,12 +142,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               email: emailController.text.trim(),
                               password: passwordController.text.trim(),
                               avatar: _selectedAvatarFile?.path,
-                              cityId: int.tryParse(
-                                cityIdController.text.trim(),
-                              )!,
+                              cityId: cityId,
                             );
                             context.read<RegisterCubit>().registerUsers(
                               registerRequest,
+                              avatarFile: _selectedAvatarFile,
                             );
                           }
                         },

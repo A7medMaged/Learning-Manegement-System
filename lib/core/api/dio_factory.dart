@@ -34,7 +34,8 @@ class DioFactory {
     dio?.options.headers = {
       'Authorization': 'Bearer $token',
       'Cache-Control': 'no-cache',
-      'Content-Type': 'multipart/form-data',
+      // Do NOT set a global Content-Type header for multipart requests.
+      // Dio will set the correct Content-Type with boundary when using FormData.
       'Accept': '*/*',
       'Connection': 'keep-alive',
     };

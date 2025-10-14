@@ -1,3 +1,6 @@
+import 'package:dio/dio.dart';
+import 'package:image_picker/image_picker.dart';
+
 class RegistrerRequestModel {
   final String email;
   final String password;
@@ -27,6 +30,35 @@ class RegistrerRequestModel {
       'cityId': cityId,
       if (avatar != null) 'avatar': avatar,
     };
+  }
+
+  /// Build a multipart [FormData] suitable for file upload (avatar) with Dio.
+  ///
+  /// If [avatarFile] is provided, it will be attached as a `avatar` MultipartFile.
+  /// Otherwise the returned FormData contains only the scalar fields.
+  Future<FormData> toFormData({XFile? avatarFile}) async {
+    final map = <String, dynamic>{
+      'email': email,
+      'password': password,
+      'firstName': firstName,
+      'lastName': lastName,
+      'phoneNumber': phoneNumber,
+      'cityId': cityId,
+    };
+
+    if (avatarFile != null) {
+      final bytes = await avatarFile.readAsBytes();
+      final filename = avatarFile.name.isNotEmpty
+          ? avatarFile.name
+          : 'avatar.jpg';
+      final multipart = MultipartFile.fromBytes(
+        bytes,
+        filename: filename,
+      );
+      map['avatar'] = multipart;
+    }
+
+    return FormData.fromMap(map);
   }
 
   factory RegistrerRequestModel.fromJson(Map<String, dynamic> json) {

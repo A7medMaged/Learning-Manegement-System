@@ -5,11 +5,12 @@ import 'package:lms/core/utils/di.dart';
 import 'package:lms/features/auth/presentation/login_screen.dart';
 import 'package:lms/features/auth/presentation/maneger/cubit/register_cubit.dart';
 import 'package:lms/features/auth/presentation/register_screen.dart';
+import 'package:lms/features/auth/presentation/verify_email_screen.dart';
 import 'package:lms/features/home/presentation/home_screen.dart';
 
 class AppRouter {
   static final GoRouter router = GoRouter(
-    initialLocation: AppRoutes.loginRoute,
+    initialLocation: AppRoutes.registerRoute,
     routes: [
       GoRoute(
         path: AppRoutes.registerRoute,
@@ -25,6 +26,10 @@ class AppRouter {
       GoRoute(
         path: AppRoutes.homeRoute,
         builder: (context, state) => const HomeScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.otpVerificationRoute,
+        builder: (context, state) => const VerifyEmailScreen(),
       ),
     ],
   );
