@@ -18,6 +18,7 @@ class AppTextFormField extends StatelessWidget {
   final TextEditingController? controller;
   final String? Function(String?)? validator;
   final AutovalidateMode autovalidateMode;
+  final bool? enabled;
 
   const AppTextFormField({
     super.key,
@@ -35,15 +36,18 @@ class AppTextFormField extends StatelessWidget {
     this.validator,
     this.keyboardType,
     this.autovalidateMode = AutovalidateMode.disabled,
+    this.enabled = true,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      enabled: enabled,
       controller: controller,
       autovalidateMode: autovalidateMode,
       keyboardType: keyboardType ?? TextInputType.text,
       textInputAction: TextInputAction.done,
+      style: inputTextStyle ?? Styles.style14.copyWith(color: Colors.black),
       decoration: InputDecoration(
         suffixIconColor: WidgetStateColor.resolveWith(
           (states) =>
@@ -57,6 +61,10 @@ class AppTextFormField extends StatelessWidget {
         contentPadding:
             contentPadding ??
             const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
+        disabledBorder: OutlineInputBorder(
+          borderSide: const BorderSide(color: lightGray, width: 1.3),
+          borderRadius: BorderRadius.circular(16.0),
+        ),
         focusedBorder:
             focusedBorder ??
             OutlineInputBorder(
@@ -69,7 +77,7 @@ class AppTextFormField extends StatelessWidget {
         enabledBorder:
             enabledBorder ??
             OutlineInputBorder(
-              borderSide: const BorderSide(color: lightGray, width: 1.3),
+              borderSide: const BorderSide(color: grey, width: 1.3),
               borderRadius: BorderRadius.circular(16.0),
             ),
         errorBorder: OutlineInputBorder(
@@ -88,7 +96,6 @@ class AppTextFormField extends StatelessWidget {
         filled: true,
       ),
       obscureText: isObscureText ?? false,
-      style: Styles.style14.copyWith(color: lightGray),
       validator: validator,
     );
   }

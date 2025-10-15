@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:lms/core/routes/app_routes.dart';
 import 'package:lms/core/utils/styling/app_colors.dart';
 import 'package:lms/features/home/presentation/widgets/list_tile_widget.dart';
 
@@ -12,7 +14,9 @@ class Account extends StatelessWidget {
         ListTileWidget(
           title: 'Update Information',
           trailingIcon: Icons.person,
-          onTap: () {},
+          onTap: () {
+            context.push(AppRoutes.updateInfoRoute);
+          },
         ),
         ListTileWidget(
           title: 'Change Password',

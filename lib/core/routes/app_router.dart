@@ -12,6 +12,7 @@ import 'package:lms/features/auth/presentation/verify_email_screen.dart';
 import 'package:lms/features/home/presentation/home_screen.dart';
 import 'package:lms/features/home/presentation/maneger/cubit/user_cubit.dart';
 import 'package:lms/features/home/presentation/settings_screen.dart';
+import 'package:lms/features/profile/presentation/update_info_screen.dart';
 import 'package:lms/features/onboarding/presentation/maneger/cubit/onboarding_cubit.dart';
 import 'package:lms/features/onboarding/presentation/onboarding_screen.dart';
 import 'package:lms/features/splash_screen/splash_screen.dart';
@@ -82,6 +83,11 @@ class AppRouter {
           create: (context) => getIt<UserCubit>()..getUserData(),
           child: const SettingsScreen(),
         ),
+      ),
+
+      GoRoute(
+        path: AppRoutes.updateInfoRoute,
+        builder: (context, state) => const UpdateInfoScreen(),
       ),
     ],
   );
