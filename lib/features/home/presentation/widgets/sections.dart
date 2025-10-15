@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:lms/core/utils/styling/app_colors.dart';
-import 'package:lms/features/home/presentation/widgets/list_tile_widget.dart';
+import 'package:lms/core/utils/styling/app_assets.dart';
+import 'package:lms/core/utils/styling/text_style.dart';
+import 'package:lms/core/widgets/spacing_widgets.dart';
+import 'package:lms/features/home/presentation/widgets/acount.dart';
+import 'package:lms/features/home/presentation/widgets/personal_info.dart';
 
 class Sections extends StatelessWidget {
   const Sections({super.key});
@@ -9,29 +12,31 @@ class Sections extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ListTileWidget(
-            title: 'Update Information',
-            trailingIcon: Icons.person,
-            onTap: () {},
+          Center(
+            child: CircleAvatar(
+              radius: 60,
+              backgroundColor: Colors.transparent,
+              child: Image.asset(
+                AppAssets.profile,
+              ),
+            ),
           ),
-          ListTileWidget(
-            title: 'Change Password',
-            trailingIcon: Icons.lock,
-            onTap: () {},
+          const HeightSpace(12),
+          Text(
+            'Personal Information',
+            style: Styles.style18Bold,
           ),
-          ListTileWidget(
-            title: 'Langauge',
-            trailingIcon: Icons.translate,
-            onTap: () {},
+          const HeightSpace(16),
+          const PersonalInfo(),
+          const HeightSpace(24),
+          Text(
+            'Account',
+            style: Styles.style18Bold,
           ),
-          ListTileWidget(
-            title: 'Logout',
-            iconColor: red,
-            backgroundColor: Colors.red.shade200,
-            trailingIcon: Icons.logout,
-            onTap: () {},
-          ),
+          const HeightSpace(12),
+          const Account(),
         ],
       ),
     );
