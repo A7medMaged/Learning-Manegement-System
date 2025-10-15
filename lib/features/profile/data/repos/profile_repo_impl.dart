@@ -10,7 +10,7 @@ class ProfileRepoImpl extends ProfileRepo {
   final Dio dio;
 
   ProfileRepoImpl({required this.dio});
-   @override
+  @override
   Future<Either<Failures, UserModel>> getUserData() async {
     try {
       Response response = await dio.get(
@@ -27,7 +27,19 @@ class ProfileRepoImpl extends ProfileRepo {
   }
 
   @override
-  Future<Either<Failures, UpdateInfoResponseModel>> updateUserInfo() {
-    throw UnimplementedError();
+  Future<Either<Failures, UpdateInfoResponseModel>> updateUserInfo() async {
+    try {
+      Response response = await dio.put(
+        ApiKeys.updateInfo,
+      );
+      UpdateInfoResponseModel updateInfoResponseModel =
+          UpdateInfoResponseModel.fromJson(response.data);
+      return Right(updateInfoResponseModel);
+    } catch (e) {
+      if (e is DioException) {
+        return Left(ServerFailure.fromDioException(e));
+      }
+      return Left(ServerFailure(error: e.toString()));
+    }
   }
 }
