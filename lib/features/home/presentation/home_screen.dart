@@ -95,7 +95,10 @@ class HomeScreen extends StatelessWidget {
                             size: 24,
                           ),
                           onPressed: () {
-                            context.push(AppRoutes.settingsRoute);
+                            context.push(AppRoutes.settingsRoute).then((value) {
+                              // ignore: use_build_context_synchronously
+                              context.read<UserCubit>().getUserData();
+                            });
                           },
                         ),
                       ],

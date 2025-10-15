@@ -88,8 +88,15 @@ class AppRouter {
 
       GoRoute(
         path: AppRoutes.updateInfoRoute,
-        builder: (context, state) => BlocProvider(
-          create: (context) => getIt<UpdateInfoCubit>(),
+        builder: (context, state) => MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (context) => getIt<UserCubit>()..getUserData(),
+            ),
+            BlocProvider(
+              create: (context) => getIt<UpdateInfoCubit>(),
+            ),
+          ],
           child: const UpdateInfoScreen(),
         ),
       ),
