@@ -10,7 +10,7 @@ import 'package:lms/features/auth/presentation/maneger/verify_email_cubit/verify
 import 'package:lms/features/auth/presentation/register_screen.dart';
 import 'package:lms/features/auth/presentation/verify_email_screen.dart';
 import 'package:lms/features/home/presentation/home_screen.dart';
-import 'package:lms/features/home/presentation/maneger/cubit/user_cubit.dart';
+import 'package:lms/features/profile/presentation/maneger/user_cubit/user_cubit.dart';
 import 'package:lms/features/home/presentation/settings_screen.dart';
 import 'package:lms/features/profile/presentation/update_info_screen.dart';
 import 'package:lms/features/onboarding/presentation/maneger/cubit/onboarding_cubit.dart';

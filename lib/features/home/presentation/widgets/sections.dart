@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lms/core/utils/styling/app_colors.dart';
 import 'package:lms/core/utils/styling/text_style.dart';
 import 'package:lms/core/widgets/spacing_widgets.dart';
-import 'package:lms/features/home/presentation/maneger/cubit/user_cubit.dart';
+import 'package:lms/features/profile/presentation/maneger/user_cubit/user_cubit.dart';
 import 'package:lms/features/home/presentation/widgets/acount.dart';
 import 'package:lms/features/home/presentation/widgets/personal_info.dart';
 import 'package:skeletonizer/skeletonizer.dart';
