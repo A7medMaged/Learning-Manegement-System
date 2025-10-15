@@ -6,6 +6,8 @@ import 'package:lms/features/auth/data/repos/auth_repo_impl.dart';
 import 'package:lms/features/auth/presentation/maneger/login_cubit/login_cubit.dart';
 import 'package:lms/features/auth/presentation/maneger/register_cubit/register_cubit.dart';
 import 'package:lms/features/auth/presentation/maneger/verify_email_cubit/verify_email_cubit.dart';
+import 'package:lms/features/home/data/repos/user_repo_impl.dart';
+import 'package:lms/features/home/presentation/maneger/cubit/user_cubit.dart';
 import 'package:lms/features/onboarding/data/repo/onboarding_repo.dart';
 import 'package:lms/features/onboarding/presentation/maneger/cubit/onboarding_cubit.dart';
 
@@ -38,6 +40,9 @@ Future<void> setupDependencyInjection() async {
     () => OnboardingRepo(getIt<SharedPrefsService>()),
   );
 
+  getIt.registerLazySingleton<UserRepoImpl>(
+    () => UserRepoImpl(dio: getIt<Dio>()),
+  );
   // cubits >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   getIt.registerFactory<RegisterCubit>(
     () => RegisterCubit(getIt<AuthRepoImpl>()),
@@ -53,5 +58,9 @@ Future<void> setupDependencyInjection() async {
 
   getIt.registerFactory<OnboardingCubit>(
     () => OnboardingCubit(getIt<OnboardingRepo>()),
+  );
+
+  getIt.registerFactory<UserCubit>(
+    () => UserCubit(getIt<UserRepoImpl>()),
   );
 }

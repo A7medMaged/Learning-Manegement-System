@@ -10,6 +10,7 @@ import 'package:lms/features/auth/presentation/maneger/verify_email_cubit/verify
 import 'package:lms/features/auth/presentation/register_screen.dart';
 import 'package:lms/features/auth/presentation/verify_email_screen.dart';
 import 'package:lms/features/home/presentation/home_screen.dart';
+import 'package:lms/features/home/presentation/maneger/cubit/user_cubit.dart';
 import 'package:lms/features/home/presentation/settings_screen.dart';
 import 'package:lms/features/onboarding/presentation/maneger/cubit/onboarding_cubit.dart';
 import 'package:lms/features/onboarding/presentation/onboarding_screen.dart';
@@ -69,12 +70,18 @@ class AppRouter {
 
       GoRoute(
         path: AppRoutes.homeRoute,
-        builder: (context, state) => const HomeScreen(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => getIt<UserCubit>(),
+          child: const HomeScreen(),
+        ),
       ),
 
       GoRoute(
         path: AppRoutes.settingsRoute,
-        builder: (context, state) => const SettingsScreen(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => getIt<UserCubit>(),
+          child: const SettingsScreen(),
+        ),
       ),
     ],
   );

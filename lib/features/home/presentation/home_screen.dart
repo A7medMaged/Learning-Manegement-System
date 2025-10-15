@@ -11,11 +11,12 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
         title: const Text('Welcome user!'),
         leading: Padding(
           padding: const EdgeInsets.all(8.0),
           child: CircleAvatar(
-            radius: 20,
+            radius: 30,
             backgroundColor: Colors.grey,
             child: Image.asset(
               AppAssets.avatar,
