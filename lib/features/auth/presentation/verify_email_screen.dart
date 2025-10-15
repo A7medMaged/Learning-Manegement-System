@@ -1,25 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:lms/core/routes/app_routes.dart';
 import 'package:lms/core/utils/styling/text_style.dart';
 import 'package:lms/core/widgets/app_text_button.dart';
 import 'package:lms/core/widgets/spacing_widgets.dart';
+import 'package:lms/features/auth/data/models/verify_email_models/verify_email_request_model.dart';
+import 'package:lms/features/auth/presentation/maneger/verify_email_cubit/verify_email_cubit.dart';
 import 'package:lms/features/auth/presentation/widgets/otp.dart';
+import 'package:toastification/toastification.dart';
 
-class VerifyEmailScreen extends StatefulWidget {
-  const VerifyEmailScreen({super.key});
-
-  @override
-  State<VerifyEmailScreen> createState() => _VerifyEmailScreenState();
-}
-
-class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
-  final formKey = GlobalKey<FormState>();
-  final otpController = TextEditingController();
-  final focusNode = FocusNode();
+class VerifyEmailScreen extends StatelessWidget {
+  const VerifyEmailScreen({super.key, required this.email});
+  final String email;
 
   @override
   Widget build(BuildContext context) {
+    final formKey = GlobalKey<FormState>();
+    final otpController = TextEditingController();
+    final focusNode = FocusNode();
+
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          title: Text(
+            'Verify Email $email',
+            style: Styles.style20,
+          ),
+          elevation: 0,
+        ),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
           child: Form(
@@ -40,22 +50,57 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
                   otpController: otpController,
                   focusNode: focusNode,
                   validator: (value) {
-                    return value == '222222' ? null : 'Pin is incorrect';
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter the OTP code';
+                    }
+                    if (value.length != 6) {
+                      return 'OTP must be 6 digits';
+                    }
+                    if (int.tryParse(value) == null) {
+                      return 'OTP must contain only numbers';
+                    }
+                    return null;
                   },
                 ),
                 const HeightSpace(50),
-                AppTextButton(
-                  text: 'Verify',
-                  onTap: () {
-                    if (formKey.currentState!.validate()) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('OTP Verified!')),
+                BlocConsumer<VerifyEmailCubit, VerifyEmailState>(
+                  listener: (context, state) {
+                    if (state is VerifyEmailSuccess) {
+                      toastification.show(
+                        context: context,
+                        title: const Text('Verification Successful'),
+                        description: Text(
+                          state.verifyEmailResponse.message ?? '',
+                        ),
+                        style: ToastificationStyle.minimal,
                       );
-                    } else {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Invalid OTP')),
+                      context.pushReplacement(AppRoutes.loginRoute);
+                    } else if (state is VerifyEmailFailure) {
+                      toastification.show(
+                        context: context,
+                        title: const Text('Verification Failed'),
+                        description: Text(
+                          state.errorMessage,
+                        ),
+                        style: ToastificationStyle.minimal,
                       );
                     }
+                  },
+                  builder: (context, state) {
+                    return AppTextButton(
+                      text: 'Verify',
+                      onTap: () {
+                        if (formKey.currentState!.validate()) {
+                          final otp = otpController.text.trim();
+                          context.read<VerifyEmailCubit>().verifyEmail(
+                            VerifyEmailRequestModel(
+                              email: email,
+                              code: int.tryParse(otp),
+                            ),
+                          );
+                        }
+                      },
+                    );
                   },
                 ),
               ],

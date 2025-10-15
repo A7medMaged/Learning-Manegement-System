@@ -6,6 +6,7 @@ import 'package:lms/core/utils/di.dart';
 import 'package:lms/features/auth/presentation/login_screen.dart';
 import 'package:lms/features/auth/presentation/maneger/login_cubit/login_cubit.dart';
 import 'package:lms/features/auth/presentation/maneger/register_cubit/register_cubit.dart';
+import 'package:lms/features/auth/presentation/maneger/verify_email_cubit/verify_email_cubit.dart';
 import 'package:lms/features/auth/presentation/register_screen.dart';
 import 'package:lms/features/auth/presentation/verify_email_screen.dart';
 import 'package:lms/features/home/presentation/home_screen.dart';
@@ -60,7 +61,14 @@ class AppRouter {
 
       GoRoute(
         path: AppRoutes.otpVerificationRoute,
-        builder: (context, state) => const VerifyEmailScreen(),
+        builder: (context, state) {
+          final extra = state.extra as Map<String, dynamic>?;
+          final email = extra?['email'] as String? ?? '';
+          return BlocProvider(
+            create: (context) => getIt<VerifyEmailCubit>(),
+            child: VerifyEmailScreen(email: email),
+          );
+        },
       ),
     ],
   );

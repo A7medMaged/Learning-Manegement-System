@@ -5,6 +5,7 @@ import 'package:lms/core/utils/storage_helper.dart';
 import 'package:lms/features/auth/data/repos/auth_repo_impl.dart';
 import 'package:lms/features/auth/presentation/maneger/login_cubit/login_cubit.dart';
 import 'package:lms/features/auth/presentation/maneger/register_cubit/register_cubit.dart';
+import 'package:lms/features/auth/presentation/maneger/verify_email_cubit/verify_email_cubit.dart';
 import 'package:lms/features/onboarding/data/repo/onboarding_repo.dart';
 import 'package:lms/features/onboarding/presentation/maneger/cubit/onboarding_cubit.dart';
 
@@ -40,6 +41,10 @@ Future<void> setupDependencyInjection() async {
   // cubits >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   getIt.registerFactory<RegisterCubit>(
     () => RegisterCubit(getIt<AuthRepoImpl>()),
+  );
+
+  getIt.registerFactory<VerifyEmailCubit>(
+    () => VerifyEmailCubit(getIt<AuthRepoImpl>()),
   );
 
   getIt.registerFactory<LoginCubit>(
