@@ -100,6 +100,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             'You have registered successfully. verify your email to continue.',
                           ),
                           type: ToastificationType.success,
+                          style: ToastificationStyle.minimal,
                         );
                         // pass the email to the OTP page via go_router's `extra`
                         context.push(

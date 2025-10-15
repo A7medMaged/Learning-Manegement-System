@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lms/core/routes/app_routes.dart';
+import 'package:lms/core/utils/styling/app_colors.dart';
 import 'package:lms/core/utils/styling/text_style.dart';
 import 'package:lms/core/widgets/app_text_button.dart';
 import 'package:lms/core/widgets/spacing_widgets.dart';
@@ -25,7 +26,7 @@ class VerifyEmailScreen extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           title: Text(
-            'Verify Email $email',
+            'Verify Email',
             style: Styles.style20,
           ),
           elevation: 0,
@@ -34,76 +35,82 @@ class VerifyEmailScreen extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
           child: Form(
             key: formKey,
-            child: Column(
-              children: [
-                Text(
-                  'Verification',
-                  style: Styles.style25,
-                ),
-                const HeightSpace(20),
-                Text(
-                  'A verification OTP has been sent to your email. \nPlease check your inbox and click the link to verify your account.',
-                  style: Styles.style18SemiBold,
-                ),
-                const HeightSpace(175),
-                Otp(
-                  otpController: otpController,
-                  focusNode: focusNode,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter the OTP code';
-                    }
-                    if (value.length != 6) {
-                      return 'OTP must be 6 digits';
-                    }
-                    if (int.tryParse(value) == null) {
-                      return 'OTP must contain only numbers';
-                    }
-                    return null;
-                  },
-                ),
-                const HeightSpace(50),
-                BlocConsumer<VerifyEmailCubit, VerifyEmailState>(
-                  listener: (context, state) {
-                    if (state is VerifyEmailSuccess) {
-                      toastification.show(
-                        context: context,
-                        title: const Text('Verification Successful'),
-                        description: Text(
-                          state.verifyEmailResponse.message ?? '',
-                        ),
-                        style: ToastificationStyle.minimal,
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Text(
+                    'Verification',
+                    style: Styles.style25,
+                  ),
+                  const HeightSpace(20),
+                  Text(
+                    'A verification OTP has been sent to your email. \nPlease check your inbox and click the link to verify your account.',
+                    style: Styles.style18SemiBold.copyWith(
+                      color: grey,
+                    ),
+                  ),
+                  const HeightSpace(175),
+                  Otp(
+                    otpController: otpController,
+                    focusNode: focusNode,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter the OTP code';
+                      }
+                      if (value.length != 6) {
+                        return 'OTP must be 6 digits';
+                      }
+                      if (int.tryParse(value) == null) {
+                        return 'OTP must contain only numbers';
+                      }
+                      return null;
+                    },
+                  ),
+                  const HeightSpace(50),
+                  BlocConsumer<VerifyEmailCubit, VerifyEmailState>(
+                    listener: (context, state) {
+                      if (state is VerifyEmailSuccess) {
+                        toastification.show(
+                          context: context,
+                          title: const Text('Verification Successful'),
+                          description: Text(
+                            state.verifyEmailResponse.message ?? '',
+                          ),
+                          type: ToastificationType.success,
+                          style: ToastificationStyle.minimal,
+                        );
+                        context.pushReplacement(AppRoutes.loginRoute);
+                      } else if (state is VerifyEmailFailure) {
+                        toastification.show(
+                          context: context,
+                          type: ToastificationType.error,
+                          title: const Text('Verification Failed'),
+                          description: Text(
+                            state.errorMessage,
+                          ),
+                          style: ToastificationStyle.minimal,
+                        );
+                      }
+                    },
+                    builder: (context, state) {
+                      return AppTextButton(
+                        text: 'Verify',
+                        onTap: () {
+                          if (formKey.currentState!.validate()) {
+                            final otp = otpController.text.trim();
+                            context.read<VerifyEmailCubit>().verifyEmail(
+                              VerifyEmailRequestModel(
+                                email: email,
+                                code: int.tryParse(otp),
+                              ),
+                            );
+                          }
+                        },
                       );
-                      context.pushReplacement(AppRoutes.loginRoute);
-                    } else if (state is VerifyEmailFailure) {
-                      toastification.show(
-                        context: context,
-                        title: const Text('Verification Failed'),
-                        description: Text(
-                          state.errorMessage,
-                        ),
-                        style: ToastificationStyle.minimal,
-                      );
-                    }
-                  },
-                  builder: (context, state) {
-                    return AppTextButton(
-                      text: 'Verify',
-                      onTap: () {
-                        if (formKey.currentState!.validate()) {
-                          final otp = otpController.text.trim();
-                          context.read<VerifyEmailCubit>().verifyEmail(
-                            VerifyEmailRequestModel(
-                              email: email,
-                              code: int.tryParse(otp),
-                            ),
-                          );
-                        }
-                      },
-                    );
-                  },
-                ),
-              ],
+                    },
+                  ),
+                ],
+              ),
             ),
           ),
         ),

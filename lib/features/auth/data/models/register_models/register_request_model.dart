@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:image/image.dart' as img_pkg;
+import 'dart:typed_data';
 
 class RegistrerRequestModel {
   final String email;
@@ -47,13 +49,54 @@ class RegistrerRequestModel {
     };
 
     if (avatarFile != null) {
-      final bytes = await avatarFile.readAsBytes();
-      final filename = avatarFile.name.isNotEmpty
+      Uint8List bytes = await avatarFile.readAsBytes();
+      String filename = avatarFile.name.isNotEmpty
           ? avatarFile.name
           : 'avatar.jpg';
+
+      // Detect webp by file extension or by magic bytes and convert to jpeg
+      final lower = filename.toLowerCase();
+      bool isWebp = lower.endsWith('.webp');
+
+      if (!isWebp) {
+        // Fallback: check magic bytes for WEBP (RIFF....WEBP)
+        if (bytes.length >= 12) {
+          final riff = String.fromCharCodes(bytes.sublist(0, 4));
+          final webp = String.fromCharCodes(bytes.sublist(8, 12));
+          if (riff == 'RIFF' && webp == 'WEBP') isWebp = true;
+        }
+      }
+
+      Uint8List uploadBytes = bytes;
+      String uploadFilename = filename;
+
+      if (isWebp) {
+        try {
+          final decoded = img_pkg.decodeWebP(bytes);
+          if (decoded != null) {
+            final jpg = img_pkg.encodeJpg(decoded, quality: 90);
+            uploadBytes = Uint8List.fromList(jpg);
+            // ensure filename has jpg extension
+            uploadFilename = uploadFilename.replaceAll(
+              RegExp(r'\.webp\$'),
+              '.jpg',
+            );
+            if (!uploadFilename.toLowerCase().endsWith('.jpg')) {
+              uploadFilename += '.jpg';
+            }
+          } else {
+            // if decode failed, throw to be handled by caller
+            throw Exception('Failed to decode WEBP image');
+          }
+        } catch (e) {
+          // rethrow to let higher level show message
+          rethrow;
+        }
+      }
+
       final multipart = MultipartFile.fromBytes(
-        bytes,
-        filename: filename,
+        uploadBytes,
+        filename: uploadFilename,
       );
       map['avatar'] = multipart;
     }

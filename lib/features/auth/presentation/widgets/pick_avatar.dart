@@ -36,8 +36,7 @@ class _PickAvatarState extends State<PickAvatar> {
         imageProvider = NetworkImage(avatarFile!.path);
       } else {
         imageProvider = FileImage(
-          // ignore: unnecessary_import
-          XFile(avatarFile!.path) as File,
+          File(avatarFile!.path),
         );
       }
     } else {

@@ -198,7 +198,7 @@ class _RegisterFieldsState extends State<RegisterFields> {
             return null;
           },
           hintText: 'City id',
-          keyboardType: TextInputType.streetAddress,
+          keyboardType: TextInputType.number,
           prefixIcon: const Icon(
             FontAwesomeIcons.city,
             size: 18,
