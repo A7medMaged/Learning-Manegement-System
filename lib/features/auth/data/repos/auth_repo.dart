@@ -5,11 +5,17 @@ import 'package:lms/features/auth/data/models/login_models/login_request_model.d
 import 'package:lms/features/auth/data/models/login_models/login_response_model/login_response_model.dart';
 import 'package:lms/features/auth/data/models/register_models/register_request_model.dart';
 import 'package:lms/features/auth/data/models/register_models/register_response_model/register_response_model.dart';
+import 'package:lms/features/auth/data/models/verify_email_models/verify_email_request_model.dart';
+import 'package:lms/features/auth/data/models/verify_email_models/verify_email_response_model/verify_email_response_model.dart';
 
 abstract class AuthRepo {
   Future<Either<Failures, RegisterResponseModel>> registerUsers(
     RegistrerRequestModel registerRequest,
     XFile? avatarFile,
+  );
+
+  Future<Either<Failures, VerifyEmailResponseModel>> verifyEmail(
+    VerifyEmailRequestModel verifyEmailRequest,
   );
 
   Future<Either<Failures, LoginResponseModel>> login(

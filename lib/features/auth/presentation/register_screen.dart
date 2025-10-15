@@ -92,6 +92,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   BlocConsumer<RegisterCubit, RegisterState>(
                     listener: (context, state) {
                       if (state is RegisterSuccess) {
+                        final email = emailController.text.trim();
                         toastification.show(
                           context: context,
                           title: const Text('Registration Successful'),
@@ -100,7 +101,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           ),
                           type: ToastificationType.success,
                         );
-                        context.pushReplacement(AppRoutes.loginRoute);
+                        // pass the email to the OTP page via go_router's `extra`
+                        context.push(
+                          AppRoutes.otpVerificationRoute,
+                          extra: {'email': email},
+                        );
                       } else if (state is RegisterFailure) {
                         toastification.show(
                           context: context,

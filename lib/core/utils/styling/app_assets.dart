@@ -3,7 +3,7 @@ class AppAssets {
   static const lottiesPath = 'assets/lottie/';
   static const imagesPath = 'assets/images/';
 
-  static const String mail = '${iconsPath}mail.png';
+  static const String mail = '${iconsPath}mail.svg';
 
   static const String user = '${iconsPath}user.svg';
 

@@ -7,6 +7,8 @@ import 'package:lms/features/auth/data/models/login_models/login_request_model.d
 import 'package:lms/features/auth/data/models/login_models/login_response_model/login_response_model.dart';
 import 'package:lms/features/auth/data/models/register_models/register_request_model.dart';
 import 'package:lms/features/auth/data/models/register_models/register_response_model/register_response_model.dart';
+import 'package:lms/features/auth/data/models/verify_email_models/verify_email_request_model.dart';
+import 'package:lms/features/auth/data/models/verify_email_models/verify_email_response_model/verify_email_response_model.dart';
 import 'package:lms/features/auth/data/repos/auth_repo.dart';
 
 class AuthRepoImpl extends AuthRepo {
@@ -28,6 +30,28 @@ class AuthRepoImpl extends AuthRepo {
         response.data,
       );
       return Right(registerResponse);
+    } catch (e) {
+      if (e is DioException) {
+        return Left(ServerFailure.fromDioException(e));
+      }
+      return Left(ServerFailure(error: e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failures, VerifyEmailResponseModel>> verifyEmail(
+    VerifyEmailRequestModel verifyEmailRequest,
+  ) async {
+    try {
+      Response response = await dio.post(
+        ApiKeys.verifyEmail,
+        data: verifyEmailRequest.toJson(),
+      );
+      VerifyEmailResponseModel verifyEmailResponse =
+          VerifyEmailResponseModel.fromJson(
+            response.data,
+          );
+      return Right(verifyEmailResponse);
     } catch (e) {
       if (e is DioException) {
         return Left(ServerFailure.fromDioException(e));
