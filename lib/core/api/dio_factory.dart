@@ -22,11 +22,32 @@ class DioFactory {
         ..options.baseUrl = ApiKeys.baseUrl;
 
       debugPrint('Dio baseUrl: ${dio!.options.baseUrl}');
-      // Platform.isAndroid check commented out earlier, but a runtime hint is helpful
-      debugPrint('Running on Android: ${false}');
 
-      addDioHeaders();
+      dio?.options.headers = {
+        'Accept': 'application/json',
+      };
+
       addDioInterceptor();
+      dio?.interceptors.add(
+        InterceptorsWrapper(
+          onRequest: (options, handler) async {
+            try {
+              final token = await getIt<StorageHelper>().getUserToken();
+              if (token != null && token.isNotEmpty) {
+                options.headers['Authorization'] = 'Bearer $token';
+              } else {
+                options.headers.remove('Authorization');
+              }
+            } catch (_) {
+              // ignore errors reading token, proceed without Authorization
+            }
+            return handler.next(options);
+          },
+          onError: (e, handler) {
+            return handler.next(e);
+          },
+        ),
+      );
       return dio!;
     } else {
       return dio!;
@@ -34,10 +55,9 @@ class DioFactory {
   }
 
   static void addDioHeaders() async {
-    final token = await getIt<StorageHelper>().getUserToken();
+    // deprecated: token is now attached on each request by interceptor
     dio?.options.headers = {
       'Accept': 'application/json',
-      'Authorization': 'Bearer $token',
     };
   }
 

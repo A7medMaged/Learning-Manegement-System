@@ -12,7 +12,7 @@ class UserCubit extends Cubit<UserState> {
     emit(UserLoading());
     final result = await userRepo.getUserData();
     result.fold(
-      (failure) => emit(UserError(error: failure.error)),
+      (failure) => emit(UserError(errorMessage: failure.error)),
       (success) => emit(UserLoaded(userModel: success)),
     );
   }

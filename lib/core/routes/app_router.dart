@@ -71,7 +71,7 @@ class AppRouter {
       GoRoute(
         path: AppRoutes.homeRoute,
         builder: (context, state) => BlocProvider(
-          create: (context) => getIt<UserCubit>(),
+          create: (context) => getIt<UserCubit>()..getUserData(),
           child: const HomeScreen(),
         ),
       ),
@@ -79,7 +79,7 @@ class AppRouter {
       GoRoute(
         path: AppRoutes.settingsRoute,
         builder: (context, state) => BlocProvider(
-          create: (context) => getIt<UserCubit>(),
+          create: (context) => getIt<UserCubit>()..getUserData(),
           child: const SettingsScreen(),
         ),
       ),
