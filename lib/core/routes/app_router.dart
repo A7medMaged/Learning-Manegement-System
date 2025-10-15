@@ -10,6 +10,7 @@ import 'package:lms/features/auth/presentation/maneger/verify_email_cubit/verify
 import 'package:lms/features/auth/presentation/register_screen.dart';
 import 'package:lms/features/auth/presentation/verify_email_screen.dart';
 import 'package:lms/features/home/presentation/home_screen.dart';
+import 'package:lms/features/home/presentation/settings_screen.dart';
 import 'package:lms/features/onboarding/presentation/maneger/cubit/onboarding_cubit.dart';
 import 'package:lms/features/onboarding/presentation/onboarding_screen.dart';
 import 'package:lms/features/splash_screen/splash_screen.dart';
@@ -47,6 +48,18 @@ class AppRouter {
       ),
 
       GoRoute(
+        path: AppRoutes.otpVerificationRoute,
+        builder: (context, state) {
+          final extra = state.extra as Map<String, dynamic>?;
+          final email = extra?['email'] as String? ?? '';
+          return BlocProvider(
+            create: (context) => getIt<VerifyEmailCubit>(),
+            child: VerifyEmailScreen(email: email),
+          );
+        },
+      ),
+
+      GoRoute(
         path: AppRoutes.loginRoute,
         builder: (context, state) => BlocProvider(
           create: (context) => getIt<LoginCubit>(),
@@ -60,15 +73,8 @@ class AppRouter {
       ),
 
       GoRoute(
-        path: AppRoutes.otpVerificationRoute,
-        builder: (context, state) {
-          final extra = state.extra as Map<String, dynamic>?;
-          final email = extra?['email'] as String? ?? '';
-          return BlocProvider(
-            create: (context) => getIt<VerifyEmailCubit>(),
-            child: VerifyEmailScreen(email: email),
-          );
-        },
+        path: AppRoutes.settingsRoute,
+        builder: (context, state) => const SettingsScreen(),
       ),
     ],
   );
