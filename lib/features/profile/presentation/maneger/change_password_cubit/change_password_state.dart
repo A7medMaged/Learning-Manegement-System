@@ -8,7 +8,7 @@ final class ChangePasswordLoading extends ChangePasswordState {}
 
 final class ChangePasswordSuccess extends ChangePasswordState {
   final ChangePasswordResponseModel changePasswordResponseModel;
-  
+
   ChangePasswordSuccess(this.changePasswordResponseModel);
 }
 

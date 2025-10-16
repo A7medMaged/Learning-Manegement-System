@@ -47,17 +47,20 @@ class _LoginScreenState extends State<LoginScreen> {
             padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
             child: SingleChildScrollView(
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    'Login Screen',
-                    style: Styles.style25Bold,
+                  Center(
+                    child: Text(
+                      'Login Screen',
+                      style: Styles.style25Bold,
+                    ),
                   ),
                   const HeightSpace(20),
                   Text(
                     '👋 Welcome back! Please login to your account.',
                     style: Styles.style18.copyWith(color: grey),
                   ),
-                  const HeightSpace(50),
+                  const HeightSpace(18),
                   LoginFields(
                     emailController: emailController,
                     passwordController: passwordController,
@@ -115,7 +118,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     },
                   ),
                   const HeightSpace(8),
-                  const DoNotHaveAccount(),
+                  const Center(
+                    child: DoNotHaveAccount(),
+                  ),
                 ],
               ),
             ),

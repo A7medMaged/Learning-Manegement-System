@@ -53,9 +53,7 @@ class _VerifyAndChangePasswordState extends State<VerifyAndChangePassword> {
                   color: white,
                 ),
                 onTap: () {
-                  if (formKey.currentState!.validate()) {
-                    
-                  }
+                  if (formKey.currentState!.validate()) {}
                 },
               ),
             ],
