@@ -36,6 +36,7 @@ class _VerifyAndChangePasswordState extends State<VerifyAndChangePassword> {
   @override
   void dispose() {
     newPasswordController.dispose();
+    confirmNewPasswordController.dispose();
     otpController.dispose();
     focusNode.dispose();
     super.dispose();
