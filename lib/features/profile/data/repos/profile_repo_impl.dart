@@ -3,8 +3,8 @@ import 'package:dio/dio.dart';
 import 'package:lms/core/api/api_keys.dart';
 import 'package:lms/core/errors/failure.dart';
 import 'package:lms/features/home/data/models/user_model/user_model.dart';
-import 'package:lms/features/profile/data/models/update_info_request_model.dart';
-import 'package:lms/features/profile/data/models/update_info_response_model/update_info_response_model.dart';
+import 'package:lms/features/profile/data/models/update_info_models/update_info_request_model.dart';
+import 'package:lms/features/profile/data/models/update_info_models/update_info_response_model.dart';
 import 'package:lms/features/profile/data/repos/profile_repo.dart';
 
 class ProfileRepoImpl extends ProfileRepo {
