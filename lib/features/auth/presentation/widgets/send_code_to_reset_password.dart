@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lms/core/routes/app_routes.dart';
@@ -8,6 +9,9 @@ import 'package:lms/core/utils/styling/text_style.dart';
 import 'package:lms/core/widgets/app_text_button.dart';
 import 'package:lms/core/widgets/app_text_form_field.dart';
 import 'package:lms/core/widgets/spacing_widgets.dart';
+import 'package:lms/features/auth/data/models/reset_password_models/send_reset_code_request_model.dart';
+import 'package:lms/features/auth/presentation/maneger/reset_password_cubit/reset_password_cubit.dart';
+import 'package:toastification/toastification.dart';
 
 class SendCodeToResetPassword extends StatefulWidget {
   const SendCodeToResetPassword({super.key});
@@ -67,19 +71,52 @@ class _SendCodeToResetPasswordState extends State<SendCodeToResetPassword> {
                 },
               ),
               const HeightSpace(24),
-              AppTextButton(
-                width: double.infinity,
-                text: 'Send Code',
-                textStyle: Styles.style18.copyWith(
-                  color: white,
-                ),
-                onTap: () {
-                  if (formKey.currentState!.validate()) {
+              BlocConsumer<ResetPasswordCubit, ResetPasswordState>(
+                listener: (context, state) {
+                  if (state is SendResetCodeSuccess) {
+                    toastification.show(
+                      context: context,
+                      title: const Text('Success'),
+                      description: const Text(
+                        'Reset password code sent successfully',
+                      ),
+                      type: ToastificationType.success,
+                      style: ToastificationStyle.minimal,
+                    );
                     context.push(
                       AppRoutes.verifyAndChangePasswordRoute,
                       extra: {'email': emailController.text.trim()},
                     );
+                  } else if (state is SendResetCodeFailure) {
+                    toastification.show(
+                      context: context,
+                      title: const Text('Error'),
+                      description: Text(state.errorMessage),
+                      type: ToastificationType.error,
+                      style: ToastificationStyle.minimal,
+                    );
                   }
+                },
+                builder: (context, state) {
+                  return AppTextButton(
+                    width: double.infinity,
+                    text: 'Send Code',
+                    textStyle: Styles.style18.copyWith(
+                      color: white,
+                    ),
+                    isLoading: state is SendResetCodeLoading ? true : false,
+                    onTap: () {
+                      if (formKey.currentState!.validate()) {
+                        final SendResetCodeRequestModel sendResetCodeRequest =
+                            SendResetCodeRequestModel(
+                              email: emailController.text.trim(),
+                            );
+                        context.read<ResetPasswordCubit>().sendResetCode(
+                          sendResetCodeRequest,
+                        );
+                      }
+                    },
+                  );
                 },
               ),
             ],
