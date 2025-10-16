@@ -49,7 +49,6 @@ class _SplashScreenState extends State<SplashScreen>
       return;
     }
 
-    // check if onboarding finished
     final completed = await onboardingCubit.isOnboardingCompleted();
 
     if (completed && mounted) {

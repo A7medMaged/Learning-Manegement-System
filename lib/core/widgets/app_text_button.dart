@@ -11,6 +11,7 @@ class AppTextButton extends StatelessWidget {
     this.textStyle,
     this.width,
     this.height,
+    this.color,
   });
   final void Function()? onTap;
   final String text;
@@ -18,6 +19,7 @@ class AppTextButton extends StatelessWidget {
   final TextStyle? textStyle;
   final double? width;
   final double? height;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +32,7 @@ class AppTextButton extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15),
           ),
-          color: const Color(0xFF34A853),
+          color: color ?? const Color(0xFF34A853),
         ),
         child: Center(
           child: isLoading
