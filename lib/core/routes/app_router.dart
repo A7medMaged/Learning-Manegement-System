@@ -9,6 +9,8 @@ import 'package:lms/features/auth/presentation/maneger/register_cubit/register_c
 import 'package:lms/features/auth/presentation/maneger/verify_email_cubit/verify_email_cubit.dart';
 import 'package:lms/features/auth/presentation/register_screen.dart';
 import 'package:lms/features/auth/presentation/verify_email_screen.dart';
+import 'package:lms/features/auth/presentation/widgets/send_code_to_reset_password.dart';
+import 'package:lms/features/auth/presentation/widgets/verify_and_change_password.dart';
 import 'package:lms/features/home/presentation/home_screen.dart';
 import 'package:lms/features/profile/presentation/change_password_screen.dart';
 import 'package:lms/features/profile/presentation/maneger/change_password_cubit/change_password_cubit.dart';
@@ -109,6 +111,16 @@ class AppRouter {
           create: (context) => getIt<ChangePasswordCubit>(),
           child: const ChangePasswordScreen(),
         ),
+      ),
+
+      GoRoute(
+        path: AppRoutes.resetPasswordRoute,
+        builder: (context, state) => const SendCodeToResetPassword(),
+      ),
+
+      GoRoute(
+        path: AppRoutes.verifyAndChangePasswordRoute,
+        builder: (context, state) => const VerifyAndChangePassword(),
       ),
     ],
   );

@@ -21,7 +21,7 @@ class DoNotHaveAccount extends StatelessWidget {
             ),
           ),
           TextSpan(
-            text: ' Sign Up',
+            text: ' Register',
             style: Styles.style14.copyWith(color: mainColor),
             recognizer: TapGestureRecognizer()
               ..onTap = () {

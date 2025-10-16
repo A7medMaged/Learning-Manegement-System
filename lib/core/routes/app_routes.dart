@@ -9,4 +9,6 @@ class AppRoutes {
   static const String settingsRoute = '/settings';
   static const String updateInfoRoute = '/update-info';
   static const String cahngePasswordRoute = '/change-password';
+  static const String resetPasswordRoute = '/reset-password';
+  static const String verifyAndChangePasswordRoute = '/verify-change-password';
 }

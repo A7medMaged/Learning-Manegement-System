@@ -83,6 +83,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                 builder: (context, state) {
                   return AppTextButton(
                     text: 'Save Changes',
+                    isLoading: state is ChangePasswordLoading ? true : false,
                     onTap: () {
                       if (formKey.currentState!.validate()) {
                         final ChangePasswordRequestModel changePasswordRequest =

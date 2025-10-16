@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:lms/core/utils/app_regex.dart';
 import 'package:lms/core/utils/styling/app_colors.dart';
 import 'package:lms/core/widgets/app_text_form_field.dart';
 import 'package:lms/core/widgets/spacing_widgets.dart';
@@ -31,6 +32,8 @@ class _LoginFieldsState extends State<LoginFields> {
           validator: (value) {
             if (value == null || value.isEmpty) {
               return 'Please enter your email';
+            } else if (!AppRegex.isEmailValid(value)) {
+              return 'Please enter a valid email';
             }
             return null;
           },

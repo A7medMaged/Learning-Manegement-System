@@ -22,7 +22,7 @@ class _OtpState extends State<Otp> {
 
     final defaultPinTheme = PinTheme(
       width: 75,
-      height: 75,
+      height: 55,
       textStyle: Styles.style18,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),

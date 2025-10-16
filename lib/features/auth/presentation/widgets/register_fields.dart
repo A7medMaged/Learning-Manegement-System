@@ -95,9 +95,9 @@ class _RegisterFieldsState extends State<RegisterFields> {
           controller: widget.emailController,
           autovalidateMode: AutovalidateMode.onUserInteraction,
           validator: (value) {
-            if (value == null ||
-                value.isEmpty ||
-                !AppRegex.isEmailValid(value)) {
+            if (value == null || value.isEmpty) {
+              return 'Please enter your email';
+            } else if (!AppRegex.isEmailValid(value)) {
               return 'Please enter a valid email';
             }
             return null;
@@ -116,10 +116,10 @@ class _RegisterFieldsState extends State<RegisterFields> {
           autovalidateMode: AutovalidateMode.onUserInteraction,
           keyboardType: TextInputType.visiblePassword,
           validator: (value) {
-            if (value == null ||
-                value.isEmpty ||
-                !AppRegex.isPasswordValid(value)) {
-              return 'Password must be at least 8 characters long, include uppercase,\nlowercase, number, and special character.';
+            if (value == null || value.isEmpty) {
+              return 'please enter your password';
+            } else if (!AppRegex.isPasswordValid(value)) {
+              return 'Password must be at least 8 characters, include an uppercase letter, number and symbol.';
             }
             return null;
           },
@@ -155,9 +155,9 @@ class _RegisterFieldsState extends State<RegisterFields> {
           autovalidateMode: AutovalidateMode.onUserInteraction,
           keyboardType: TextInputType.visiblePassword,
           validator: (value) {
-            if (value == null ||
-                value.isEmpty ||
-                value != widget.passwordController!.text) {
+            if (value == null || value.isEmpty) {
+              return 'please confirm your password';
+            } else if (value != widget.passwordController!.text) {
               return 'Passwords do not match';
             }
             return null;
