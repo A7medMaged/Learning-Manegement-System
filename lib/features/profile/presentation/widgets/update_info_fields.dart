@@ -26,6 +26,7 @@ class UpdateInfoFields extends StatelessWidget {
           controller: firstNameController,
           keyboardType: TextInputType.name,
           inputTextStyle: Styles.style14,
+          autovalidateMode: AutovalidateMode.onUserInteraction,
           prefixIcon: const Icon(
             FontAwesomeIcons.user,
             size: 18,
@@ -36,6 +37,7 @@ class UpdateInfoFields extends StatelessWidget {
         AppTextFormField(
           controller: lastNameController,
           keyboardType: TextInputType.name,
+          autovalidateMode: AutovalidateMode.onUserInteraction,
           inputTextStyle: Styles.style14,
           prefixIcon: const Icon(
             FontAwesomeIcons.user,
@@ -59,6 +61,7 @@ class UpdateInfoFields extends StatelessWidget {
         AppTextFormField(
           controller: phoneController,
           keyboardType: TextInputType.phone,
+          autovalidateMode: AutovalidateMode.onUserInteraction,
           prefixIcon: const Icon(
             FontAwesomeIcons.phone,
             size: 18,

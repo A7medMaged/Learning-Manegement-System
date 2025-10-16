@@ -33,6 +33,7 @@ class _CahngePasswordFiledsState extends State<CahngePasswordFileds> {
           controller: widget.currentPasswordController,
           hintText: 'current password',
           keyboardType: TextInputType.visiblePassword,
+          autovalidateMode: AutovalidateMode.onUserInteraction,
           inputTextStyle: Styles.style14,
           prefixIcon: const Icon(
             Icons.lock_outline,
@@ -70,6 +71,7 @@ class _CahngePasswordFiledsState extends State<CahngePasswordFileds> {
           controller: widget.newPasswordController,
           hintText: 'new password',
           keyboardType: TextInputType.visiblePassword,
+          autovalidateMode: AutovalidateMode.onUserInteraction,
           inputTextStyle: Styles.style14,
           prefixIcon: const Icon(
             Icons.lock_outline,
