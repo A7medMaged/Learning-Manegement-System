@@ -27,6 +27,14 @@ class _VerifyAndChangePasswordState extends State<VerifyAndChangePassword> {
   final focusNode = FocusNode();
 
   @override
+  void dispose() {
+    newPasswordController.dispose();
+    otpController.dispose();
+    focusNode.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
