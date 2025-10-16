@@ -94,7 +94,12 @@ class VerifyEmailScreen extends StatelessWidget {
                     },
                     builder: (context, state) {
                       return AppTextButton(
+                        width: double.infinity,
                         text: 'Verify',
+                        textStyle: Styles.style18SemiBold.copyWith(
+                          color: white,
+                        ),
+                        isLoading: state is VerifyEmailLoading ? true : false,
                         onTap: () {
                           if (formKey.currentState!.validate()) {
                             final otp = otpController.text.trim();

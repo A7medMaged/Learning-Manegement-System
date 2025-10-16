@@ -75,10 +75,10 @@ class _RegisterFieldsState extends State<RegisterFields> {
           controller: widget.phoneNumber,
           autovalidateMode: AutovalidateMode.onUserInteraction,
           validator: (value) {
-            if (value == null ||
-                value.isEmpty ||
-                AppRegex.isPhoneNumberValid(value)) {
+            if (value == null || value.isEmpty) {
               return 'Please enter your phone number';
+            } else if (!AppRegex.isPhoneNumberValid(value)) {
+              return 'Please enter a valid phone number';
             }
             return null;
           },
@@ -119,7 +119,7 @@ class _RegisterFieldsState extends State<RegisterFields> {
             if (value == null || value.isEmpty) {
               return 'please enter your password';
             } else if (!AppRegex.isPasswordValid(value)) {
-              return 'Password must be at least 8 characters, include an uppercase letter, number and symbol.';
+              return 'Password must be at least 8 characters, include an uppercase letter\n, number and symbol.';
             }
             return null;
           },
@@ -193,7 +193,10 @@ class _RegisterFieldsState extends State<RegisterFields> {
           autovalidateMode: AutovalidateMode.onUserInteraction,
           validator: (value) {
             if (value == null || value.isEmpty) {
-              return 'Please enter your city id';
+              return 'City ID is required';
+            }
+            if (int.tryParse(value) == null) {
+              return 'Please enter a valid number';
             }
             return null;
           },

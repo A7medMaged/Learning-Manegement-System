@@ -129,7 +129,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         ),
                         onTap: () {
                           if (formKey.currentState!.validate()) {
-                            // Safely parse city id
                             final cityId = int.tryParse(
                               cityIdController.text.trim(),
                             );
