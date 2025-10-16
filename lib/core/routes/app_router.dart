@@ -10,6 +10,7 @@ import 'package:lms/features/auth/presentation/maneger/verify_email_cubit/verify
 import 'package:lms/features/auth/presentation/register_screen.dart';
 import 'package:lms/features/auth/presentation/verify_email_screen.dart';
 import 'package:lms/features/home/presentation/home_screen.dart';
+import 'package:lms/features/profile/presentation/change_password_screen.dart';
 import 'package:lms/features/profile/presentation/maneger/update_info_cubit/update_info_cubit.dart';
 import 'package:lms/features/profile/presentation/maneger/user_cubit/user_cubit.dart';
 import 'package:lms/features/home/presentation/settings_screen.dart';
@@ -99,6 +100,11 @@ class AppRouter {
           ],
           child: const UpdateInfoScreen(),
         ),
+      ),
+
+      GoRoute(
+        path: AppRoutes.cahngePasswordRoute,
+        builder: (context, state) => const ChangePasswordScreen(),
       ),
     ],
   );

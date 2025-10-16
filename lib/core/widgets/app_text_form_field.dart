@@ -44,6 +44,7 @@ class AppTextFormField extends StatelessWidget {
     return TextFormField(
       enabled: enabled,
       controller: controller,
+      cursorColor: black,
       autovalidateMode: autovalidateMode,
       keyboardType: keyboardType ?? TextInputType.text,
       textInputAction: TextInputAction.done,

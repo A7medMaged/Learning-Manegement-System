@@ -30,7 +30,9 @@ class Account extends StatelessWidget {
         ListTileWidget(
           title: 'Change Password',
           trailingIcon: Icons.lock_outline,
-          onTap: () {},
+          onTap: () {
+            context.push(AppRoutes.cahngePasswordRoute);
+          },
         ),
         ListTileWidget(
           title: 'Langauge',
