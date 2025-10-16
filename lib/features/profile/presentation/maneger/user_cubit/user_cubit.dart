@@ -9,11 +9,26 @@ class UserCubit extends Cubit<UserState> {
   final ProfileRepoImpl profileRepoImpl;
 
   Future<void> getUserData() async {
-    emit(UserLoading());
-    final result = await profileRepoImpl.getUserData();
-    result.fold(
-      (failure) => emit(UserError(errorMessage: failure.error)),
-      (success) => emit(UserLoaded(userModel: success)),
-    );
+    if (isClosed) return;
+    try {
+      emit(UserLoading());
+      final result = await profileRepoImpl.getUserData();
+      if (isClosed) return;
+      result.fold(
+        (failure) {
+          if (isClosed) return;
+          emit(UserError(errorMessage: failure.error));
+        },
+        (success) {
+          if (isClosed) return;
+          emit(UserLoaded(userModel: success));
+        },
+      );
+    } catch (e) {
+      // If cubit is closed, exit silently
+      if (isClosed) return;
+      // Map known exceptions to user-friendly state if desired
+      emit(UserError(errorMessage: e.toString()));
+    }
   }
 }

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
+import 'package:lms/core/routes/app_routes.dart';
 import 'package:lms/core/utils/styling/app_colors.dart';
 import 'package:lms/core/utils/styling/text_style.dart';
 import 'package:lms/core/widgets/app_text_button.dart';
@@ -25,6 +28,7 @@ class _VerifyAndChangePasswordState extends State<VerifyAndChangePassword> {
   TextEditingController newPasswordController = TextEditingController();
   final otpController = TextEditingController();
   final focusNode = FocusNode();
+  bool isObscureText = true;
 
   @override
   void dispose() {
@@ -74,6 +78,31 @@ class _VerifyAndChangePasswordState extends State<VerifyAndChangePassword> {
               AppTextFormField(
                 controller: newPasswordController,
                 hintText: 'New Password',
+                keyboardType: TextInputType.visiblePassword,
+                prefixIcon: const Icon(
+                  Icons.lock_outlined,
+                  size: 18,
+                  color: grey,
+                ),
+                isObscureText: isObscureText,
+                suffixIcon: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      isObscureText = !isObscureText;
+                    });
+                  },
+                  child: isObscureText
+                      ? const Icon(
+                          FontAwesomeIcons.eyeSlash,
+                          color: grey,
+                          size: 18,
+                        )
+                      : const Icon(
+                          FontAwesomeIcons.eye,
+                          color: grey,
+                          size: 18,
+                        ),
+                ),
               ),
               const HeightSpace(24),
               BlocConsumer<ResetPasswordCubit, ResetPasswordState>(
@@ -88,6 +117,7 @@ class _VerifyAndChangePasswordState extends State<VerifyAndChangePassword> {
                       type: ToastificationType.success,
                       style: ToastificationStyle.minimal,
                     );
+                    context.pushReplacement(AppRoutes.loginRoute);
                   } else if (state is VerifyAndChangeFailure) {
                     toastification.show(
                       context: context,
@@ -96,6 +126,7 @@ class _VerifyAndChangePasswordState extends State<VerifyAndChangePassword> {
                       type: ToastificationType.error,
                       style: ToastificationStyle.minimal,
                     );
+                    context.pop();
                   }
                 },
                 builder: (context, state) {

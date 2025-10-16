@@ -74,6 +74,7 @@ class _SendCodeToResetPasswordState extends State<SendCodeToResetPassword> {
               BlocConsumer<ResetPasswordCubit, ResetPasswordState>(
                 listener: (context, state) {
                   if (state is SendResetCodeSuccess) {
+                    final email = emailController.text.trim();
                     toastification.show(
                       context: context,
                       title: const Text('Success'),
@@ -85,7 +86,7 @@ class _SendCodeToResetPasswordState extends State<SendCodeToResetPassword> {
                     );
                     context.push(
                       AppRoutes.verifyAndChangePasswordRoute,
-                      extra: {'email': emailController.text.trim()},
+                      extra: {'email': email},
                     );
                   } else if (state is SendResetCodeFailure) {
                     toastification.show(
