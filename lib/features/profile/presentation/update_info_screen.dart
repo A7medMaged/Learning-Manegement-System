@@ -1,4 +1,3 @@
-// ignore: file_names
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lms/core/utils/styling/text_style.dart';

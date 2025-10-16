@@ -8,6 +8,7 @@ part 'update_info_state.dart';
 class UpdateInfoCubit extends Cubit<UpdateInfoState> {
   UpdateInfoCubit(this.profileRepoImpl) : super(UpdateInfoInitial());
   final ProfileRepoImpl profileRepoImpl;
+
   Future<void> updateUserInfo(UpdateInfoRequestModel updateInfoRequest) async {
     emit(UpdateInfoLoading());
     final result = await profileRepoImpl.updateUserInfo(updateInfoRequest);
