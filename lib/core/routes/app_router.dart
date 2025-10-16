@@ -6,6 +6,7 @@ import 'package:lms/core/utils/di.dart';
 import 'package:lms/features/auth/presentation/login_screen.dart';
 import 'package:lms/features/auth/presentation/maneger/login_cubit/login_cubit.dart';
 import 'package:lms/features/auth/presentation/maneger/register_cubit/register_cubit.dart';
+import 'package:lms/features/auth/presentation/maneger/reset_password_cubit/reset_password_cubit.dart';
 import 'package:lms/features/auth/presentation/maneger/verify_email_cubit/verify_email_cubit.dart';
 import 'package:lms/features/auth/presentation/register_screen.dart';
 import 'package:lms/features/auth/presentation/verify_email_screen.dart';
@@ -115,12 +116,24 @@ class AppRouter {
 
       GoRoute(
         path: AppRoutes.resetPasswordRoute,
-        builder: (context, state) => const SendCodeToResetPassword(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => getIt<ResetPasswordCubit>(),
+          child: const SendCodeToResetPassword(),
+        ),
       ),
 
       GoRoute(
         path: AppRoutes.verifyAndChangePasswordRoute,
-        builder: (context, state) => const VerifyAndChangePassword(),
+        builder: (context, state) {
+          final extra = state.extra as Map<String, dynamic>?;
+          final email = extra?['email'] as String? ?? '';
+          return BlocProvider(
+            create: (context) => getIt<ResetPasswordCubit>(),
+            child: VerifyAndChangePassword(
+              email: email,
+            ),
+          );
+        },
       ),
     ],
   );

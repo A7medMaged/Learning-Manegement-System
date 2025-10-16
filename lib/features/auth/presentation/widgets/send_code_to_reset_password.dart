@@ -75,7 +75,10 @@ class _SendCodeToResetPasswordState extends State<SendCodeToResetPassword> {
                 ),
                 onTap: () {
                   if (formKey.currentState!.validate()) {
-                    context.push(AppRoutes.verifyAndChangePasswordRoute);
+                    context.push(
+                      AppRoutes.verifyAndChangePasswordRoute,
+                      extra: {'email': emailController.text.trim()},
+                    );
                   }
                 },
               ),

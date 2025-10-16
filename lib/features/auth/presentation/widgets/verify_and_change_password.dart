@@ -7,7 +7,8 @@ import 'package:lms/core/widgets/spacing_widgets.dart';
 import 'package:lms/features/auth/presentation/widgets/otp.dart';
 
 class VerifyAndChangePassword extends StatefulWidget {
-  const VerifyAndChangePassword({super.key});
+  const VerifyAndChangePassword({super.key, required this.email});
+  final String? email;
 
   @override
   State<VerifyAndChangePassword> createState() =>

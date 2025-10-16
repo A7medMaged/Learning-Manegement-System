@@ -5,6 +5,7 @@ import 'package:lms/core/utils/storage_helper.dart';
 import 'package:lms/features/auth/data/repos/auth_repo_impl.dart';
 import 'package:lms/features/auth/presentation/maneger/login_cubit/login_cubit.dart';
 import 'package:lms/features/auth/presentation/maneger/register_cubit/register_cubit.dart';
+import 'package:lms/features/auth/presentation/maneger/reset_password_cubit/reset_password_cubit.dart';
 import 'package:lms/features/auth/presentation/maneger/verify_email_cubit/verify_email_cubit.dart';
 import 'package:lms/features/profile/data/repos/profile_repo_impl.dart';
 import 'package:lms/features/profile/presentation/maneger/change_password_cubit/change_password_cubit.dart';
@@ -72,5 +73,9 @@ Future<void> setupDependencyInjection() async {
 
   getIt.registerFactory<ChangePasswordCubit>(
     () => ChangePasswordCubit(getIt<ProfileRepoImpl>()),
+  );
+
+  getIt.registerFactory<ResetPasswordCubit>(
+    () => ResetPasswordCubit(getIt<AuthRepoImpl>()),
   );
 }
