@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lms/core/routes/app_routes.dart';
+import 'package:lms/core/utils/app_regex.dart';
 import 'package:lms/core/utils/styling/app_colors.dart';
 import 'package:lms/core/utils/styling/text_style.dart';
 import 'package:lms/core/widgets/app_text_button.dart';
@@ -26,9 +27,11 @@ class _VerifyAndChangePasswordState extends State<VerifyAndChangePassword> {
   final formKey = GlobalKey<FormState>();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   TextEditingController newPasswordController = TextEditingController();
+  TextEditingController confirmNewPasswordController = TextEditingController();
   final otpController = TextEditingController();
   final focusNode = FocusNode();
-  bool isObscureText = true;
+  bool isObscureText1 = true;
+  bool isObscureText2 = true;
 
   @override
   void dispose() {
@@ -84,14 +87,59 @@ class _VerifyAndChangePasswordState extends State<VerifyAndChangePassword> {
                   size: 18,
                   color: grey,
                 ),
-                isObscureText: isObscureText,
+                isObscureText: isObscureText1,
                 suffixIcon: GestureDetector(
                   onTap: () {
                     setState(() {
-                      isObscureText = !isObscureText;
+                      isObscureText1 = !isObscureText1;
                     });
                   },
-                  child: isObscureText
+                  child: isObscureText1
+                      ? const Icon(
+                          FontAwesomeIcons.eyeSlash,
+                          color: grey,
+                          size: 18,
+                        )
+                      : const Icon(
+                          FontAwesomeIcons.eye,
+                          color: grey,
+                          size: 18,
+                        ),
+                ),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'please enter your password';
+                  } else if (!AppRegex.isPasswordValid(value)) {
+                    return 'Password must be at least 8 characters, include an uppercase letter, number and symbol.';
+                  }
+                  return null;
+                },
+              ),
+              AppTextFormField(
+                controller: newPasswordController,
+                hintText: 'Confirm New Password',
+                keyboardType: TextInputType.visiblePassword,
+                prefixIcon: const Icon(
+                  Icons.lock_outlined,
+                  size: 18,
+                  color: grey,
+                ),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'please confirm your password';
+                  } else if (value != newPasswordController.text) {
+                    return 'Passwords do not match';
+                  }
+                  return null;
+                },
+                isObscureText: isObscureText2,
+                suffixIcon: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      isObscureText2 = !isObscureText2;
+                    });
+                  },
+                  child: isObscureText2
                       ? const Icon(
                           FontAwesomeIcons.eyeSlash,
                           color: grey,
