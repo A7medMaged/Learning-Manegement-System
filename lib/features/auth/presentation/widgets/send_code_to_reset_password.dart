@@ -77,6 +77,8 @@ class _SendCodeToResetPasswordState extends State<SendCodeToResetPassword> {
                     final email = emailController.text.trim();
                     toastification.show(
                       context: context,
+                      dismissDirection: DismissDirection.up,
+                      autoCloseDuration: const Duration(seconds: 4),
                       title: const Text('Success'),
                       description: const Text(
                         'Reset password code sent successfully',
@@ -91,6 +93,8 @@ class _SendCodeToResetPasswordState extends State<SendCodeToResetPassword> {
                   } else if (state is SendResetCodeFailure) {
                     toastification.show(
                       context: context,
+                      dismissDirection: DismissDirection.up,
+                      autoCloseDuration: const Duration(seconds: 4),
                       title: const Text('Error'),
                       description: Text(state.errorMessage),
                       type: ToastificationType.error,

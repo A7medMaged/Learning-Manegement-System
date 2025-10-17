@@ -119,7 +119,7 @@ class _RegisterFieldsState extends State<RegisterFields> {
             if (value == null || value.isEmpty) {
               return 'please enter your password';
             } else if (!AppRegex.isPasswordValid(value)) {
-              return 'Password must be at least 8 characters, include an uppercase letter\n, number and symbol.';
+              return 'Password must be at least 8 characters, include an uppercase letter,\n number and symbol.';
             }
             return null;
           },

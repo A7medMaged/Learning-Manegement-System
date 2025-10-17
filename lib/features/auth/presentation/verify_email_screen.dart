@@ -72,6 +72,8 @@ class VerifyEmailScreen extends StatelessWidget {
                       if (state is VerifyEmailSuccess) {
                         toastification.show(
                           context: context,
+                          dismissDirection: DismissDirection.up,
+                          autoCloseDuration: const Duration(seconds: 4),
                           title: const Text('Verification Successful'),
                           description: Text(
                             state.verifyEmailResponse.message ?? '',
@@ -83,6 +85,8 @@ class VerifyEmailScreen extends StatelessWidget {
                       } else if (state is VerifyEmailFailure) {
                         toastification.show(
                           context: context,
+                          dismissDirection: DismissDirection.up,
+                          autoCloseDuration: const Duration(seconds: 4),
                           type: ToastificationType.error,
                           title: const Text('Verification Failed'),
                           description: Text(

@@ -64,6 +64,8 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                   if (state is ChangePasswordSuccess) {
                     toastification.show(
                       context: context,
+                      dismissDirection: DismissDirection.up,
+                      autoCloseDuration: const Duration(seconds: 4),
                       title: const Text('Success'),
                       description: const Text('Password changed successfully'),
                       type: ToastificationType.success,
@@ -73,6 +75,8 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                   } else if (state is ChangePasswordFailure) {
                     toastification.show(
                       context: context,
+                      dismissDirection: DismissDirection.up,
+                      autoCloseDuration: const Duration(seconds: 4),
                       title: const Text('Change Password Failed'),
                       description: Text(state.errorMessage),
                       type: ToastificationType.error,

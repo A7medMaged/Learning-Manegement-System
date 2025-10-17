@@ -95,6 +95,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         final email = emailController.text.trim();
                         toastification.show(
                           context: context,
+                          dismissDirection: DismissDirection.up,
+                          autoCloseDuration: const Duration(seconds: 4),
                           title: const Text('Registration Successful'),
                           description: const Text(
                             'You have registered successfully. verify your email to continue.',
@@ -110,6 +112,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       } else if (state is RegisterFailure) {
                         toastification.show(
                           context: context,
+                          dismissDirection: DismissDirection.up,
+                          autoCloseDuration: const Duration(seconds: 4),
                           title: const Text('Registration Failed'),
                           description: Text(
                             state.errorMessage,
@@ -135,6 +139,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             if (cityId == null) {
                               toastification.show(
                                 context: context,
+                                dismissDirection: DismissDirection.up,
+                                autoCloseDuration: const Duration(seconds: 4),
                                 title: const Text('Registration Failed'),
                                 description: const Text(
                                   'Please enter a valid city id',

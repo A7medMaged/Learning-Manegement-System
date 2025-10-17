@@ -111,13 +111,14 @@ class _VerifyAndChangePasswordState extends State<VerifyAndChangePassword> {
                   if (value == null || value.isEmpty) {
                     return 'please enter your password';
                   } else if (!AppRegex.isPasswordValid(value)) {
-                    return 'Password must be at least 8 characters, include an uppercase letter, number and symbol.';
+                    return 'Password must be at least 8 characters, include an uppercase letter,\n number and symbol.';
                   }
                   return null;
                 },
               ),
+              const HeightSpace(12),
               AppTextFormField(
-                controller: newPasswordController,
+                controller: confirmNewPasswordController,
                 hintText: 'Confirm New Password',
                 keyboardType: TextInputType.visiblePassword,
                 prefixIcon: const Icon(
@@ -159,9 +160,11 @@ class _VerifyAndChangePasswordState extends State<VerifyAndChangePassword> {
                   if (state is VerifyAndChangeSuccess) {
                     toastification.show(
                       context: context,
+                      dismissDirection: DismissDirection.up,
+                      autoCloseDuration: const Duration(seconds: 4),
                       title: const Text('Success'),
                       description: const Text(
-                        'Reset password code sent successfully',
+                        'Password changed successfully',
                       ),
                       type: ToastificationType.success,
                       style: ToastificationStyle.minimal,
@@ -170,6 +173,8 @@ class _VerifyAndChangePasswordState extends State<VerifyAndChangePassword> {
                   } else if (state is VerifyAndChangeFailure) {
                     toastification.show(
                       context: context,
+                      dismissDirection: DismissDirection.up,
+                      autoCloseDuration: const Duration(seconds: 4),
                       title: const Text('Error'),
                       description: Text(state.errorMessage),
                       type: ToastificationType.error,

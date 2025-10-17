@@ -73,6 +73,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       if (state is LoginSuccess) {
                         toastification.show(
                           context: context,
+                          dismissDirection: DismissDirection.up,
+                          autoCloseDuration: const Duration(seconds: 4),
                           title: const Text('Login Successful'),
                           description: const Text(
                             'You have successfully logged in.',
@@ -90,6 +92,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       } else if (state is LoginFailure) {
                         toastification.show(
                           context: context,
+                          dismissDirection: DismissDirection.up,
+                          autoCloseDuration: const Duration(seconds: 4),
                           title: const Text('Login Failed'),
                           description: Text(state.errorMessage),
                           type: ToastificationType.error,

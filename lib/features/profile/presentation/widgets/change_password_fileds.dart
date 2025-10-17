@@ -137,9 +137,9 @@ class _CahngePasswordFiledsState extends State<CahngePasswordFileds> {
                   ),
           ),
           validator: (value) {
-            if (value == null ||
-                value.isEmpty ||
-                value != widget.confirmNewPasswordController!.text) {
+            if (value == null || value.isEmpty) {
+              return 'Please confirm your new password';
+            } else if (value != widget.newPasswordController!.text) {
               return 'Passwords do not match';
             }
             return null;

@@ -128,6 +128,8 @@ class _UpdateInfoScreenState extends State<UpdateInfoScreen> {
                     if (state is UpdateInfoError) {
                       toastification.show(
                         context: context,
+                        dismissDirection: DismissDirection.up,
+                        autoCloseDuration: const Duration(seconds: 4),
                         title: const Text('Update Failed'),
                         description: Text(state.errorMessage),
                         type: ToastificationType.error,
@@ -136,6 +138,8 @@ class _UpdateInfoScreenState extends State<UpdateInfoScreen> {
                     } else if (state is UpdateInfoLoaded) {
                       toastification.show(
                         context: context,
+                        dismissDirection: DismissDirection.up,
+                        autoCloseDuration: const Duration(seconds: 4),
                         title: const Text('Success'),
                         description: const Text(
                           'Information updated successfully',
