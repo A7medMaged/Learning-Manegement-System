@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:lms/core/routes/app_routes.dart';
 import 'package:lms/core/utils/styling/app_colors.dart';
 import 'package:lms/core/utils/styling/text_style.dart';
+import 'package:lms/generated/l10n.dart';
 
 class AlreadyHaveAnAccount extends StatelessWidget {
   const AlreadyHaveAnAccount({super.key});
@@ -15,13 +16,13 @@ class AlreadyHaveAnAccount extends StatelessWidget {
       text: TextSpan(
         children: [
           TextSpan(
-            text: 'Already have an account?',
+            text: S.of(context).already_have_an_account,
             style: Styles.style14.copyWith(
               color: black,
             ),
           ),
           TextSpan(
-            text: ' Login',
+            text: S.of(context).login,
             style: Styles.style14.copyWith(
               color: mainColor,
             ),

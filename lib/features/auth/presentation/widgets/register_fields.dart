@@ -5,6 +5,7 @@ import 'package:lms/core/utils/app_regex.dart';
 import 'package:lms/core/utils/styling/app_colors.dart';
 import 'package:lms/core/widgets/app_text_form_field.dart';
 import 'package:lms/core/widgets/spacing_widgets.dart';
+import 'package:lms/generated/l10n.dart';
 
 class RegisterFields extends StatefulWidget {
   const RegisterFields({
@@ -46,7 +47,7 @@ class _RegisterFieldsState extends State<RegisterFields> {
             }
             return null;
           },
-          hintText: 'First Name',
+          hintText: S.of(context).first_name,
           prefixIcon: const Icon(
             FontAwesomeIcons.user,
             size: 18,
@@ -63,7 +64,7 @@ class _RegisterFieldsState extends State<RegisterFields> {
             }
             return null;
           },
-          hintText: 'Last Name',
+          hintText: S.of(context).last_name,
           prefixIcon: const Icon(
             FontAwesomeIcons.user,
             size: 18,
@@ -82,7 +83,7 @@ class _RegisterFieldsState extends State<RegisterFields> {
             }
             return null;
           },
-          hintText: 'Phone number',
+          hintText: S.of(context).phone_number,
           prefixIcon: const Icon(
             Icons.phone_outlined,
             size: 18,
@@ -102,7 +103,7 @@ class _RegisterFieldsState extends State<RegisterFields> {
             }
             return null;
           },
-          hintText: 'Email',
+          hintText: S.of(context).email,
           prefixIcon: const Icon(
             FontAwesomeIcons.envelope,
             size: 18,
@@ -123,7 +124,7 @@ class _RegisterFieldsState extends State<RegisterFields> {
             }
             return null;
           },
-          hintText: 'Password',
+          hintText: S.of(context).password,
           prefixIcon: const Icon(
             Icons.lock_outlined,
             size: 18,
@@ -162,7 +163,7 @@ class _RegisterFieldsState extends State<RegisterFields> {
             }
             return null;
           },
-          hintText: 'Confirm Password',
+          hintText: S.of(context).confirm_password,
           prefixIcon: const Icon(
             Icons.lock_outlined,
             color: grey,
@@ -200,7 +201,7 @@ class _RegisterFieldsState extends State<RegisterFields> {
             }
             return null;
           },
-          hintText: 'City id',
+          hintText: S.of(context).city,
           keyboardType: TextInputType.number,
           prefixIcon: const Icon(
             FontAwesomeIcons.city,

@@ -1,1 +1,18 @@
-{}
+{
+  "login_to_your_acccount": "سجل الدخول إلى حسابك",
+  "register_a_new_account": "تسجيل حساب جديد",
+  "welcome_back": "مرحبًا بعودتك! يرجى تسجيل الدخول إلى حسابك.",
+  "login": "تسجيل الدخول",
+  "dont_have_an_account": "ليس لديك حساب؟ ",
+  "forgot_password": "هل نسيت كلمة المرور؟",
+  "register": "تسجيل",
+  "welcome_register": "مرحبًا! أنشئ حسابك للبدء في استخدام تطبيقنا.",
+  "already_have_an_account": "هل لديك حساب بالفعل؟ ",
+  "email": "الحساب",
+  "password": "كلمة السر",
+  "confirm_password": "تأكيد كلمة السر",
+  "first_name": "الاسم الاول",
+  "last_name": "الاسم الاخير",
+  "phone_number": "رقم الهاتف",
+  "city": "المدينة"
+}

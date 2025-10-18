@@ -25,6 +25,7 @@ class LmsApp extends StatelessWidget {
         builder: (context, state) {
           return MaterialApp.router(
             debugShowCheckedModeBanner: false,
+            locale: Locale(state.languageCode),
             localizationsDelegates: const [
               S.delegate,
               GlobalMaterialLocalizations.delegate,

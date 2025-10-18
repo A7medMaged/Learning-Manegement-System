@@ -7,12 +7,14 @@ import 'package:lms/core/routes/app_routes.dart';
 import 'package:lms/core/utils/styling/app_colors.dart';
 import 'package:lms/core/utils/styling/text_style.dart';
 import 'package:lms/core/widgets/app_text_button.dart';
+import 'package:lms/core/widgets/language_switcher.dart';
 import 'package:lms/core/widgets/spacing_widgets.dart';
 import 'package:lms/features/auth/data/models/register_models/register_request_model.dart';
 import 'package:lms/features/auth/presentation/maneger/register_cubit/register_cubit.dart';
 import 'package:lms/features/auth/presentation/widgets/already_have_an_account.dart';
 import 'package:lms/features/auth/presentation/widgets/register_fields.dart';
 import 'package:lms/features/auth/presentation/widgets/pick_avatar.dart';
+import 'package:lms/generated/l10n.dart';
 import 'package:toastification/toastification.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -65,20 +67,28 @@ class _RegisterScreenState extends State<RegisterScreen> {
             padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
             child: SingleChildScrollView(
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    'Register Screen',
-                    style: Styles.style25Bold,
+                  const LanguageSwitcher(
+                    color: mainColor,
+                  ),
+                  Center(
+                    child: Text(
+                      S.of(context).register_a_new_account,
+                      style: Styles.style25Bold,
+                    ),
                   ),
                   const HeightSpace(20),
                   Text(
-                    '👋 Welcome!\n Create your account to get started with our app.',
+                    S.of(context).welcome_register,
                     style: Styles.style18.copyWith(
                       color: grey,
                     ),
                   ),
                   const HeightSpace(18),
-                  PickAvatar(onFilePicked: _updateAvatar),
+                  Center(
+                    child: PickAvatar(onFilePicked: _updateAvatar),
+                  ),
                   const HeightSpace(18),
                   RegisterFields(
                     firstName: firstNameController,
@@ -125,7 +135,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     },
                     builder: (context, state) {
                       return AppTextButton(
-                        text: 'Register',
+                        text: S.of(context).register,
                         isLoading: state is RegisterLoading,
                         width: double.infinity,
                         textStyle: Styles.style18Bold.copyWith(
@@ -169,7 +179,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     },
                   ),
                   const HeightSpace(8),
-                  const AlreadyHaveAnAccount(),
+                  const Center(
+                    child: AlreadyHaveAnAccount(),
+                  ),
                 ],
               ),
             ),

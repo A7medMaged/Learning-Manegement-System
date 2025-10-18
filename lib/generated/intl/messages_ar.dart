@@ -21,5 +21,36 @@ class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'ar';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{};
+  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "already_have_an_account": MessageLookupByLibrary.simpleMessage(
+      "هل لديك حساب بالفعل؟ ",
+    ),
+    "city": MessageLookupByLibrary.simpleMessage("المدينة"),
+    "confirm_password": MessageLookupByLibrary.simpleMessage("تأكيد كلمة السر"),
+    "dont_have_an_account": MessageLookupByLibrary.simpleMessage(
+      "ليس لديك حساب؟ ",
+    ),
+    "email": MessageLookupByLibrary.simpleMessage("الحساب"),
+    "first_name": MessageLookupByLibrary.simpleMessage("الاسم الاول"),
+    "forgot_password": MessageLookupByLibrary.simpleMessage(
+      "هل نسيت كلمة المرور؟",
+    ),
+    "last_name": MessageLookupByLibrary.simpleMessage("الاسم الاخير"),
+    "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
+    "login_to_your_acccount": MessageLookupByLibrary.simpleMessage(
+      "سجل الدخول إلى حسابك",
+    ),
+    "password": MessageLookupByLibrary.simpleMessage("كلمة السر"),
+    "phone_number": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
+    "register": MessageLookupByLibrary.simpleMessage("تسجيل"),
+    "register_a_new_account": MessageLookupByLibrary.simpleMessage(
+      "تسجيل حساب جديد",
+    ),
+    "welcome_back": MessageLookupByLibrary.simpleMessage(
+      "مرحبًا بعودتك! يرجى تسجيل الدخول إلى حسابك.",
+    ),
+    "welcome_register": MessageLookupByLibrary.simpleMessage(
+      "مرحبًا! أنشئ حسابك للبدء في استخدام تطبيقنا.",
+    ),
+  };
 }

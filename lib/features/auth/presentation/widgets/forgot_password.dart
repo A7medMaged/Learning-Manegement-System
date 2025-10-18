@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lms/core/routes/app_routes.dart';
 import 'package:lms/core/utils/styling/text_style.dart';
+import 'package:lms/generated/l10n.dart';
 
 class ForgotPassword extends StatelessWidget {
   const ForgotPassword({
@@ -17,7 +18,7 @@ class ForgotPassword extends StatelessWidget {
       child: Container(
         alignment: Alignment.centerRight,
         child: Text(
-          'Forgot Password?',
+          S.of(context).forgot_password,
           style: Styles.style14.copyWith(
             decoration: TextDecoration.underline,
           ),

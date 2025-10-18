@@ -4,6 +4,7 @@ import 'package:lms/core/utils/app_regex.dart';
 import 'package:lms/core/utils/styling/app_colors.dart';
 import 'package:lms/core/widgets/app_text_form_field.dart';
 import 'package:lms/core/widgets/spacing_widgets.dart';
+import 'package:lms/generated/l10n.dart';
 
 class LoginFields extends StatefulWidget {
   const LoginFields({
@@ -37,7 +38,7 @@ class _LoginFieldsState extends State<LoginFields> {
             }
             return null;
           },
-          hintText: 'Email',
+          hintText: S.of(context).email,
           prefixIcon: const Icon(
             FontAwesomeIcons.envelope,
             size: 18,
@@ -56,7 +57,7 @@ class _LoginFieldsState extends State<LoginFields> {
             }
             return null;
           },
-          hintText: 'Password',
+          hintText: S.of(context).password,
           prefixIcon: const Icon(
             Icons.lock_outlined,
             size: 18,

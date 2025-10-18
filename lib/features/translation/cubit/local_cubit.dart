@@ -10,7 +10,7 @@ class LocaleCubit extends Cubit<Locale> {
   }
 
   Future<void> _loadLocale() async {
-    final languageCode = await SharedPrefHelper.getString('languageCode') ?? 'en';
+    final languageCode = await SharedPrefHelper.getString('languageCode');
     final supportedLocales = ['en', 'ar'];
     if (!supportedLocales.contains(languageCode)) {
       emit(const Locale('en'));

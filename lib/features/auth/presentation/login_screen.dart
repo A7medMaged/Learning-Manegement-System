@@ -7,12 +7,14 @@ import 'package:lms/core/utils/shared_pref_helper.dart';
 import 'package:lms/core/utils/styling/app_colors.dart';
 import 'package:lms/core/utils/styling/text_style.dart';
 import 'package:lms/core/widgets/app_text_button.dart';
+import 'package:lms/core/widgets/language_switcher.dart';
 import 'package:lms/core/widgets/spacing_widgets.dart';
 import 'package:lms/features/auth/data/models/login_models/login_request_model.dart';
 import 'package:lms/features/auth/presentation/maneger/login_cubit/login_cubit.dart';
 import 'package:lms/features/auth/presentation/widgets/do_not_have_account.dart';
 import 'package:lms/features/auth/presentation/widgets/forgot_password.dart';
 import 'package:lms/features/auth/presentation/widgets/login_fields.dart';
+import 'package:lms/generated/l10n.dart';
 import 'package:toastification/toastification.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -48,15 +50,18 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  const LanguageSwitcher(
+                    color: mainColor,
+                  ),
                   Center(
                     child: Text(
-                      'Login Screen',
+                      S.of(context).login_to_your_acccount,
                       style: Styles.style25Bold,
                     ),
                   ),
                   const HeightSpace(20),
                   Text(
-                    '👋 Welcome back! Please login to your account.',
+                    S.of(context).welcome_back,
                     style: Styles.style18.copyWith(color: grey),
                   ),
                   const HeightSpace(18),
@@ -103,7 +108,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     },
                     builder: (context, state) {
                       return AppTextButton(
-                        text: 'Login',
+                        text: S.of(context).login,
                         textStyle: Styles.style18Bold.copyWith(
                           color: white,
                         ),

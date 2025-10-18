@@ -53,6 +53,131 @@ class S {
   static S? maybeOf(BuildContext context) {
     return Localizations.of<S>(context, S);
   }
+
+  /// `Login to your account`
+  String get login_to_your_acccount {
+    return Intl.message(
+      'Login to your account',
+      name: 'login_to_your_acccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Register a new account`
+  String get register_a_new_account {
+    return Intl.message(
+      'Register a new account',
+      name: 'register_a_new_account',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Welcome Back! Please login to your account.`
+  String get welcome_back {
+    return Intl.message(
+      'Welcome Back! Please login to your account.',
+      name: 'welcome_back',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Login`
+  String get login {
+    return Intl.message('Login', name: 'login', desc: '', args: []);
+  }
+
+  /// `Don't have an account? `
+  String get dont_have_an_account {
+    return Intl.message(
+      'Don\'t have an account? ',
+      name: 'dont_have_an_account',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Forgot Password?`
+  String get forgot_password {
+    return Intl.message(
+      'Forgot Password?',
+      name: 'forgot_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Register`
+  String get register {
+    return Intl.message('Register', name: 'register', desc: '', args: []);
+  }
+
+  /// `👋 Welcome! Create your account to get started with our app.`
+  String get welcome_register {
+    return Intl.message(
+      '👋 Welcome! Create your account to get started with our app.',
+      name: 'welcome_register',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Already have an account? `
+  String get already_have_an_account {
+    return Intl.message(
+      'Already have an account? ',
+      name: 'already_have_an_account',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email`
+  String get email {
+    return Intl.message('Email', name: 'email', desc: '', args: []);
+  }
+
+  /// `Password`
+  String get password {
+    return Intl.message('Password', name: 'password', desc: '', args: []);
+  }
+
+  /// `Confirm Password`
+  String get confirm_password {
+    return Intl.message(
+      'Confirm Password',
+      name: 'confirm_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `First Name`
+  String get first_name {
+    return Intl.message('First Name', name: 'first_name', desc: '', args: []);
+  }
+
+  /// `Last Name`
+  String get last_name {
+    return Intl.message('Last Name', name: 'last_name', desc: '', args: []);
+  }
+
+  /// `Phone Number`
+  String get phone_number {
+    return Intl.message(
+      'Phone Number',
+      name: 'phone_number',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `City`
+  String get city {
+    return Intl.message('City', name: 'city', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
