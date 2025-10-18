@@ -14,6 +14,7 @@ import 'package:lms/features/auth/presentation/widgets/send_code_to_reset_passwo
 import 'package:lms/features/auth/presentation/widgets/verify_and_change_password.dart';
 import 'package:lms/features/home/presentation/home_screen.dart';
 import 'package:lms/features/profile/presentation/change_password_screen.dart';
+import 'package:lms/features/profile/presentation/maneger/change_avatar_cubit/change_avatar_cubit.dart';
 import 'package:lms/features/profile/presentation/maneger/change_password_cubit/change_password_cubit.dart';
 import 'package:lms/features/profile/presentation/maneger/update_info_cubit/update_info_cubit.dart';
 import 'package:lms/features/profile/presentation/maneger/user_cubit/user_cubit.dart';
@@ -85,8 +86,15 @@ class AppRouter {
 
       GoRoute(
         path: AppRoutes.settingsRoute,
-        builder: (context, state) => BlocProvider(
-          create: (context) => getIt<UserCubit>()..getUserData(),
+        builder: (context, state) => MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (context) => getIt<UserCubit>()..getUserData(),
+            ),
+            BlocProvider(
+              create: (context) => getIt<ChangeAvatarCubit>(),
+            ),
+          ],
           child: const SettingsScreen(),
         ),
       ),

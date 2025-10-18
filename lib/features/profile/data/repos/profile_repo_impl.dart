@@ -3,6 +3,8 @@ import 'package:dio/dio.dart';
 import 'package:lms/core/api/api_keys.dart';
 import 'package:lms/core/errors/failure.dart';
 import 'package:lms/features/home/data/models/user_model/user_model.dart';
+import 'package:lms/features/profile/data/models/change_avatar/change_avatar_request_model.dart';
+import 'package:lms/features/profile/data/models/change_avatar/change_avatar_response_model/change_avatar_response_model.dart';
 import 'package:lms/features/profile/data/models/change_password_models/change_password_request_model.dart';
 import 'package:lms/features/profile/data/models/change_password_models/change_password_response_model.dart';
 import 'package:lms/features/profile/data/models/update_info_models/update_info_request_model.dart';
@@ -61,6 +63,36 @@ class ProfileRepoImpl extends ProfileRepo {
       ChangePasswordResponseModel changePasswordResponseModel =
           ChangePasswordResponseModel.fromJson(response.data);
       return Right(changePasswordResponseModel);
+    } catch (e) {
+      if (e is DioException) {
+        return Left(ServerFailure.fromDioException(e));
+      }
+      return Left(ServerFailure(error: e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failures, ChangeAvatarResponseModel>> changeAvatar(
+    ChangeAvatarRequestModel changeAvatarRequestModel,
+  ) async {
+    try {
+      final formData = FormData.fromMap({
+        'avatar': await MultipartFile.fromFile(
+          changeAvatarRequestModel.avatar.path,
+          filename: changeAvatarRequestModel.avatar.path.split('/').last,
+        ),
+      });
+
+      final response = await dio.put(
+        ApiKeys.changeAvatar,
+        data: formData,
+      );
+
+      final changeAvatarResponseModel = ChangeAvatarResponseModel.fromJson(
+        response.data,
+      );
+
+      return Right(changeAvatarResponseModel);
     } catch (e) {
       if (e is DioException) {
         return Left(ServerFailure.fromDioException(e));

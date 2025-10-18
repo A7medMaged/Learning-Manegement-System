@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:lms/core/utils/styling/app_assets.dart';
-import 'package:flutter/foundation.dart'; // علشان نعرف هل Web ولا لأ
+import 'package:flutter/foundation.dart';
 
 class PickAvatar extends StatefulWidget {
   const PickAvatar({super.key, required this.onFilePicked});

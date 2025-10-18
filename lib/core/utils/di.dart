@@ -8,6 +8,7 @@ import 'package:lms/features/auth/presentation/maneger/register_cubit/register_c
 import 'package:lms/features/auth/presentation/maneger/reset_password_cubit/reset_password_cubit.dart';
 import 'package:lms/features/auth/presentation/maneger/verify_email_cubit/verify_email_cubit.dart';
 import 'package:lms/features/profile/data/repos/profile_repo_impl.dart';
+import 'package:lms/features/profile/presentation/maneger/change_avatar_cubit/change_avatar_cubit.dart';
 import 'package:lms/features/profile/presentation/maneger/change_password_cubit/change_password_cubit.dart';
 import 'package:lms/features/profile/presentation/maneger/update_info_cubit/update_info_cubit.dart';
 import 'package:lms/features/profile/presentation/maneger/user_cubit/user_cubit.dart';
@@ -77,5 +78,9 @@ Future<void> setupDependencyInjection() async {
 
   getIt.registerFactory<ResetPasswordCubit>(
     () => ResetPasswordCubit(getIt<AuthRepoImpl>()),
+  );
+
+  getIt.registerFactory<ChangeAvatarCubit>(
+    () => ChangeAvatarCubit(getIt<ProfileRepoImpl>()),
   );
 }
