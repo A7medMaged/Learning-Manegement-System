@@ -39,7 +39,6 @@ class DioFactory {
                 options.headers.remove('Authorization');
               }
             } catch (_) {
-              // ignore errors reading token, proceed without Authorization
             }
             return handler.next(options);
           },
@@ -55,7 +54,6 @@ class DioFactory {
   }
 
   static void addDioHeaders() async {
-    // deprecated: token is now attached on each request by interceptor
     dio?.options.headers = {
       'Accept': 'application/json',
     };

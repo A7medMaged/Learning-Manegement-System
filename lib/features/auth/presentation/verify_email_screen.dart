@@ -76,7 +76,7 @@ class VerifyEmailScreen extends StatelessWidget {
                           autoCloseDuration: const Duration(seconds: 4),
                           title: const Text('Verification Successful'),
                           description: Text(
-                            state.verifyEmailResponse.message ?? '',
+                            state.verifyEmailResponse.message!,
                           ),
                           type: ToastificationType.success,
                           style: ToastificationStyle.minimal,

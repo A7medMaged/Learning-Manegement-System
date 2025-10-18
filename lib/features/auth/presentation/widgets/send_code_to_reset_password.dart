@@ -80,8 +80,8 @@ class _SendCodeToResetPasswordState extends State<SendCodeToResetPassword> {
                       dismissDirection: DismissDirection.up,
                       autoCloseDuration: const Duration(seconds: 4),
                       title: const Text('Success'),
-                      description: const Text(
-                        'Reset password code sent successfully',
+                      description: Text(
+                        state.sendResetCodeResponseModel.message!,
                       ),
                       type: ToastificationType.success,
                       style: ToastificationStyle.minimal,

@@ -67,7 +67,9 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                       dismissDirection: DismissDirection.up,
                       autoCloseDuration: const Duration(seconds: 4),
                       title: const Text('Success'),
-                      description: const Text('Password changed successfully'),
+                      description: Text(
+                        state.changePasswordResponseModel.message!,
+                      ),
                       type: ToastificationType.success,
                       style: ToastificationStyle.minimal,
                     );

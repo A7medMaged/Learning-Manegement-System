@@ -76,8 +76,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           dismissDirection: DismissDirection.up,
                           autoCloseDuration: const Duration(seconds: 4),
                           title: const Text('Login Successful'),
-                          description: const Text(
-                            'You have successfully logged in.',
+                          description: Text(
+                            state.loginResponseModel.message!,
                           ),
                           type: ToastificationType.success,
                           style: ToastificationStyle.minimal,

@@ -163,8 +163,8 @@ class _VerifyAndChangePasswordState extends State<VerifyAndChangePassword> {
                       dismissDirection: DismissDirection.up,
                       autoCloseDuration: const Duration(seconds: 4),
                       title: const Text('Success'),
-                      description: const Text(
-                        'Password changed successfully',
+                      description: Text(
+                        state.verifyAndChangeResponseModel.message!,
                       ),
                       type: ToastificationType.success,
                       style: ToastificationStyle.minimal,

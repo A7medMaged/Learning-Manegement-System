@@ -99,13 +99,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           dismissDirection: DismissDirection.up,
                           autoCloseDuration: const Duration(seconds: 4),
                           title: const Text('Registration Successful'),
-                          description: const Text(
-                            'You have registered successfully. verify your email to continue.',
+                          description: Text(
+                            state.registerResponseModel.message!,
                           ),
                           type: ToastificationType.success,
                           style: ToastificationStyle.minimal,
                         );
-                        // pass the email to the OTP page via go_router's `extra`
                         context.push(
                           AppRoutes.otpVerificationRoute,
                           extra: {'email': email},
