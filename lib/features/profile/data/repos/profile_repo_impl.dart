@@ -76,13 +76,7 @@ class ProfileRepoImpl extends ProfileRepo {
     ChangeAvatarRequestModel changeAvatarRequestModel,
   ) async {
     try {
-      final formData = FormData.fromMap({
-        'avatar': await MultipartFile.fromFile(
-          changeAvatarRequestModel.avatar.path,
-          filename: changeAvatarRequestModel.avatar.path.split('/').last,
-        ),
-      });
-
+      final formData = await changeAvatarRequestModel.toFormData();
       final response = await dio.put(
         ApiKeys.changeAvatar,
         data: formData,

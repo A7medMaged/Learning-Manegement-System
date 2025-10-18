@@ -1,7 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:lms/core/routes/app_routes.dart';
 import 'package:lms/core/utils/styling/app_colors.dart';
 import 'package:lms/core/utils/styling/text_style.dart';
@@ -33,9 +34,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
       TextEditingController();
   final TextEditingController cityIdController = TextEditingController();
 
-  XFile? _selectedAvatarFile;
+  File? _selectedAvatarFile;
 
-  void _updateAvatar(XFile? file) {
+  void _updateAvatar(File? file) {
     setState(() {
       _selectedAvatarFile = file;
     });
@@ -151,18 +152,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               return;
                             }
 
-                            final registerRequest = RegistrerRequestModel(
+                            final registerRequest = RegisterRequestModel(
                               firstName: firstNameController.text.trim(),
                               lastName: lastNameController.text.trim(),
                               phoneNumber: phoneController.text.trim(),
                               email: emailController.text.trim(),
                               password: passwordController.text.trim(),
-                              avatar: _selectedAvatarFile?.path,
+                              avatar: _selectedAvatarFile,
                               cityId: cityId,
                             );
                             context.read<RegisterCubit>().registerUsers(
                               registerRequest,
-                              avatarFile: _selectedAvatarFile,
                             );
                           }
                         },

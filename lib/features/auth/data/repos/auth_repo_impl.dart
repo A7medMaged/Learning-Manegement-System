@@ -1,6 +1,5 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:lms/core/api/api_keys.dart';
 import 'package:lms/core/errors/failure.dart';
 import 'package:lms/features/auth/data/models/login_models/login_request_model.dart';
@@ -21,11 +20,10 @@ class AuthRepoImpl extends AuthRepo {
   AuthRepoImpl({required this.dio});
   @override
   Future<Either<Failures, RegisterResponseModel>> registerUsers(
-    RegistrerRequestModel registerRequest,
-    XFile? avatarFile,
+    RegisterRequestModel registerRequest,
   ) async {
     try {
-      final formData = await registerRequest.toFormData(avatarFile: avatarFile);
+      final formData = await registerRequest.toFormData();
       Response response = await dio.post(
         ApiKeys.register,
         data: formData,
