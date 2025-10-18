@@ -1,9 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-// import 'dart:io' show Platform;
 import 'package:lms/core/api/api_keys.dart';
-import 'package:lms/core/utils/di.dart';
-import 'package:lms/core/utils/storage_helper.dart';
+import 'package:lms/core/utils/shared_pref_helper.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class DioFactory {
@@ -32,14 +30,13 @@ class DioFactory {
         InterceptorsWrapper(
           onRequest: (options, handler) async {
             try {
-              final token = await getIt<StorageHelper>().getUserToken();
-              if (token != null && token.isNotEmpty) {
+              final token = await SharedPrefHelper.getSecuredString('token');
+              if (token.isNotEmpty) {
                 options.headers['Authorization'] = 'Bearer $token';
               } else {
                 options.headers.remove('Authorization');
               }
-            } catch (_) {
-            }
+            } catch (_) {}
             return handler.next(options);
           },
           onError: (e, handler) {

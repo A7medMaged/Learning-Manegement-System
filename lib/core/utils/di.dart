@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:lms/core/api/dio_factory.dart';
-import 'package:lms/core/utils/storage_helper.dart';
+import 'package:lms/core/utils/shared_pref_helper.dart';
 import 'package:lms/features/auth/data/repos/auth_repo_impl.dart';
 import 'package:lms/features/auth/presentation/maneger/login_cubit/login_cubit.dart';
 import 'package:lms/features/auth/presentation/maneger/register_cubit/register_cubit.dart';
@@ -21,19 +21,10 @@ Future<void> setupDependencyInjection() async {
   //  Dio >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   getIt.registerLazySingleton<Dio>(() => DioFactory.getDio());
 
-  // Storage >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-  getIt.registerLazySingleton<StorageHelper>(() => StorageHelper());
-
-  getIt.registerLazySingletonAsync<SharedPrefsService>(
-    () async {
-      final s = SharedPrefsService();
-      await s.init();
-      return s;
-    },
+  // Storage Helper >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+  getIt.registerLazySingleton<SharedPrefHelper>(
+    () => SharedPrefHelper(),
   );
-
-  // Wait for async singletons that must be ready before registering dependents
-  await getIt.isReady<SharedPrefsService>();
 
   // Reops >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   getIt.registerLazySingleton<AuthRepoImpl>(
@@ -41,7 +32,7 @@ Future<void> setupDependencyInjection() async {
   );
 
   getIt.registerLazySingleton<OnboardingRepo>(
-    () => OnboardingRepo(getIt<SharedPrefsService>()),
+    () => OnboardingRepo(getIt<SharedPrefHelper>()),
   );
 
   getIt.registerLazySingleton<ProfileRepoImpl>(

@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lms/core/routes/app_routes.dart';
-import 'package:lms/core/utils/di.dart';
-import 'package:lms/core/utils/storage_helper.dart';
+import 'package:lms/core/utils/shared_pref_helper.dart';
 import 'package:lms/core/utils/styling/app_assets.dart';
 import 'package:lms/features/onboarding/presentation/maneger/cubit/onboarding_cubit.dart';
 import 'package:lottie/lottie.dart';
@@ -38,13 +37,12 @@ class _SplashScreenState extends State<SplashScreen>
   Future<void> waitAnimationAndNavigate() async {
     await Future.delayed(const Duration(seconds: 3));
 
-    final storage = getIt<StorageHelper>();
+    final token = await SharedPrefHelper.getSecuredString('token');
     // ignore: use_build_context_synchronously
     final onboardingCubit = context.read<OnboardingCubit>();
 
-    final token = await storage.getUserToken();
-
-    if (token != null && token.isNotEmpty && mounted) {
+    if (token.isNotEmpty && mounted) {
+      // ignore: use_build_context_synchronously
       context.pushReplacement(AppRoutes.homeRoute);
       return;
     }

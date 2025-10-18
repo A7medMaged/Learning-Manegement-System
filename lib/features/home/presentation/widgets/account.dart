@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:lms/core/api/dio_factory.dart';
 import 'package:lms/core/routes/app_routes.dart';
-import 'package:lms/core/utils/di.dart';
-import 'package:lms/core/utils/storage_helper.dart';
+import 'package:lms/core/utils/shared_pref_helper.dart';
 import 'package:lms/core/utils/styling/app_colors.dart';
 import 'package:lms/core/utils/styling/text_style.dart';
 import 'package:lms/core/widgets/app_text_button.dart';
@@ -71,7 +71,8 @@ class Account extends StatelessWidget {
                           color: white,
                         ),
                         onTap: () async {
-                          getIt<StorageHelper>().deleteUserToken();
+                          SharedPrefHelper.clearAllSecuredData();
+                          DioFactory.removeDioHeaders();
                           context.pushReplacement(AppRoutes.loginRoute);
                         },
                       ),

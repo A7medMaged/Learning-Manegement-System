@@ -1,17 +1,17 @@
-import 'package:lms/core/utils/storage_helper.dart';
+import 'package:lms/core/utils/shared_pref_helper.dart';
 
 class OnboardingRepo {
-  final SharedPrefsService storage;
+  final SharedPrefHelper sharedPrefHelper;
 
-  OnboardingRepo(this.storage);
+  OnboardingRepo(this.sharedPrefHelper);
 
   static const String onboardingKey = 'onboarding_completed';
 
   Future<void> setCompleted() async {
-    await storage.saveBool(onboardingKey, true);
+    await SharedPrefHelper.setData('onboarding_completed', true);
   }
 
   Future<bool> isCompleted() async {
-    return storage.getBool(onboardingKey) ?? false;
+    return await SharedPrefHelper.getBool('onboarding_completed');
   }
 }
