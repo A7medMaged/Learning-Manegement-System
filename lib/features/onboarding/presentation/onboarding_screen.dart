@@ -9,6 +9,7 @@ import 'package:lms/core/utils/styling/app_colors.dart';
 import 'package:lms/core/utils/styling/text_style.dart';
 import 'package:lms/core/widgets/spacing_widgets.dart';
 import 'package:lms/features/onboarding/presentation/maneger/cubit/onboarding_cubit.dart';
+import 'package:lms/generated/l10n.dart';
 import 'package:lottie/lottie.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -22,23 +23,20 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   final PageController _controller = PageController();
   int _currentPage = 0;
 
-  final List<_OnboardingData> _pages = [
+  List<_OnboardingData> get _pages => [
     _OnboardingData(
-      title: 'Welcome to Our App!',
-      description:
-          'A simple and intuitive app designed to help you stay organized every day.',
+      title: S.of(context).welcome_to_our_app,
+      description: S.of(context).simple_and_intuitive,
       animation: AppAssets.welcome,
     ),
     _OnboardingData(
-      title: 'Smooth Experience',
-      description:
-          'Everything is built to be fast, clean, and easy to use with beautiful design.',
+      title: S.of(context).smooth_experience,
+      description: S.of(context).built_for_you,
       animation: AppAssets.timeManagement,
     ),
     _OnboardingData(
-      title: 'Let’s Get Started 🚀',
-      description:
-          'Begin your journey with us and explore all the features of the app!',
+      title: S.of(context).lets_get_started,
+      description: S.of(context).begin,
       animation: AppAssets.go,
     ),
   ];
@@ -75,12 +73,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     padding: const EdgeInsets.only(right: 20, top: 10),
                     child: TextButton(
                       onPressed: _onSkipPressed,
-                      child: const Text(
-                        'Skip',
-                        style: TextStyle(
-                          color: Colors.grey,
-                          fontSize: 16,
-                        ),
+                      child: Text(
+                        S.of(context).skip,
+                        style: Styles.style16.copyWith(color: grey),
                       ),
                     ),
                   ),
@@ -161,8 +156,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     onPressed: _onNextPressed,
                     child: Text(
                       _currentPage == _pages.length - 1
-                          ? 'Get Started'
-                          : 'Next',
+                          ? S.of(context).get_started
+                          : S.of(context).next,
                       style: Styles.style18Bold,
                     ),
                   ),

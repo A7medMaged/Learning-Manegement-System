@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:lms/core/routes/app_routes.dart';
 import 'package:lms/core/utils/styling/text_style.dart';
 import 'package:lms/features/profile/presentation/maneger/user_cubit/user_cubit.dart';
+import 'package:lms/generated/l10n.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -16,7 +17,7 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
         title: Text(
-          'Home',
+          S.of(context).home,
           style: Styles.style18Bold,
         ),
         centerTitle: true,

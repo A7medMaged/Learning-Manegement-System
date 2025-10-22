@@ -5,6 +5,7 @@ import 'package:lms/core/utils/styling/app_colors.dart';
 import 'package:lms/core/utils/styling/text_style.dart';
 import 'package:lms/core/widgets/app_text_form_field.dart';
 import 'package:lms/core/widgets/spacing_widgets.dart';
+import 'package:lms/generated/l10n.dart';
 
 class CahngePasswordFileds extends StatefulWidget {
   const CahngePasswordFileds({
@@ -31,7 +32,7 @@ class _CahngePasswordFiledsState extends State<CahngePasswordFileds> {
       children: [
         AppTextFormField(
           controller: widget.currentPasswordController,
-          hintText: 'current password',
+          hintText: S.of(context).current_password,
           keyboardType: TextInputType.visiblePassword,
           autovalidateMode: AutovalidateMode.onUserInteraction,
           inputTextStyle: Styles.style14,
@@ -61,7 +62,7 @@ class _CahngePasswordFiledsState extends State<CahngePasswordFileds> {
           ),
           validator: (value) {
             if (value == null || value.isEmpty) {
-              return 'Please enter your current password';
+              return S.of(context).please_enter_current_password;
             }
             return null;
           },
@@ -69,7 +70,7 @@ class _CahngePasswordFiledsState extends State<CahngePasswordFileds> {
         const HeightSpace(12),
         AppTextFormField(
           controller: widget.newPasswordController,
-          hintText: 'new password',
+          hintText: S.of(context).new_password,
           keyboardType: TextInputType.visiblePassword,
           autovalidateMode: AutovalidateMode.onUserInteraction,
           inputTextStyle: Styles.style14,
@@ -101,7 +102,7 @@ class _CahngePasswordFiledsState extends State<CahngePasswordFileds> {
             if (value == null ||
                 value.isEmpty ||
                 !AppRegex.isPasswordValid(value)) {
-              return 'Password must be at least 8 characters long, include uppercase,\nlowercase, number, and special character.';
+              return S.of(context).valid_password;
             }
             return null;
           },
@@ -109,7 +110,7 @@ class _CahngePasswordFiledsState extends State<CahngePasswordFileds> {
         const HeightSpace(12),
         AppTextFormField(
           controller: widget.confirmNewPasswordController,
-          hintText: 'confirm new password',
+          hintText: S.of(context).confirm_new_password,
           keyboardType: TextInputType.visiblePassword,
           inputTextStyle: Styles.style14,
           prefixIcon: const Icon(
@@ -138,9 +139,9 @@ class _CahngePasswordFiledsState extends State<CahngePasswordFileds> {
           ),
           validator: (value) {
             if (value == null || value.isEmpty) {
-              return 'Please confirm your new password';
+              return S.of(context).please_enter_confirm_password;
             } else if (value != widget.newPasswordController!.text) {
-              return 'Passwords do not match';
+              return S.of(context).passwords_do_not_match;
             }
             return null;
           },

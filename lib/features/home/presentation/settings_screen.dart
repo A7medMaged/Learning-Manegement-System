@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:lms/core/utils/styling/text_style.dart';
 import 'package:lms/features/home/presentation/widgets/sections.dart';
+import 'package:lms/generated/l10n.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -11,9 +13,9 @@ class SettingsScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: const Text(
-          'Settings',
-          style: TextStyle(fontWeight: FontWeight.bold),
+        title: Text(
+          S.of(context).settings,
+          style: Styles.style18Bold,
         ),
         centerTitle: true,
       ),

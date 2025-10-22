@@ -9,6 +9,7 @@ import 'package:lms/core/utils/styling/text_style.dart';
 import 'package:lms/core/widgets/app_text_button.dart';
 import 'package:lms/features/home/presentation/widgets/list_tile_widget.dart';
 import 'package:lms/features/profile/presentation/maneger/user_cubit/user_cubit.dart';
+import 'package:lms/generated/l10n.dart';
 
 class Account extends StatelessWidget {
   const Account({super.key});
@@ -18,7 +19,7 @@ class Account extends StatelessWidget {
     return Column(
       children: [
         ListTileWidget(
-          title: 'Update Information',
+          title: S.of(context).update_information,
           trailingIcon: Icons.person,
           onTap: () {
             context.push(AppRoutes.updateInfoRoute).then((value) {
@@ -28,19 +29,21 @@ class Account extends StatelessWidget {
           },
         ),
         ListTileWidget(
-          title: 'Change Password',
+          title: S.of(context).change_password,
           trailingIcon: Icons.lock_outline,
           onTap: () {
             context.push(AppRoutes.cahngePasswordRoute);
           },
         ),
         ListTileWidget(
-          title: 'Langauge',
+          title: S.of(context).language,
           trailingIcon: Icons.translate,
-          onTap: () {},
+          onTap: () {
+            
+          },
         ),
         ListTileWidget(
-          title: 'Logout',
+          title: S.of(context).logout,
           iconColor: red,
           backgroundColor: Colors.red.shade200,
           trailingIcon: Icons.logout,
@@ -50,12 +53,12 @@ class Account extends StatelessWidget {
               context: context,
               builder: (context) {
                 return AlertDialog(
-                  title: const Text("Log Out"),
-                  content: const Text("Are you sure you want to log out?"),
+                  title: Text(S.of(context).logout),
+                  content: Text(S.of(context).are_you_sure_you_want_to_logout),
                   actions: [
                     AppTextButton(
                       width: 100,
-                      text: 'No',
+                      text: S.of(context).no,
                       color: white,
                       textStyle: Styles.style14.copyWith(
                         color: black,
@@ -65,7 +68,7 @@ class Account extends StatelessWidget {
                     SizedBox(
                       width: 125,
                       child: AppTextButton(
-                        text: 'Log Out',
+                        text: S.of(context).logout,
                         color: red,
                         textStyle: Styles.style14.copyWith(
                           color: white,
@@ -73,7 +76,9 @@ class Account extends StatelessWidget {
                         onTap: () async {
                           SharedPrefHelper.clearAllSecuredData();
                           DioFactory.removeDioHeaders();
-                          context.pushReplacement(AppRoutes.loginRoute);
+                          context.go(
+                            AppRoutes.loginRoute,
+                          );
                         },
                       ),
                     ),

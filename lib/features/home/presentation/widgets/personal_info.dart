@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lms/core/utils/styling/text_style.dart';
 import 'package:lms/features/profile/presentation/maneger/user_cubit/user_cubit.dart';
 import 'package:lms/features/home/presentation/widgets/info_list_tile.dart';
+import 'package:lms/generated/l10n.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class PersonalInfo extends StatelessWidget {
@@ -59,22 +60,22 @@ class PersonalInfo extends StatelessWidget {
             child: Column(
               children: [
                 InfoListTile(
-                  title: 'Name',
+                  title: S.of(context).name,
                   subtitle:
                       '${state is UserLoaded ? state.userModel.data!.fullName : ''}',
                 ),
                 InfoListTile(
-                  title: 'Email',
+                  title: S.of(context).email_address,
                   subtitle:
                       '${state is UserLoaded ? state.userModel.data!.email : ''}',
                 ),
                 InfoListTile(
-                  title: 'Phone Number',
+                  title: S.of(context).phone_number,
                   subtitle:
                       '${state is UserLoaded ? state.userModel.data!.phoneNumber : ''}',
                 ),
                 InfoListTile(
-                  title: 'City Id',
+                  title: S.of(context).city,
                   subtitle:
                       '${state is UserLoaded ? state.userModel.data!.cityId : ''}',
                 ),

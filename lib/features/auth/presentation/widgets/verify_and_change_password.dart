@@ -12,6 +12,7 @@ import 'package:lms/core/widgets/spacing_widgets.dart';
 import 'package:lms/features/auth/data/models/reset_password_models/verify_and_change_request_model.dart';
 import 'package:lms/features/auth/presentation/maneger/reset_password_cubit/reset_password_cubit.dart';
 import 'package:lms/features/auth/presentation/widgets/otp.dart';
+import 'package:lms/generated/l10n.dart';
 import 'package:toastification/toastification.dart';
 
 class VerifyAndChangePassword extends StatefulWidget {
@@ -46,7 +47,7 @@ class _VerifyAndChangePasswordState extends State<VerifyAndChangePassword> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Verify and Change Password'),
+        title: Text(S.of(context).verify_and_change_password),
         centerTitle: true,
         backgroundColor: Colors.transparent,
       ),
@@ -67,13 +68,13 @@ class _VerifyAndChangePasswordState extends State<VerifyAndChangePassword> {
                 focusNode: focusNode,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please enter the OTP code';
+                    return S.of(context).please_enter_otp;
                   }
                   if (value.length != 6) {
-                    return 'OTP must be 6 digits';
+                    return S.of(context).otp_must_be_6_digits;
                   }
                   if (int.tryParse(value) == null) {
-                    return 'OTP must contain only numbers';
+                    return S.of(context).otp_must_contain_only_numbers;
                   }
                   return null;
                 },
@@ -81,7 +82,7 @@ class _VerifyAndChangePasswordState extends State<VerifyAndChangePassword> {
               const HeightSpace(16),
               AppTextFormField(
                 controller: newPasswordController,
-                hintText: 'New Password',
+                hintText: S.of(context).new_password,
                 keyboardType: TextInputType.visiblePassword,
                 prefixIcon: const Icon(
                   Icons.lock_outlined,
@@ -109,9 +110,9 @@ class _VerifyAndChangePasswordState extends State<VerifyAndChangePassword> {
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'please enter your password';
+                    return S.of(context).please_enter_your_password;
                   } else if (!AppRegex.isPasswordValid(value)) {
-                    return 'Password must be at least 8 characters, include an uppercase letter,\n number and symbol.';
+                    return S.of(context).valid_password;
                   }
                   return null;
                 },
@@ -119,7 +120,7 @@ class _VerifyAndChangePasswordState extends State<VerifyAndChangePassword> {
               const HeightSpace(12),
               AppTextFormField(
                 controller: confirmNewPasswordController,
-                hintText: 'Confirm New Password',
+                hintText: S.of(context).confirm_new_password,
                 keyboardType: TextInputType.visiblePassword,
                 prefixIcon: const Icon(
                   Icons.lock_outlined,
@@ -128,9 +129,9 @@ class _VerifyAndChangePasswordState extends State<VerifyAndChangePassword> {
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'please confirm your password';
+                    return S.of(context).please_enter_confirm_password;
                   } else if (value != newPasswordController.text) {
-                    return 'Passwords do not match';
+                    return S.of(context).passwords_do_not_match;
                   }
                   return null;
                 },
@@ -162,7 +163,7 @@ class _VerifyAndChangePasswordState extends State<VerifyAndChangePassword> {
                       context: context,
                       dismissDirection: DismissDirection.up,
                       autoCloseDuration: const Duration(seconds: 4),
-                      title: const Text('Success'),
+                      title: Text(S.of(context).password_changed_successfully),
                       description: Text(
                         state.verifyAndChangeResponseModel.message!,
                       ),
@@ -175,7 +176,7 @@ class _VerifyAndChangePasswordState extends State<VerifyAndChangePassword> {
                       context: context,
                       dismissDirection: DismissDirection.up,
                       autoCloseDuration: const Duration(seconds: 4),
-                      title: const Text('Error'),
+                      title: Text(S.of(context).error_occured),
                       description: Text(state.errorMessage),
                       type: ToastificationType.error,
                       style: ToastificationStyle.minimal,
@@ -186,7 +187,7 @@ class _VerifyAndChangePasswordState extends State<VerifyAndChangePassword> {
                 builder: (context, state) {
                   return AppTextButton(
                     width: double.infinity,
-                    text: 'Change Password',
+                    text: S.of(context).change_password,
                     textStyle: Styles.style18.copyWith(
                       color: white,
                     ),

@@ -11,6 +11,7 @@ import 'package:lms/core/widgets/app_text_form_field.dart';
 import 'package:lms/core/widgets/spacing_widgets.dart';
 import 'package:lms/features/auth/data/models/reset_password_models/send_reset_code_request_model.dart';
 import 'package:lms/features/auth/presentation/maneger/reset_password_cubit/reset_password_cubit.dart';
+import 'package:lms/generated/l10n.dart';
 import 'package:toastification/toastification.dart';
 
 class SendCodeToResetPassword extends StatefulWidget {
@@ -36,7 +37,7 @@ class _SendCodeToResetPasswordState extends State<SendCodeToResetPassword> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Get Code to Reset Password'),
+        title: Text(S.of(context).get_code),
         centerTitle: true,
         backgroundColor: Colors.transparent,
       ),
@@ -49,13 +50,13 @@ class _SendCodeToResetPasswordState extends State<SendCodeToResetPassword> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Enter your email to receive a reset code.',
+                S.of(context).enter_your_email_to_get_code,
                 style: Styles.style18,
               ),
               const HeightSpace(16),
               AppTextFormField(
                 controller: emailController,
-                hintText: 'Enter your email',
+                hintText: S.of(context).email,
                 keyboardType: TextInputType.emailAddress,
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 prefixIcon: const Icon(
@@ -63,9 +64,9 @@ class _SendCodeToResetPasswordState extends State<SendCodeToResetPassword> {
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please enter your email';
+                    return S.of(context).please_enter_your_email;
                   } else if (!AppRegex.isEmailValid(value)) {
-                    return 'Please enter a valid email';
+                    return S.of(context).please_enter_valid_email;
                   }
                   return null;
                 },
@@ -79,7 +80,7 @@ class _SendCodeToResetPasswordState extends State<SendCodeToResetPassword> {
                       context: context,
                       dismissDirection: DismissDirection.up,
                       autoCloseDuration: const Duration(seconds: 4),
-                      title: const Text('Success'),
+                      title: Text(S.of(context).code_sent),
                       description: Text(
                         state.sendResetCodeResponseModel.message!,
                       ),
@@ -95,7 +96,7 @@ class _SendCodeToResetPasswordState extends State<SendCodeToResetPassword> {
                       context: context,
                       dismissDirection: DismissDirection.up,
                       autoCloseDuration: const Duration(seconds: 4),
-                      title: const Text('Error'),
+                      title: Text(S.of(context).error_occured),
                       description: Text(state.errorMessage),
                       type: ToastificationType.error,
                       style: ToastificationStyle.minimal,
@@ -105,7 +106,7 @@ class _SendCodeToResetPasswordState extends State<SendCodeToResetPassword> {
                 builder: (context, state) {
                   return AppTextButton(
                     width: double.infinity,
-                    text: 'Send Code',
+                    text: S.of(context).send_code,
                     textStyle: Styles.style18.copyWith(
                       color: white,
                     ),

@@ -43,7 +43,7 @@ class _RegisterFieldsState extends State<RegisterFields> {
           autovalidateMode: AutovalidateMode.onUserInteraction,
           validator: (value) {
             if (value == null || value.isEmpty) {
-              return 'Please enter your first name';
+              return S.of(context).please_enter_first_name;
             }
             return null;
           },
@@ -60,7 +60,7 @@ class _RegisterFieldsState extends State<RegisterFields> {
           autovalidateMode: AutovalidateMode.onUserInteraction,
           validator: (value) {
             if (value == null || value.isEmpty) {
-              return 'Please enter your last name';
+              return S.of(context).please_enter_last_name;
             }
             return null;
           },
@@ -77,9 +77,9 @@ class _RegisterFieldsState extends State<RegisterFields> {
           autovalidateMode: AutovalidateMode.onUserInteraction,
           validator: (value) {
             if (value == null || value.isEmpty) {
-              return 'Please enter your phone number';
+              return S.of(context).please_enter_phone_number;
             } else if (!AppRegex.isPhoneNumberValid(value)) {
-              return 'Please enter a valid phone number';
+              return S.of(context).please_enter_valid_phone_number;
             }
             return null;
           },
@@ -97,9 +97,9 @@ class _RegisterFieldsState extends State<RegisterFields> {
           autovalidateMode: AutovalidateMode.onUserInteraction,
           validator: (value) {
             if (value == null || value.isEmpty) {
-              return 'Please enter your email';
+              return S.of(context).please_enter_your_email;
             } else if (!AppRegex.isEmailValid(value)) {
-              return 'Please enter a valid email';
+              return S.of(context).please_enter_valid_email;
             }
             return null;
           },
@@ -118,9 +118,9 @@ class _RegisterFieldsState extends State<RegisterFields> {
           keyboardType: TextInputType.visiblePassword,
           validator: (value) {
             if (value == null || value.isEmpty) {
-              return 'please enter your password';
+              return S.of(context).please_enter_your_password;
             } else if (!AppRegex.isPasswordValid(value)) {
-              return 'Password must be at least 8 characters, include an uppercase letter,\n number and symbol.';
+              return S.of(context).valid_password;
             }
             return null;
           },
@@ -157,9 +157,9 @@ class _RegisterFieldsState extends State<RegisterFields> {
           keyboardType: TextInputType.visiblePassword,
           validator: (value) {
             if (value == null || value.isEmpty) {
-              return 'please confirm your password';
+              return S.of(context).please_enter_confirm_password;
             } else if (value != widget.passwordController!.text) {
-              return 'Passwords do not match';
+              return S.of(context).passwords_do_not_match;
             }
             return null;
           },
@@ -194,10 +194,10 @@ class _RegisterFieldsState extends State<RegisterFields> {
           autovalidateMode: AutovalidateMode.onUserInteraction,
           validator: (value) {
             if (value == null || value.isEmpty) {
-              return 'City ID is required';
+              return S.of(context).please_enter_city;
             }
             if (int.tryParse(value) == null) {
-              return 'Please enter a valid number';
+              return S.of(context).please_enter_valid_city;
             }
             return null;
           },

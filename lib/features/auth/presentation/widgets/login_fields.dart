@@ -32,7 +32,7 @@ class _LoginFieldsState extends State<LoginFields> {
           autovalidateMode: AutovalidateMode.onUserInteraction,
           validator: (value) {
             if (value == null || value.isEmpty) {
-              return 'Please enter your email';
+              return S.of(context).please_enter_your_email;
             } else if (!AppRegex.isEmailValid(value)) {
               return 'Please enter a valid email';
             }
@@ -53,7 +53,7 @@ class _LoginFieldsState extends State<LoginFields> {
           keyboardType: TextInputType.visiblePassword,
           validator: (value) {
             if (value == null || value.isEmpty) {
-              return 'please enter your password';
+              return S.of(context).please_enter_your_password;
             }
             return null;
           },

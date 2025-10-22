@@ -7,6 +7,7 @@ import 'package:lms/features/profile/data/models/update_info_models/update_info_
 import 'package:lms/features/profile/presentation/maneger/update_info_cubit/update_info_cubit.dart';
 import 'package:lms/features/profile/presentation/maneger/user_cubit/user_cubit.dart';
 import 'package:lms/features/profile/presentation/widgets/update_info_fields.dart';
+import 'package:lms/generated/l10n.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import 'package:toastification/toastification.dart';
 
@@ -66,7 +67,10 @@ class _UpdateInfoScreenState extends State<UpdateInfoScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Update Information', style: Styles.style18),
+        title: Text(
+          S.of(context).update_information,
+          style: Styles.style18,
+        ),
         centerTitle: true,
         backgroundColor: Colors.transparent,
       ),
@@ -83,7 +87,10 @@ class _UpdateInfoScreenState extends State<UpdateInfoScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Update your information', style: Styles.style18),
+                Text(
+                  S.of(context).update_your_information,
+                  style: Styles.style18,
+                ),
                 const HeightSpace(8),
                 BlocBuilder<UserCubit, UserState>(
                   builder: (context, state) {
@@ -130,7 +137,7 @@ class _UpdateInfoScreenState extends State<UpdateInfoScreen> {
                         context: context,
                         dismissDirection: DismissDirection.up,
                         autoCloseDuration: const Duration(seconds: 4),
-                        title: const Text('Update Failed'),
+                        title: Text(S.of(context).update_failed),
                         description: Text(state.errorMessage),
                         type: ToastificationType.error,
                         style: ToastificationStyle.minimal,
@@ -141,8 +148,8 @@ class _UpdateInfoScreenState extends State<UpdateInfoScreen> {
                         dismissDirection: DismissDirection.up,
                         autoCloseDuration: const Duration(seconds: 4),
                         title: const Text('Success'),
-                        description: const Text(
-                          'Information updated successfully',
+                        description: Text(
+                          state.updateInfoResponseModel.message!,
                         ),
                         type: ToastificationType.success,
                         style: ToastificationStyle.minimal,
@@ -153,7 +160,7 @@ class _UpdateInfoScreenState extends State<UpdateInfoScreen> {
                   builder: (context, state) {
                     return AppTextButton(
                       width: double.infinity,
-                      text: 'Update',
+                      text: S.of(context).update,
                       isLoading: state is UpdateInfoLoading,
                       textStyle: Styles.style18.copyWith(color: Colors.white),
                       onTap: () {

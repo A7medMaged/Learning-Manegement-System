@@ -79,7 +79,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           context: context,
                           dismissDirection: DismissDirection.up,
                           autoCloseDuration: const Duration(seconds: 4),
-                          title: const Text('Login Successful'),
+                          title: Text(S.of(context).login_successful),
                           description: Text(
                             state.loginResponseModel.message!,
                           ),
@@ -99,7 +99,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           context: context,
                           dismissDirection: DismissDirection.up,
                           autoCloseDuration: const Duration(seconds: 4),
-                          title: const Text('Login Failed'),
+                          title: Text(S.of(context).login_failed),
                           description: Text(state.errorMessage),
                           type: ToastificationType.error,
                           style: ToastificationStyle.minimal,

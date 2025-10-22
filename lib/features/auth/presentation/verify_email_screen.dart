@@ -9,6 +9,7 @@ import 'package:lms/core/widgets/spacing_widgets.dart';
 import 'package:lms/features/auth/data/models/verify_email_models/verify_email_request_model.dart';
 import 'package:lms/features/auth/presentation/maneger/verify_email_cubit/verify_email_cubit.dart';
 import 'package:lms/features/auth/presentation/widgets/otp.dart';
+import 'package:lms/generated/l10n.dart';
 import 'package:toastification/toastification.dart';
 
 class VerifyEmailScreen extends StatelessWidget {
@@ -26,7 +27,7 @@ class VerifyEmailScreen extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           title: Text(
-            'Verify Email',
+            S.of(context).verify_your_email,
             style: Styles.style20,
           ),
           elevation: 0,
@@ -39,7 +40,7 @@ class VerifyEmailScreen extends StatelessWidget {
               child: Column(
                 children: [
                   Text(
-                    'Verification',
+                    S.of(context).verify_your_email,
                     style: Styles.style25,
                   ),
                   const HeightSpace(20),

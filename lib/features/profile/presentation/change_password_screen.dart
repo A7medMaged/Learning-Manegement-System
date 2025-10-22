@@ -6,6 +6,7 @@ import 'package:lms/core/widgets/spacing_widgets.dart';
 import 'package:lms/features/profile/data/models/change_password_models/change_password_request_model.dart';
 import 'package:lms/features/profile/presentation/maneger/change_password_cubit/change_password_cubit.dart';
 import 'package:lms/features/profile/presentation/widgets/change_password_fileds.dart';
+import 'package:lms/generated/l10n.dart';
 import 'package:toastification/toastification.dart';
 
 class ChangePasswordScreen extends StatefulWidget {
@@ -42,7 +43,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Change Password'),
+        title: Text(S.of(context).change_password),
         centerTitle: true,
         backgroundColor: Colors.transparent,
       ),
@@ -66,7 +67,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                       context: context,
                       dismissDirection: DismissDirection.up,
                       autoCloseDuration: const Duration(seconds: 4),
-                      title: const Text('Success'),
+                      title: Text(S.of(context).password_changed_successfully),
                       description: Text(
                         state.changePasswordResponseModel.message!,
                       ),
@@ -79,7 +80,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                       context: context,
                       dismissDirection: DismissDirection.up,
                       autoCloseDuration: const Duration(seconds: 4),
-                      title: const Text('Change Password Failed'),
+                      title: Text(S.of(context).error_occured),
                       description: Text(state.errorMessage),
                       type: ToastificationType.error,
                       style: ToastificationStyle.minimal,
@@ -88,7 +89,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                 },
                 builder: (context, state) {
                   return AppTextButton(
-                    text: 'Save Changes',
+                    text: S.of(context).save_changes,
                     isLoading: state is ChangePasswordLoading ? true : false,
                     onTap: () {
                       if (formKey.currentState!.validate()) {

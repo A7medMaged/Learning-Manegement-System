@@ -5,7 +5,7 @@ import 'package:intl/intl.dart';
 import 'package:lms/core/utils/shared_pref_helper.dart';
 
 class LocaleCubit extends Cubit<Locale> {
-  LocaleCubit() : super(const Locale('en')) {
+  LocaleCubit() : super(const Locale('ar')) {
     _loadLocale();
   }
 
@@ -13,7 +13,7 @@ class LocaleCubit extends Cubit<Locale> {
     final languageCode = await SharedPrefHelper.getString('languageCode');
     final supportedLocales = ['en', 'ar'];
     if (!supportedLocales.contains(languageCode)) {
-      emit(const Locale('en'));
+      emit(const Locale('ar'));
       return;
     } else {
       emit(Locale(languageCode));

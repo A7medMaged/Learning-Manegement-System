@@ -10,6 +10,7 @@ import 'package:lms/features/profile/presentation/maneger/change_avatar_cubit/ch
 import 'package:lms/features/profile/presentation/maneger/user_cubit/user_cubit.dart';
 import 'package:lms/features/home/presentation/widgets/account.dart';
 import 'package:lms/features/home/presentation/widgets/personal_info.dart';
+import 'package:lms/generated/l10n.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import 'package:toastification/toastification.dart';
 
@@ -26,7 +27,7 @@ class Sections extends StatelessWidget {
               context: context,
               dismissDirection: DismissDirection.up,
               autoCloseDuration: const Duration(seconds: 4),
-              title: const Text('Avatar changed successfully'),
+              title: Text(S.of(context).avatar_change_successful),
               description: Text(
                 state.changeAvatarResponseModel.message!,
               ),
@@ -39,7 +40,7 @@ class Sections extends StatelessWidget {
               context: context,
               dismissDirection: DismissDirection.up,
               autoCloseDuration: const Duration(seconds: 4),
-              title: const Text('Error changing avatar'),
+              title: Text(S.of(context).error_changing_avatar),
               description: Text(
                 state.errorMessage,
               ),
@@ -113,13 +114,13 @@ class Sections extends StatelessWidget {
                                 },
                           child: avatarState is ChangeAvatarLoading
                               ? Text(
-                                  'Changing Avatar...',
+                                  S.of(context).avatar_changing,
                                   style: Styles.style16.copyWith(
                                     color: mainColor,
                                   ),
                                 )
                               : Text(
-                                  'Change Avatar',
+                                  S.of(context).change_avatar,
                                   style: Styles.style16.copyWith(
                                     color: mainColor,
                                   ),
@@ -132,14 +133,14 @@ class Sections extends StatelessWidget {
               ),
               const HeightSpace(12),
               Text(
-                'Personal Information',
+                S.of(context).personal_info,
                 style: Styles.style18Bold,
               ),
               const HeightSpace(16),
               const PersonalInfo(),
               const HeightSpace(24),
               Text(
-                'Account',
+                S.of(context).account,
                 style: Styles.style18Bold,
               ),
               const HeightSpace(12),

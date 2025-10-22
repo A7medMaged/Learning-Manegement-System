@@ -108,7 +108,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           context: context,
                           dismissDirection: DismissDirection.up,
                           autoCloseDuration: const Duration(seconds: 4),
-                          title: const Text('Registration Successful'),
+                          title: Text(S.of(context).registration_successful),
                           description: Text(
                             state.registerResponseModel.message!,
                           ),
@@ -124,7 +124,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           context: context,
                           dismissDirection: DismissDirection.up,
                           autoCloseDuration: const Duration(seconds: 4),
-                          title: const Text('Registration Failed'),
+                          title: Text(S.of(context).registration_failed),
                           description: Text(
                             state.errorMessage,
                           ),
@@ -151,9 +151,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 context: context,
                                 dismissDirection: DismissDirection.up,
                                 autoCloseDuration: const Duration(seconds: 4),
-                                title: const Text('Registration Failed'),
-                                description: const Text(
-                                  'Please enter a valid city id',
+                                title: Text(S.of(context).registration_failed),
+                                description: Text(
+                                  S.of(context).please_enter_valid_city,
                                 ),
                                 type: ToastificationType.error,
                                 style: ToastificationStyle.minimal,
