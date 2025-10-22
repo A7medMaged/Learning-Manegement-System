@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lms/core/utils/styling/app_assets.dart';
+import 'package:lms/core/utils/styling/app_colors.dart';
 import 'package:lottie/lottie.dart';
 
 class AppTextButton extends StatelessWidget {
@@ -32,7 +33,7 @@ class AppTextButton extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15),
           ),
-          color: color ?? const Color(0xFF34A853),
+          color: color ?? mainColor,
         ),
         child: Center(
           child: isLoading
