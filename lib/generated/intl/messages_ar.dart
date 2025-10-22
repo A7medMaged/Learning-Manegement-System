@@ -171,6 +171,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "skip": MessageLookupByLibrary.simpleMessage("تخطي"),
     "smooth_experience": MessageLookupByLibrary.simpleMessage("تجربة سلسة"),
+    "theme": MessageLookupByLibrary.simpleMessage("السمة"),
     "update": MessageLookupByLibrary.simpleMessage("تحديث"),
     "update_failed": MessageLookupByLibrary.simpleMessage("فشل التحديث"),
     "update_information": MessageLookupByLibrary.simpleMessage(

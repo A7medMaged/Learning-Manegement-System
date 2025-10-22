@@ -178,6 +178,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "smooth_experience": MessageLookupByLibrary.simpleMessage(
       "Smooth Experience",
     ),
+    "theme": MessageLookupByLibrary.simpleMessage("Theme"),
     "update": MessageLookupByLibrary.simpleMessage("Update"),
     "update_failed": MessageLookupByLibrary.simpleMessage("Update Failed"),
     "update_information": MessageLookupByLibrary.simpleMessage(

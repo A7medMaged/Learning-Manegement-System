@@ -43,71 +43,13 @@ class Account extends StatelessWidget {
           title: S.of(context).language,
           trailingIcon: Icons.translate,
           onTap: () {
-            showModalBottomSheet(
-              context: context,
-              backgroundColor: white,
-              builder: (context) {
-                return Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Builder(
-                      builder: (context) {
-                        final currentLocale = context
-                            .watch<LocaleCubit>()
-                            .state;
-                        return Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Container(
-                              margin: const EdgeInsets.symmetric(
-                                vertical: 12,
-                              ),
-                              height: 4,
-                              width: 40,
-                              decoration: BoxDecoration(
-                                color: grey.withOpacity(0.5),
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                            ),
-                            RadioListTile<Locale>(
-                              title: Text(S.of(context).english),
-                              secondary: Image.asset(
-                                AppAssets.en,
-                                height: 24,
-                                width: 24,
-                              ),
-                              value: const Locale('en'),
-                              groupValue: currentLocale,
-                              onChanged: (Locale? value) {
-                                if (value == null) return;
-                                context.read<LocaleCubit>().setLocale(value);
-                                Navigator.pop(context);
-                              },
-                            ),
-                            RadioListTile<Locale>(
-                              title: Text(S.of(context).arabic),
-                              secondary: Image.asset(
-                                AppAssets.ar,
-                                height: 24,
-                                width: 24,
-                              ),
-                              value: const Locale('ar'),
-                              groupValue: currentLocale,
-                              onChanged: (Locale? value) {
-                                if (value == null) return;
-                                context.read<LocaleCubit>().setLocale(value);
-                                Navigator.pop(context);
-                              },
-                            ),
-                          ],
-                        );
-                      },
-                    ),
-                  ],
-                );
-              },
-            );
+            changeLanguageBottomSheet(context);
           },
+        ),
+        ListTileWidget(
+          title: S.of(context).theme,
+          trailingIcon: Icons.brightness_6_outlined,
+          onTap: () {},
         ),
         ListTileWidget(
           title: S.of(context).logout,
@@ -115,47 +57,116 @@ class Account extends StatelessWidget {
           backgroundColor: Colors.red.shade200,
           trailingIcon: Icons.logout,
           onTap: () {
-            showAdaptiveDialog(
-              barrierDismissible: false,
-              context: context,
+            logOutDialog(context);
+          },
+        ),
+      ],
+    );
+  }
+
+  Future<dynamic> logOutDialog(BuildContext context) {
+    return showAdaptiveDialog(
+      barrierDismissible: false,
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text(S.of(context).logout),
+          content: Text(S.of(context).are_you_sure_you_want_to_logout),
+          actions: [
+            AppTextButton(
+              width: 100,
+              text: S.of(context).no,
+              color: white,
+              textStyle: Styles.style14.copyWith(
+                color: black,
+              ),
+              onTap: () => context.pop(),
+            ),
+            SizedBox(
+              width: 125,
+              child: AppTextButton(
+                text: S.of(context).logout,
+                color: red,
+                textStyle: Styles.style14.copyWith(
+                  color: white,
+                ),
+                onTap: () async {
+                  SharedPrefHelper.clearAllSecuredData();
+                  DioFactory.removeDioHeaders();
+                  context.go(
+                    AppRoutes.loginRoute,
+                  );
+                },
+              ),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Future<dynamic> changeLanguageBottomSheet(BuildContext context) {
+    return showModalBottomSheet(
+      context: context,
+      backgroundColor: white,
+      builder: (context) {
+        return Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Builder(
               builder: (context) {
-                return AlertDialog(
-                  title: Text(S.of(context).logout),
-                  content: Text(S.of(context).are_you_sure_you_want_to_logout),
-                  actions: [
-                    AppTextButton(
-                      width: 100,
-                      text: S.of(context).no,
-                      color: white,
-                      textStyle: Styles.style14.copyWith(
-                        color: black,
+                final currentLocale = context.watch<LocaleCubit>().state;
+                return Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Container(
+                      margin: const EdgeInsets.symmetric(
+                        vertical: 12,
                       ),
-                      onTap: () => context.pop(),
+                      height: 4,
+                      width: 40,
+                      decoration: BoxDecoration(
+                        color: grey.withOpacity(0.5),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
                     ),
-                    SizedBox(
-                      width: 125,
-                      child: AppTextButton(
-                        text: S.of(context).logout,
-                        color: red,
-                        textStyle: Styles.style14.copyWith(
-                          color: white,
-                        ),
-                        onTap: () async {
-                          SharedPrefHelper.clearAllSecuredData();
-                          DioFactory.removeDioHeaders();
-                          context.go(
-                            AppRoutes.loginRoute,
-                          );
-                        },
+                    RadioListTile<Locale>(
+                      title: Text(S.of(context).english),
+                      secondary: Image.asset(
+                        AppAssets.en,
+                        height: 24,
+                        width: 24,
                       ),
+                      value: const Locale('en'),
+                      groupValue: currentLocale,
+                      onChanged: (Locale? value) {
+                        if (value == null) return;
+                        context.read<LocaleCubit>().setLocale(value);
+                        Navigator.pop(context);
+                      },
+                    ),
+                    RadioListTile<Locale>(
+                      title: Text(S.of(context).arabic),
+                      secondary: Image.asset(
+                        AppAssets.ar,
+                        height: 24,
+                        width: 24,
+                      ),
+                      value: const Locale('ar'),
+                      groupValue: currentLocale,
+                      onChanged: (Locale? value) {
+                        if (value == null) return;
+                        context.read<LocaleCubit>().setLocale(value);
+                        Navigator.pop(context);
+                      },
                     ),
                   ],
                 );
               },
-            );
-          },
-        ),
-      ],
+            ),
+          ],
+        );
+      },
     );
   }
 }
