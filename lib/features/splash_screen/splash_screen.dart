@@ -43,7 +43,7 @@ class _SplashScreenState extends State<SplashScreen>
 
     if (token.isNotEmpty && mounted) {
       // ignore: use_build_context_synchronously
-      context.pushReplacement(AppRoutes.homeRoute);
+      context.pushReplacement(AppRoutes.mainRoute);
       return;
     }
 

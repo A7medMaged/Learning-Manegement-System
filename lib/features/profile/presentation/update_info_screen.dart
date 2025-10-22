@@ -147,7 +147,9 @@ class _UpdateInfoScreenState extends State<UpdateInfoScreen> {
                         context: context,
                         dismissDirection: DismissDirection.up,
                         autoCloseDuration: const Duration(seconds: 4),
-                        title: const Text('Success'),
+                        title: Text(
+                          S.of(context).information_updated_successfully,
+                        ),
                         description: Text(
                           state.updateInfoResponseModel.message!,
                         ),

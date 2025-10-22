@@ -783,6 +783,36 @@ class S {
   String get theme {
     return Intl.message('Theme', name: 'theme', desc: '', args: []);
   }
+
+  /// `LMS App`
+  String get app_name {
+    return Intl.message('LMS App', name: 'app_name', desc: '', args: []);
+  }
+
+  /// `Subscription`
+  String get subscribtion {
+    return Intl.message(
+      'Subscription',
+      name: 'subscribtion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Chat`
+  String get chat {
+    return Intl.message('Chat', name: 'chat', desc: '', args: []);
+  }
+
+  /// `Profile`
+  String get profile {
+    return Intl.message('Profile', name: 'profile', desc: '', args: []);
+  }
+
+  /// `Welcome!`
+  String get welcome {
+    return Intl.message('Welcome!', name: 'welcome', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

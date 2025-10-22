@@ -26,6 +26,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "already_have_an_account": MessageLookupByLibrary.simpleMessage(
       "هل لديك حساب بالفعل؟ ",
     ),
+    "app_name": MessageLookupByLibrary.simpleMessage("تطبيق إدارة التعلم"),
     "arabic": MessageLookupByLibrary.simpleMessage("العربية"),
     "are_you_sure_you_want_to_logout": MessageLookupByLibrary.simpleMessage(
       "هل أنت متأكد أنك تريد تسجيل الخروج؟",
@@ -46,6 +47,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "change_password": MessageLookupByLibrary.simpleMessage(
       "تغيير كلمة المرور",
     ),
+    "chat": MessageLookupByLibrary.simpleMessage("الدردشة"),
     "city": MessageLookupByLibrary.simpleMessage("المدينة"),
     "code_sent": MessageLookupByLibrary.simpleMessage("تم إرسال الرمز"),
     "confirm_new_password": MessageLookupByLibrary.simpleMessage(
@@ -155,6 +157,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "please_enter_your_password": MessageLookupByLibrary.simpleMessage(
       "يرجى إدخال كلمة المرور الخاصة بك",
     ),
+    "profile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
     "register": MessageLookupByLibrary.simpleMessage("تسجيل"),
     "register_a_new_account": MessageLookupByLibrary.simpleMessage(
       "تسجيل حساب جديد",
@@ -171,6 +174,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "skip": MessageLookupByLibrary.simpleMessage("تخطي"),
     "smooth_experience": MessageLookupByLibrary.simpleMessage("تجربة سلسة"),
+    "subscribtion": MessageLookupByLibrary.simpleMessage("الاشتراكات"),
     "theme": MessageLookupByLibrary.simpleMessage("السمة"),
     "update": MessageLookupByLibrary.simpleMessage("تحديث"),
     "update_failed": MessageLookupByLibrary.simpleMessage("فشل التحديث"),
@@ -191,6 +195,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "verify_your_email": MessageLookupByLibrary.simpleMessage(
       "تحقق من بريدك الإلكتروني",
     ),
+    "welcome": MessageLookupByLibrary.simpleMessage("مرحبًا!"),
     "welcome_back": MessageLookupByLibrary.simpleMessage(
       "مرحبًا بعودتك! يرجى تسجيل الدخول إلى حسابك.",
     ),

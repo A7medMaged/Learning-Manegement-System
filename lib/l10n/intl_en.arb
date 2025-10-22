@@ -83,5 +83,10 @@
   "home": "Home",
   "english": "English",
   "arabic": "Arabic",
-  "theme": "Theme"
+  "theme": "Theme",
+  "app_name": "LMS App",
+  "subscribtion": "Subscription",
+  "chat": "Chat",
+  "profile": "Profile",
+  "welcome": "Welcome!"
 }

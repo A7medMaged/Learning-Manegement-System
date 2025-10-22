@@ -93,7 +93,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         DioFactory.setTokenIntoHeaderAfterLogin(
                           state.loginResponseModel.data!.token!,
                         );
-                        context.pushReplacement(AppRoutes.homeRoute);
+                        context.pushReplacement(AppRoutes.mainRoute);
                       } else if (state is LoginFailure) {
                         toastification.show(
                           context: context,

@@ -26,6 +26,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "already_have_an_account": MessageLookupByLibrary.simpleMessage(
       "Already have an account? ",
     ),
+    "app_name": MessageLookupByLibrary.simpleMessage("LMS App"),
     "arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
     "are_you_sure_you_want_to_logout": MessageLookupByLibrary.simpleMessage(
       "Are you sure you want to log out?",
@@ -44,6 +45,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "change_avatar": MessageLookupByLibrary.simpleMessage("Change Avatar"),
     "change_password": MessageLookupByLibrary.simpleMessage("Change Password"),
+    "chat": MessageLookupByLibrary.simpleMessage("Chat"),
     "city": MessageLookupByLibrary.simpleMessage("City"),
     "code_sent": MessageLookupByLibrary.simpleMessage("Code sent"),
     "confirm_new_password": MessageLookupByLibrary.simpleMessage(
@@ -158,6 +160,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "please_enter_your_password": MessageLookupByLibrary.simpleMessage(
       "Please enter your password",
     ),
+    "profile": MessageLookupByLibrary.simpleMessage("Profile"),
     "register": MessageLookupByLibrary.simpleMessage("Register"),
     "register_a_new_account": MessageLookupByLibrary.simpleMessage(
       "Register a new account",
@@ -178,6 +181,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "smooth_experience": MessageLookupByLibrary.simpleMessage(
       "Smooth Experience",
     ),
+    "subscribtion": MessageLookupByLibrary.simpleMessage("Subscription"),
     "theme": MessageLookupByLibrary.simpleMessage("Theme"),
     "update": MessageLookupByLibrary.simpleMessage("Update"),
     "update_failed": MessageLookupByLibrary.simpleMessage("Update Failed"),
@@ -198,6 +202,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "verify_your_email": MessageLookupByLibrary.simpleMessage(
       "Verify your Email",
     ),
+    "welcome": MessageLookupByLibrary.simpleMessage("Welcome!"),
     "welcome_back": MessageLookupByLibrary.simpleMessage(
       "Welcome Back! Please login to your account.",
     ),
