@@ -79,5 +79,7 @@
   "update_failed": "فشل التحديث",
   "information_updated_successfully": "تم تحديث المعلومات بنجاح",
   "update": "تحديث",
-  "home": "الصفحة الرئيسية"
+  "home": "الصفحة الرئيسية",
+  "english": "الإنجليزية",
+  "arabic": "العربية"
 }

@@ -26,6 +26,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "already_have_an_account": MessageLookupByLibrary.simpleMessage(
       "هل لديك حساب بالفعل؟ ",
     ),
+    "arabic": MessageLookupByLibrary.simpleMessage("العربية"),
     "are_you_sure_you_want_to_logout": MessageLookupByLibrary.simpleMessage(
       "هل أنت متأكد أنك تريد تسجيل الخروج؟",
     ),
@@ -61,6 +62,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "email_address": MessageLookupByLibrary.simpleMessage(
       "عنوان البريد الإلكتروني",
     ),
+    "english": MessageLookupByLibrary.simpleMessage("الإنجليزية"),
     "enter_otp_sent_to_email": MessageLookupByLibrary.simpleMessage(
       "أدخل رمز التحقق المرسل إلى بريدك الإلكتروني وقم بتغيير كلمة المرور الخاصة بك.",
     ),

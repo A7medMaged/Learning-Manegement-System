@@ -1,14 +1,18 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lms/core/api/dio_factory.dart';
 import 'package:lms/core/routes/app_routes.dart';
 import 'package:lms/core/utils/shared_pref_helper.dart';
+import 'package:lms/core/utils/styling/app_assets.dart';
 import 'package:lms/core/utils/styling/app_colors.dart';
 import 'package:lms/core/utils/styling/text_style.dart';
 import 'package:lms/core/widgets/app_text_button.dart';
 import 'package:lms/features/home/presentation/widgets/list_tile_widget.dart';
 import 'package:lms/features/profile/presentation/maneger/user_cubit/user_cubit.dart';
+import 'package:lms/features/translation/cubit/local_cubit.dart';
 import 'package:lms/generated/l10n.dart';
 
 class Account extends StatelessWidget {
@@ -39,7 +43,70 @@ class Account extends StatelessWidget {
           title: S.of(context).language,
           trailingIcon: Icons.translate,
           onTap: () {
-            
+            showModalBottomSheet(
+              context: context,
+              backgroundColor: white,
+              builder: (context) {
+                return Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Builder(
+                      builder: (context) {
+                        final currentLocale = context
+                            .watch<LocaleCubit>()
+                            .state;
+                        return Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Container(
+                              margin: const EdgeInsets.symmetric(
+                                vertical: 12,
+                              ),
+                              height: 4,
+                              width: 40,
+                              decoration: BoxDecoration(
+                                color: grey.withOpacity(0.5),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                            ),
+                            RadioListTile<Locale>(
+                              title: Text(S.of(context).english),
+                              secondary: Image.asset(
+                                AppAssets.en,
+                                height: 24,
+                                width: 24,
+                              ),
+                              value: const Locale('en'),
+                              groupValue: currentLocale,
+                              onChanged: (Locale? value) {
+                                if (value == null) return;
+                                context.read<LocaleCubit>().setLocale(value);
+                                Navigator.pop(context);
+                              },
+                            ),
+                            RadioListTile<Locale>(
+                              title: Text(S.of(context).arabic),
+                              secondary: Image.asset(
+                                AppAssets.ar,
+                                height: 24,
+                                width: 24,
+                              ),
+                              value: const Locale('ar'),
+                              groupValue: currentLocale,
+                              onChanged: (Locale? value) {
+                                if (value == null) return;
+                                context.read<LocaleCubit>().setLocale(value);
+                                Navigator.pop(context);
+                              },
+                            ),
+                          ],
+                        );
+                      },
+                    ),
+                  ],
+                );
+              },
+            );
           },
         ),
         ListTileWidget(

@@ -26,6 +26,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "already_have_an_account": MessageLookupByLibrary.simpleMessage(
       "Already have an account? ",
     ),
+    "arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
     "are_you_sure_you_want_to_logout": MessageLookupByLibrary.simpleMessage(
       "Are you sure you want to log out?",
     ),
@@ -59,6 +60,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "email": MessageLookupByLibrary.simpleMessage("Email"),
     "email_address": MessageLookupByLibrary.simpleMessage("Email Address"),
+    "english": MessageLookupByLibrary.simpleMessage("English"),
     "enter_otp_sent_to_email": MessageLookupByLibrary.simpleMessage(
       "Enter the OTP sent to your email and change your password.",
     ),

@@ -80,5 +80,7 @@
   "update_failed": "Update Failed",
   "information_updated_successfully": "Information updated successfully",
   "update": "Update",
-  "home": "Home"
+  "home": "Home",
+  "english": "English",
+  "arabic": "Arabic"
 }
