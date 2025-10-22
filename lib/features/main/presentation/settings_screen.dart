@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lms/core/utils/styling/text_style.dart';
-import 'package:lms/features/home/presentation/widgets/sections.dart';
+import 'package:lms/features/main/presentation/widgets/sections.dart';
 import 'package:lms/generated/l10n.dart';
 
 class SettingsScreen extends StatelessWidget {

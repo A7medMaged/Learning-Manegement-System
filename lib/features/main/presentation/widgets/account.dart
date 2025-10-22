@@ -10,7 +10,7 @@ import 'package:lms/core/utils/styling/app_assets.dart';
 import 'package:lms/core/utils/styling/app_colors.dart';
 import 'package:lms/core/utils/styling/text_style.dart';
 import 'package:lms/core/widgets/app_text_button.dart';
-import 'package:lms/features/home/presentation/widgets/list_tile_widget.dart';
+import 'package:lms/features/main/presentation/widgets/list_tile_widget.dart';
 import 'package:lms/features/profile/presentation/maneger/user_cubit/user_cubit.dart';
 import 'package:lms/features/translation/cubit/local_cubit.dart';
 import 'package:lms/generated/l10n.dart';

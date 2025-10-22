@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lms/features/home/data/models/user_model/user_model.dart';
+import 'package:lms/features/main/data/models/user_model/user_model.dart';
 import 'package:lms/features/profile/data/repos/profile_repo_impl.dart';
 
 part 'user_state.dart';

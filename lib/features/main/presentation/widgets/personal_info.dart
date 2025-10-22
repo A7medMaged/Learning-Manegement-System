@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lms/core/utils/styling/text_style.dart';
 import 'package:lms/features/profile/presentation/maneger/user_cubit/user_cubit.dart';
-import 'package:lms/features/home/presentation/widgets/info_list_tile.dart';
+import 'package:lms/features/main/presentation/widgets/info_list_tile.dart';
 import 'package:lms/generated/l10n.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
