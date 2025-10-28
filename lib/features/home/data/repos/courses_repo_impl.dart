@@ -29,7 +29,7 @@ class CoursesRepoImpl extends CoursesRepo {
   }
 
   @override
-  Future<Either<Failures, CourseDetailsModel>> fetchMoreCourses(
+  Future<Either<Failures, CourseDetailsModel>> fetchCourseDetails(
     int courseId,
   ) async {
     try {

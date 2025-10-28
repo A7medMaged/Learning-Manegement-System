@@ -6,5 +6,5 @@ import 'package:lms/features/home/data/models/course_details_model/course_detail
 abstract class CoursesRepo {
   Future<Either<Failures, AllSubsCoursesModel>> fetchCourses();
 
-  Future<Either<Failures, CourseDetailsModel>> fetchMoreCourses(int courseId);
+  Future<Either<Failures, CourseDetailsModel>> fetchCourseDetails(int courseId);
 }
