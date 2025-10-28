@@ -8,6 +8,8 @@ import 'package:lms/features/auth/presentation/maneger/login_cubit/login_cubit.d
 import 'package:lms/features/auth/presentation/maneger/register_cubit/register_cubit.dart';
 import 'package:lms/features/auth/presentation/maneger/reset_password_cubit/reset_password_cubit.dart';
 import 'package:lms/features/auth/presentation/maneger/verify_email_cubit/verify_email_cubit.dart';
+import 'package:lms/features/home/data/repos/courses_repo_impl.dart';
+import 'package:lms/features/home/presentation/manager/cubit/courses_cubit.dart';
 import 'package:lms/features/profile/data/repos/profile_repo_impl.dart';
 import 'package:lms/features/profile/presentation/maneger/change_avatar_cubit/change_avatar_cubit.dart';
 import 'package:lms/features/profile/presentation/maneger/change_password_cubit/change_password_cubit.dart';
@@ -38,6 +40,10 @@ Future<void> setupDependencyInjection() async {
 
   getIt.registerLazySingleton<ProfileRepoImpl>(
     () => ProfileRepoImpl(dio: getIt<Dio>()),
+  );
+
+  getIt.registerLazySingleton<CoursesRepoImpl>(
+    () => CoursesRepoImpl(dio: getIt<Dio>()),
   );
   // cubits >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   getIt.registerFactory<RegisterCubit>(
@@ -78,5 +84,9 @@ Future<void> setupDependencyInjection() async {
 
   getIt.registerFactory<ChangeAvatarCubit>(
     () => ChangeAvatarCubit(getIt<ProfileRepoImpl>()),
+  );
+
+  getIt.registerFactory<CoursesCubit>(
+    () => CoursesCubit(getIt<CoursesRepoImpl>()),
   );
 }
