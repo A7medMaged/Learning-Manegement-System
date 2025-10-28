@@ -160,6 +160,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "please_enter_your_password": MessageLookupByLibrary.simpleMessage(
       "يرجى إدخال كلمة المرور الخاصة بك",
     ),
+    "price": MessageLookupByLibrary.simpleMessage("السعر"),
     "profile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
     "register": MessageLookupByLibrary.simpleMessage("تسجيل"),
     "register_a_new_account": MessageLookupByLibrary.simpleMessage(
@@ -178,6 +179,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "skip": MessageLookupByLibrary.simpleMessage("تخطي"),
     "smooth_experience": MessageLookupByLibrary.simpleMessage("تجربة سلسة"),
+    "subject": MessageLookupByLibrary.simpleMessage("الموضوع"),
     "subscribe_to_new_courses": MessageLookupByLibrary.simpleMessage(
       "اشترك في دورات جديدة",
     ),

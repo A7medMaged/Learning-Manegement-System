@@ -163,6 +163,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "please_enter_your_password": MessageLookupByLibrary.simpleMessage(
       "Please enter your password",
     ),
+    "price": MessageLookupByLibrary.simpleMessage("Price"),
     "profile": MessageLookupByLibrary.simpleMessage("Profile"),
     "register": MessageLookupByLibrary.simpleMessage("Register"),
     "register_a_new_account": MessageLookupByLibrary.simpleMessage(
@@ -185,6 +186,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "smooth_experience": MessageLookupByLibrary.simpleMessage(
       "Smooth Experience",
     ),
+    "subject": MessageLookupByLibrary.simpleMessage("Subject"),
     "subscribe_to_new_courses": MessageLookupByLibrary.simpleMessage(
       "Subscribe to new courses",
     ),

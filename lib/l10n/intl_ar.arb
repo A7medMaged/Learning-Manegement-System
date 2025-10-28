@@ -92,5 +92,7 @@
   "see_all": "عرض الكل",
   "course_details": "تفاصيل الدورة",
   "description": "الوصف",
-  "content": "المحتوى"
+  "content": "المحتوى",
+  "price": "السعر",
+  "subject": "الموضوع"
 }

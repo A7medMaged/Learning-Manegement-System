@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -6,6 +5,8 @@ import 'package:lms/core/utils/styling/app_colors.dart';
 import 'package:lms/core/utils/styling/text_style.dart';
 import 'package:lms/core/widgets/spacing_widgets.dart';
 import 'package:lms/features/home/presentation/manager/course_details_cubit/course_details_cubit.dart';
+import 'package:lms/features/home/presentation/widgets/course_details.dart';
+import 'package:lms/features/home/presentation/widgets/cousre_subject.dart';
 import 'package:lms/generated/l10n.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
@@ -16,29 +17,19 @@ class CourseDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
         title: Text(S.of(context).course_details),
       ),
       body: BlocBuilder<CourseDetailsCubit, CourseDetailsState>(
         builder: (context, state) {
           if (state is CourseDetailsLoading) {
-            return Skeletonizer(
-              child: Column(
-                children: [
-                  Card(
-                    child: CachedNetworkImage(
-                      imageUrl: 'https://placehold.co/600x400',
-                      errorWidget: (context, url, error) =>
-                          const Icon(Icons.error),
-                      fit: BoxFit.fill,
-                    ),
-                  ),
-                  const HeightSpace(8),
-                  const Text('Title'),
-                  const HeightSpace(8),
-                  const Text('description'),
-                  const HeightSpace(8),
-                  const Text('Content'),
-                ],
+            return const Skeletonizer(
+              effect: ShimmerEffect(),
+              child: CourseDetails(
+                title: 'corseDetails.title!',
+                imageUrl: 'corseDetails.subject!.icon!',
+                description: 'corseDetails.description!',
+                content: 'corseDetails.content!',
               ),
             );
           } else if (state is CourseDetailsError) {
@@ -69,34 +60,22 @@ class CourseDetailsScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      '${corseDetails.title!}:',
-                      style: Styles.style25,
+                    CourseDetails(
+                      title: corseDetails.title!,
+                      imageUrl: corseDetails.subject!.icon!,
+                      description: corseDetails.description!,
+                      content: corseDetails.content!,
                     ),
-                    const HeightSpace(8),
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(12),
-                      child: CachedNetworkImage(
-                        imageUrl: corseDetails.subject!.icon!,
-                        errorWidget: (context, url, error) =>
-                            const Icon(Icons.error),
-                      ),
-                    ),
-                    const HeightSpace(8),
+                    const HeightSpace(16),
                     Text(
-                      '${S.of(context).description}:',
+                      '${S.of(context).subject}:',
                       style: Styles.style18,
                     ),
-                    Text(
-                      corseDetails.description!,
-                      style: Styles.style14,
+                    CousreSubject(
+                      name: corseDetails.subject!.name!,
+                      description: corseDetails.subject!.description!,
+                      price: corseDetails.subject!.defaultPrice!.toString(),
                     ),
-                    const HeightSpace(8),
-                    Text(
-                      '${S.of(context).content}:',
-                      style: Styles.style18,
-                    ),
-                    Text(corseDetails.content!),
                   ],
                 ),
               ),

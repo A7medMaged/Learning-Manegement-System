@@ -93,5 +93,7 @@
   "see_all": "See All",
   "course_details": "Course Details",
   "description": "Description",
-  "content": "Content"
+  "content": "Content",
+  "price": "Price",
+  "subject": "Subject"
 }
