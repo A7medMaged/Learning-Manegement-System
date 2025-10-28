@@ -54,9 +54,12 @@ class MessageLookup extends MessageLookupByLibrary {
       "تأكيد كلمة المرور الجديدة",
     ),
     "confirm_password": MessageLookupByLibrary.simpleMessage("تأكيد كلمة السر"),
+    "content": MessageLookupByLibrary.simpleMessage("المحتوى"),
+    "course_details": MessageLookupByLibrary.simpleMessage("تفاصيل الدورة"),
     "current_password": MessageLookupByLibrary.simpleMessage(
       "كلمة المرور الحالية",
     ),
+    "description": MessageLookupByLibrary.simpleMessage("الوصف"),
     "dont_have_an_account": MessageLookupByLibrary.simpleMessage(
       "ليس لديك حساب؟ ",
     ),

@@ -54,9 +54,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "confirm_password": MessageLookupByLibrary.simpleMessage(
       "Confirm Password",
     ),
+    "content": MessageLookupByLibrary.simpleMessage("Content"),
+    "course_details": MessageLookupByLibrary.simpleMessage("Course Details"),
     "current_password": MessageLookupByLibrary.simpleMessage(
       "Current Password",
     ),
+    "description": MessageLookupByLibrary.simpleMessage("Description"),
     "dont_have_an_account": MessageLookupByLibrary.simpleMessage(
       "Don\'t have an account? ",
     ),

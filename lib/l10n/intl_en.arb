@@ -90,5 +90,8 @@
   "profile": "Profile",
   "welcome": "Welcome!",
   "subscribe_to_new_courses": "Subscribe to new courses",
-  "see_all": "See All"
+  "see_all": "See All",
+  "course_details": "Course Details",
+  "description": "Description",
+  "content": "Content"
 }

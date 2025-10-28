@@ -828,6 +828,26 @@ class S {
   String get see_all {
     return Intl.message('See All', name: 'see_all', desc: '', args: []);
   }
+
+  /// `Course Details`
+  String get course_details {
+    return Intl.message(
+      'Course Details',
+      name: 'course_details',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Description`
+  String get description {
+    return Intl.message('Description', name: 'description', desc: '', args: []);
+  }
+
+  /// `Content`
+  String get content {
+    return Intl.message('Content', name: 'content', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

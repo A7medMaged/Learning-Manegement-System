@@ -89,5 +89,8 @@
   "chat": "الدردشة",
   "welcome": "مرحبًا!",
   "subscribe_to_new_courses": "اشترك في دورات جديدة",
-  "see_all": "عرض الكل"
+  "see_all": "عرض الكل",
+  "course_details": "تفاصيل الدورة",
+  "description": "الوصف",
+  "content": "المحتوى"
 }
