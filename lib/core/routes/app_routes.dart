@@ -11,4 +11,5 @@ class AppRoutes {
   static const String cahngePasswordRoute = '/change-password';
   static const String resetPasswordRoute = '/reset-password';
   static const String verifyAndChangePasswordRoute = '/verify-change-password';
+  static const String courseDetailsRoute = '/course-details';
 }

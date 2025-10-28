@@ -38,46 +38,46 @@ class Data {
   });
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
-        id: json['id'] as int?,
-        email: json['email'] as String?,
-        phoneNumber: json['phoneNumber'] as String?,
-        firstName: json['firstName'] as String?,
-        lastName: json['lastName'] as String?,
-        fullName: json['fullName'] as String?,
-        avatar: json['avatar'] as String?,
-        role: json['role'] as String?,
-        cityId: json['cityId'] as int?,
-        organizationId: json['organizationId'] as int?,
-        isVerified: json['isVerified'] as bool?,
-        isEmailVerified: json['isEmailVerified'] as bool?,
-        isPhoneVerified: json['isPhoneVerified'] as bool?,
-        createdAt: json['createdAt'] == null
-            ? null
-            : DateTime.parse(json['createdAt'] as String),
-        updatedAt: json['updatedAt'] == null
-            ? null
-            : DateTime.parse(json['updatedAt'] as String),
-        city: json['city'] == null
-            ? null
-            : City.fromJson(json['city'] as Map<String, dynamic>),
-      );
+    id: json['id'] as int?,
+    email: json['email'] as String?,
+    phoneNumber: json['phoneNumber'] as String?,
+    firstName: json['firstName'] as String?,
+    lastName: json['lastName'] as String?,
+    fullName: json['fullName'] as String?,
+    avatar: json['avatar'] as String?,
+    role: json['role'] as String?,
+    cityId: json['cityId'] as int?,
+    organizationId: json['organizationId'] as int?,
+    isVerified: json['isVerified'] as bool?,
+    isEmailVerified: json['isEmailVerified'] as bool?,
+    isPhoneVerified: json['isPhoneVerified'] as bool?,
+    createdAt: json['createdAt'] == null
+        ? null
+        : DateTime.parse(json['createdAt'] as String),
+    updatedAt: json['updatedAt'] == null
+        ? null
+        : DateTime.parse(json['updatedAt'] as String),
+    city: json['city'] == null
+        ? null
+        : City.fromJson(json['city'] as Map<String, dynamic>),
+  );
 
   Map<String, dynamic> toJson() => {
-        'id': id,
-        'email': email,
-        'phoneNumber': phoneNumber,
-        'firstName': firstName,
-        'lastName': lastName,
-        'fullName': fullName,
-        'avatar': avatar,
-        'role': role,
-        'cityId': cityId,
-        'organizationId': organizationId,
-        'isVerified': isVerified,
-        'isEmailVerified': isEmailVerified,
-        'isPhoneVerified': isPhoneVerified,
-        'createdAt': createdAt?.toIso8601String(),
-        'updatedAt': updatedAt?.toIso8601String(),
-        'city': city?.toJson(),
-      };
+    'id': id,
+    'email': email,
+    'phoneNumber': phoneNumber,
+    'firstName': firstName,
+    'lastName': lastName,
+    'fullName': fullName,
+    'avatar': avatar,
+    'role': role,
+    'cityId': cityId,
+    'organizationId': organizationId,
+    'isVerified': isVerified,
+    'isEmailVerified': isEmailVerified,
+    'isPhoneVerified': isPhoneVerified,
+    'createdAt': createdAt?.toIso8601String(),
+    'updatedAt': updatedAt?.toIso8601String(),
+    'city': city?.toJson(),
+  };
 }

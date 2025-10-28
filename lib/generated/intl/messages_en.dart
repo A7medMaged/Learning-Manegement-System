@@ -54,9 +54,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "confirm_password": MessageLookupByLibrary.simpleMessage(
       "Confirm Password",
     ),
+    "content": MessageLookupByLibrary.simpleMessage("Content"),
+    "course_details": MessageLookupByLibrary.simpleMessage("Course Details"),
     "current_password": MessageLookupByLibrary.simpleMessage(
       "Current Password",
     ),
+    "description": MessageLookupByLibrary.simpleMessage("Description"),
     "dont_have_an_account": MessageLookupByLibrary.simpleMessage(
       "Don\'t have an account? ",
     ),
@@ -160,6 +163,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "please_enter_your_password": MessageLookupByLibrary.simpleMessage(
       "Please enter your password",
     ),
+    "price": MessageLookupByLibrary.simpleMessage("Price"),
     "profile": MessageLookupByLibrary.simpleMessage("Profile"),
     "register": MessageLookupByLibrary.simpleMessage("Register"),
     "register_a_new_account": MessageLookupByLibrary.simpleMessage(
@@ -172,6 +176,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Registration Successful",
     ),
     "save_changes": MessageLookupByLibrary.simpleMessage("Save Changes"),
+    "see_all": MessageLookupByLibrary.simpleMessage("See All"),
     "send_code": MessageLookupByLibrary.simpleMessage("Send Code"),
     "settings": MessageLookupByLibrary.simpleMessage("Settings"),
     "simple_and_intuitive": MessageLookupByLibrary.simpleMessage(
@@ -180,6 +185,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "skip": MessageLookupByLibrary.simpleMessage("Skip"),
     "smooth_experience": MessageLookupByLibrary.simpleMessage(
       "Smooth Experience",
+    ),
+    "subject": MessageLookupByLibrary.simpleMessage("Subject"),
+    "subscribe_to_new_courses": MessageLookupByLibrary.simpleMessage(
+      "Subscribe to new courses",
     ),
     "subscribtion": MessageLookupByLibrary.simpleMessage("Subscription"),
     "theme": MessageLookupByLibrary.simpleMessage("Theme"),

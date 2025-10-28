@@ -54,9 +54,12 @@ class MessageLookup extends MessageLookupByLibrary {
       "تأكيد كلمة المرور الجديدة",
     ),
     "confirm_password": MessageLookupByLibrary.simpleMessage("تأكيد كلمة السر"),
+    "content": MessageLookupByLibrary.simpleMessage("المحتوى"),
+    "course_details": MessageLookupByLibrary.simpleMessage("تفاصيل الدورة"),
     "current_password": MessageLookupByLibrary.simpleMessage(
       "كلمة المرور الحالية",
     ),
+    "description": MessageLookupByLibrary.simpleMessage("الوصف"),
     "dont_have_an_account": MessageLookupByLibrary.simpleMessage(
       "ليس لديك حساب؟ ",
     ),
@@ -157,6 +160,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "please_enter_your_password": MessageLookupByLibrary.simpleMessage(
       "يرجى إدخال كلمة المرور الخاصة بك",
     ),
+    "price": MessageLookupByLibrary.simpleMessage("السعر"),
     "profile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
     "register": MessageLookupByLibrary.simpleMessage("تسجيل"),
     "register_a_new_account": MessageLookupByLibrary.simpleMessage(
@@ -167,6 +171,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "تم التسجيل بنجاح",
     ),
     "save_changes": MessageLookupByLibrary.simpleMessage("حفظ التغييرات"),
+    "see_all": MessageLookupByLibrary.simpleMessage("عرض الكل"),
     "send_code": MessageLookupByLibrary.simpleMessage("إرسال الرمز"),
     "settings": MessageLookupByLibrary.simpleMessage("الإعدادات"),
     "simple_and_intuitive": MessageLookupByLibrary.simpleMessage(
@@ -174,6 +179,10 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "skip": MessageLookupByLibrary.simpleMessage("تخطي"),
     "smooth_experience": MessageLookupByLibrary.simpleMessage("تجربة سلسة"),
+    "subject": MessageLookupByLibrary.simpleMessage("الموضوع"),
+    "subscribe_to_new_courses": MessageLookupByLibrary.simpleMessage(
+      "اشترك في دورات جديدة",
+    ),
     "subscribtion": MessageLookupByLibrary.simpleMessage("الاشتراكات"),
     "theme": MessageLookupByLibrary.simpleMessage("السمة"),
     "update": MessageLookupByLibrary.simpleMessage("تحديث"),

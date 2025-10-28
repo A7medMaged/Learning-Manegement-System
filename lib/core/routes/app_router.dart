@@ -13,6 +13,8 @@ import 'package:lms/features/auth/presentation/register_screen.dart';
 import 'package:lms/features/auth/presentation/verify_email_screen.dart';
 import 'package:lms/features/auth/presentation/widgets/send_code_to_reset_password.dart';
 import 'package:lms/features/auth/presentation/widgets/verify_and_change_password.dart';
+import 'package:lms/features/home/presentation/course_details_screen.dart';
+import 'package:lms/features/home/presentation/manager/course_details_cubit/course_details_cubit.dart';
 import 'package:lms/features/main/presentation/main_screen.dart';
 import 'package:lms/features/profile/presentation/change_password_screen.dart';
 import 'package:lms/features/profile/presentation/maneger/change_avatar_cubit/change_avatar_cubit.dart';
@@ -148,6 +150,22 @@ class AppRouter {
             child: VerifyAndChangePassword(
               email: email,
             ),
+          );
+        },
+      ),
+
+      GoRoute(
+        path: AppRoutes.courseDetailsRoute,
+        builder: (context, state) {
+          final courseId = state.extra as int?;
+          return BlocProvider(
+            create: (context) {
+              final cubit = getIt<CourseDetailsCubit>();
+              cubit.fetchCourseDetails(courseId!);
+              return cubit;
+            },
+
+            child: const CourseDetailsScreen(),
           );
         },
       ),
