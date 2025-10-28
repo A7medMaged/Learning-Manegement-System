@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:lms/core/api/api_keys.dart';
 import 'package:lms/core/errors/failure.dart';
 import 'package:lms/features/home/data/models/all_subs_courses_model/all_subs_courses_model.dart';
+import 'package:lms/features/home/data/models/course_details_model/course_details_model.dart';
 import 'package:lms/features/home/data/repos/courses_repo.dart';
 
 class CoursesRepoImpl extends CoursesRepo {
@@ -19,6 +20,26 @@ class CoursesRepoImpl extends CoursesRepo {
         response.data,
       );
       return Right(coursesResponse);
+    } catch (e) {
+      if (e is DioException) {
+        return Left(ServerFailure.fromDioException(e));
+      }
+      return Left(ServerFailure(error: e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failures, CourseDetailsModel>> fetchMoreCourses(
+    int courseId,
+  ) async {
+    try {
+      Response response = await dio.get(
+        ApiKeys.courseDetails(courseId),
+      );
+      CourseDetailsModel courseDetailsResponse = CourseDetailsModel.fromJson(
+        response.data,
+      );
+      return Right(courseDetailsResponse);
     } catch (e) {
       if (e is DioException) {
         return Left(ServerFailure.fromDioException(e));

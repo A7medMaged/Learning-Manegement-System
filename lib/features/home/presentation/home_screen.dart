@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lms/core/routes/app_routes.dart';
+import 'package:lms/core/utils/styling/app_colors.dart';
 import 'package:lms/core/utils/styling/text_style.dart';
 import 'package:lms/core/widgets/app_text_button.dart';
 import 'package:lms/core/widgets/spacing_widgets.dart';
@@ -15,9 +16,7 @@ class HomeScreen extends StatelessWidget {
 
   Future<void> _onRefresh(BuildContext context) async {
     final cubit = context.read<CoursesCubit>();
-    // Replace `fetchCourses` with your cubit's refresh method name if different.
     cubit.fetchCourses();
-    // Wait until loading finishes (so RefreshIndicator hides when done).
     await cubit.stream.firstWhere((state) => state is! CoursesLoading);
   }
 
@@ -75,6 +74,7 @@ class HomeScreen extends StatelessWidget {
                   final courses = state.coursesModel.data!;
                   return RefreshIndicator(
                     onRefresh: () => _onRefresh(context),
+                    color: mainColor,
                     child: ListView.builder(
                       physics: const AlwaysScrollableScrollPhysics(),
                       itemCount: courses.length,
