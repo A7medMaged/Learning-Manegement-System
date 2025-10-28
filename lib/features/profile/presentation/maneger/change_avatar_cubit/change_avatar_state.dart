@@ -1,6 +1,5 @@
 part of 'change_avatar_cubit.dart';
 
-
 sealed class ChangeAvatarState {}
 
 final class ChangeAvatarInitial extends ChangeAvatarState {}

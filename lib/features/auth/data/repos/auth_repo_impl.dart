@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:lms/core/api/api_keys.dart';
 import 'package:lms/core/errors/failure.dart';
+import 'package:lms/features/auth/data/models/cities_model/city_model/city_model.dart';
 import 'package:lms/features/auth/data/models/login_models/login_request_model.dart';
 import 'package:lms/features/auth/data/models/login_models/login_response_model/login_response_model.dart';
 import 'package:lms/features/auth/data/models/register_models/register_request_model.dart';
@@ -32,6 +33,24 @@ class AuthRepoImpl extends AuthRepo {
         response.data,
       );
       return Right(registerResponse);
+    } catch (e) {
+      if (e is DioException) {
+        return Left(ServerFailure.fromDioException(e));
+      }
+      return Left(ServerFailure(error: e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failures, CityModel>> fetchCity() async {
+    try {
+      Response response = await dio.get(
+        ApiKeys.fetchCities,
+      );
+      CityModel cityModel = CityModel.fromJson(
+        response.data,
+      );
+      return Right(cityModel);
     } catch (e) {
       if (e is DioException) {
         return Left(ServerFailure.fromDioException(e));

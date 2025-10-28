@@ -40,11 +40,6 @@ class VerifyEmailScreen extends StatelessWidget {
               child: Column(
                 children: [
                   Text(
-                    S.of(context).verify_your_email,
-                    style: Styles.style25,
-                  ),
-                  const HeightSpace(20),
-                  Text(
                     'A verification OTP has been sent to your email. \nPlease check your inbox and click the link to verify your account.',
                     style: Styles.style18SemiBold.copyWith(
                       color: grey,

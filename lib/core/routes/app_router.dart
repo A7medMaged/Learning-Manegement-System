@@ -4,6 +4,7 @@ import 'package:lms/core/routes/app_routes.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lms/core/utils/di.dart';
 import 'package:lms/features/auth/presentation/login_screen.dart';
+import 'package:lms/features/auth/presentation/maneger/city_cubit/city_cubit.dart';
 import 'package:lms/features/auth/presentation/maneger/login_cubit/login_cubit.dart';
 import 'package:lms/features/auth/presentation/maneger/register_cubit/register_cubit.dart';
 import 'package:lms/features/auth/presentation/maneger/reset_password_cubit/reset_password_cubit.dart';
@@ -50,8 +51,15 @@ class AppRouter {
 
       GoRoute(
         path: AppRoutes.registerRoute,
-        builder: (context, state) => BlocProvider(
-          create: (context) => getIt<RegisterCubit>(),
+        builder: (context, state) => MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (context) => getIt<RegisterCubit>(),
+            ),
+            BlocProvider(
+              create: (context) => getIt<CityCubit>(),
+            ),
+          ],
           child: const RegisterScreen(),
         ),
       ),

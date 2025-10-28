@@ -3,6 +3,7 @@ import 'package:get_it/get_it.dart';
 import 'package:lms/core/api/dio_factory.dart';
 import 'package:lms/core/utils/shared_pref_helper.dart';
 import 'package:lms/features/auth/data/repos/auth_repo_impl.dart';
+import 'package:lms/features/auth/presentation/maneger/city_cubit/city_cubit.dart';
 import 'package:lms/features/auth/presentation/maneger/login_cubit/login_cubit.dart';
 import 'package:lms/features/auth/presentation/maneger/register_cubit/register_cubit.dart';
 import 'package:lms/features/auth/presentation/maneger/reset_password_cubit/reset_password_cubit.dart';
@@ -41,6 +42,10 @@ Future<void> setupDependencyInjection() async {
   // cubits >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   getIt.registerFactory<RegisterCubit>(
     () => RegisterCubit(getIt<AuthRepoImpl>()),
+  );
+
+  getIt.registerFactory<CityCubit>(
+    () => CityCubit(getIt<AuthRepoImpl>()),
   );
 
   getIt.registerFactory<VerifyEmailCubit>(

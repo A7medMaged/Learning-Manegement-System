@@ -149,28 +149,29 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               ),
                               onTap: () {
                                 if (formKey.currentState!.validate()) {
-                                  final cityId = int.tryParse(
-                                    cityIdController.text.trim(),
-                                  );
-                                  if (cityId == null) {
-                                    toastification.show(
-                                      context: context,
-                                      dismissDirection: DismissDirection.up,
-                                      autoCloseDuration: const Duration(
-                                        seconds: 4,
+                                  final cityIdText = cityIdController.text
+                                      .trim();
+
+                                  if (cityIdText.isEmpty) {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text(
+                                          S.of(context).please_enter_city,
+                                        ),
                                       ),
-                                      title: Text(
-                                        S.of(context).registration_failed,
-                                      ),
-                                      description: Text(
-                                        S.of(context).please_enter_valid_city,
-                                      ),
-                                      type: ToastificationType.error,
-                                      style: ToastificationStyle.minimal,
                                     );
                                     return;
                                   }
 
+                                  final cityId = int.tryParse(cityIdText);
+                                  if (cityId == null) {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      const SnackBar(
+                                        content: Text('Invalid city ID'),
+                                      ),
+                                    );
+                                    return;
+                                  }
                                   final registerRequest = RegisterRequestModel(
                                     firstName: firstNameController.text.trim(),
                                     lastName: lastNameController.text.trim(),

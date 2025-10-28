@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lms/core/utils/app_regex.dart';
-
 import 'package:lms/core/utils/styling/app_colors.dart';
 import 'package:lms/core/widgets/app_text_form_field.dart';
 import 'package:lms/core/widgets/spacing_widgets.dart';
+import 'package:lms/features/auth/presentation/widgets/user_city.dart';
 import 'package:lms/generated/l10n.dart';
 
 class RegisterFields extends StatefulWidget {
@@ -15,8 +15,8 @@ class RegisterFields extends StatefulWidget {
     this.phoneNumber,
     this.emailController,
     this.passwordController,
-    this.cityIdController,
     this.confirmPasswordController,
+    this.cityIdController,
   });
   final TextEditingController? firstName;
   final TextEditingController? lastName;
@@ -189,25 +189,10 @@ class _RegisterFieldsState extends State<RegisterFields> {
           ),
         ),
         const HeightSpace(16),
-        AppTextFormField(
-          controller: widget.cityIdController,
-          autovalidateMode: AutovalidateMode.onUserInteraction,
-          validator: (value) {
-            if (value == null || value.isEmpty) {
-              return S.of(context).please_enter_city;
-            }
-            if (int.tryParse(value) == null) {
-              return S.of(context).please_enter_valid_city;
-            }
-            return null;
-          },
+        CityTextFieldSelector(
+          cityNameController: TextEditingController(), 
+          cityIdController: widget.cityIdController!,   
           hintText: S.of(context).city,
-          keyboardType: TextInputType.number,
-          prefixIcon: const Icon(
-            FontAwesomeIcons.city,
-            size: 18,
-            color: grey,
-          ),
         ),
       ],
     );

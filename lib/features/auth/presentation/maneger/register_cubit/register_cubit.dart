@@ -13,9 +13,7 @@ class RegisterCubit extends Cubit<RegisterState> {
     RegisterRequestModel registerRequest,
   ) async {
     emit(RegisterLoading());
-    final response = await authRepoImpl.registerUsers(
-      registerRequest
-    );
+    final response = await authRepoImpl.registerUsers(registerRequest);
     response.fold(
       (failure) => emit(RegisterFailure(errorMessage: failure.error)),
       (success) => emit(RegisterSuccess(registerResponseModel: success)),

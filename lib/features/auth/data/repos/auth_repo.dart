@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:lms/core/errors/failure.dart';
+import 'package:lms/features/auth/data/models/cities_model/city_model/city_model.dart';
 import 'package:lms/features/auth/data/models/login_models/login_request_model.dart';
 import 'package:lms/features/auth/data/models/login_models/login_response_model/login_response_model.dart';
 import 'package:lms/features/auth/data/models/register_models/register_request_model.dart';
@@ -15,6 +16,8 @@ abstract class AuthRepo {
   Future<Either<Failures, RegisterResponseModel>> registerUsers(
     RegisterRequestModel registerRequest,
   );
+
+  Future<Either<Failures, CityModel>> fetchCity();
 
   Future<Either<Failures, VerifyEmailResponseModel>> verifyEmail(
     VerifyEmailRequestModel verifyEmailRequest,
