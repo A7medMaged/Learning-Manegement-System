@@ -1,4 +1,4 @@
-import 'data.dart';
+import 'package:lms/features/main/data/models/user_model/data.dart';
 
 class UserModel {
   String? message;

@@ -77,7 +77,7 @@ class PersonalInfo extends StatelessWidget {
                 InfoListTile(
                   title: S.of(context).city,
                   subtitle:
-                      '${state is UserLoaded ? state.userModel.data!.cityId : ''}',
+                      '${state is UserLoaded ? state.userModel.data!.city!.name : ''}',
                 ),
               ],
             ),

@@ -244,11 +244,11 @@ class MainData extends StatelessWidget {
           );
         } else {
           final avatarUrl = state is UserLoaded
-              ? state.userModel.data?.avatar ??
+              ? state.userModel.data!.avatar ??
                     'https://www.pngall.com/wp-content/uploads/5/Profile-PNG-File.png'
               : 'https://www.pngall.com/wp-content/uploads/5/Profile-PNG-File.png';
           final name = state is UserLoaded
-              ? state.userModel.data?.fullName ?? ' '
+              ? state.userModel.data!.fullName ?? ' '
               : ' ';
           return Row(
             children: [
