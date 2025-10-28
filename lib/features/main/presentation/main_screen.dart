@@ -4,10 +4,12 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lms/core/utils/di.dart';
 import 'package:lms/core/utils/styling/app_colors.dart';
 import 'package:lms/core/utils/styling/text_style.dart';
 import 'package:lms/core/widgets/spacing_widgets.dart';
 import 'package:lms/features/home/presentation/home_screen.dart';
+import 'package:lms/features/home/presentation/manager/cubit/courses_cubit.dart';
 import 'package:lms/features/main/presentation/settings_screen.dart';
 import 'package:lms/features/profile/presentation/maneger/user_cubit/user_cubit.dart';
 import 'package:lms/generated/l10n.dart';
@@ -186,11 +188,14 @@ class MainScreenState extends State<MainScreen> {
     S.of(context).profile,
   ];
 
-  List<Widget> listOfWidgets = const [
-    HomeScreen(),
-    Center(child: Text('Subscriptions Screen')),
-    Center(child: Text('Chat Screen')),
-    SettingsScreen(),
+  List<Widget> listOfWidgets = [
+    BlocProvider(
+      create: (context) => getIt<CoursesCubit>()..fetchCourses(),
+      child: const HomeScreen(),
+    ),
+    const Center(child: Text('Subscriptions Screen')),
+    const Center(child: Text('Chat Screen')),
+    const SettingsScreen(),
   ];
 }
 
