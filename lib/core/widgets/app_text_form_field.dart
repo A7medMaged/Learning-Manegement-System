@@ -18,7 +18,9 @@ class AppTextFormField extends StatelessWidget {
   final TextEditingController? controller;
   final String? Function(String?)? validator;
   final AutovalidateMode autovalidateMode;
-  final bool? enabled;
+  final bool enabled;
+  final bool readOnly;
+  final void Function()? onTap;
 
   const AppTextFormField({
     super.key,
@@ -37,12 +39,16 @@ class AppTextFormField extends StatelessWidget {
     this.keyboardType,
     this.autovalidateMode = AutovalidateMode.disabled,
     this.enabled = true,
+    this.readOnly = false,
+    this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       enabled: enabled,
+      readOnly: readOnly,
+      onTap: onTap,
       controller: controller,
       cursorColor: black,
       autovalidateMode: autovalidateMode,

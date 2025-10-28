@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lms/core/utils/styling/text_style.dart';
+import 'package:lms/core/widgets/app_text_form_field.dart';
 import 'package:lms/features/auth/presentation/maneger/city_cubit/city_cubit.dart';
 import 'package:lms/features/auth/data/models/cities_model/city_model/datum.dart';
+import 'package:lms/generated/l10n.dart';
 
 class CityTextFieldSelector extends StatefulWidget {
   final TextEditingController cityNameController;
@@ -61,41 +64,36 @@ class _CityTextFieldSelectorState extends State<CityTextFieldSelector> {
     return BlocBuilder<CityCubit, CityState>(
       builder: (context, state) {
         if (state is CityLoading) {
-          return TextFormField(
-            enabled: false,
-            decoration: const InputDecoration(
-              labelText: 'Loading cities...',
-              prefixIcon: Icon(Icons.location_city_outlined),
-            ),
+          return AppTextFormField(
+            controller: widget.cityNameController,
+            readOnly: true,
+            hintText: 'Loading cities...',
+            prefixIcon: const Icon(Icons.location_city_outlined),
           );
         } else if (state is CityLoaded) {
           final cities = state.cityModel.data ?? [];
 
-          return TextFormField(
+          return AppTextFormField(
             controller: widget.cityNameController,
             readOnly: true,
-            decoration: InputDecoration(
-              labelText: widget.hintText,
-              prefixIcon: const Icon(Icons.location_city_outlined),
-              suffixIcon: const Icon(Icons.arrow_drop_down),
-              border: const OutlineInputBorder(),
-            ),
+            autovalidateMode: AutovalidateMode.onUserInteraction,
+            hintText: widget.hintText,
+            hintStyle: Styles.style14,
+            prefixIcon: const Icon(Icons.location_city_outlined),
+            suffixIcon: const Icon(Icons.arrow_drop_down),
             onTap: () => _showCitiesBottomSheet(cities),
             validator: (value) {
               if (value == null || value.isEmpty) {
-                return 'Please select a city';
+                return S.of(context).please_enter_city;
               }
               return null;
             },
           );
         } else if (state is CityError) {
-          return TextFormField(
+          return AppTextFormField(
             enabled: false,
-            decoration: InputDecoration(
-              labelText: 'Failed to load cities',
-              errorText: state.message,
-              prefixIcon: const Icon(Icons.error_outline),
-            ),
+            hintText: state.message,
+            prefixIcon: const Icon(Icons.error_outline),
           );
         } else {
           return const SizedBox.shrink();
