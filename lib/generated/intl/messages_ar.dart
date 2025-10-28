@@ -167,6 +167,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "تم التسجيل بنجاح",
     ),
     "save_changes": MessageLookupByLibrary.simpleMessage("حفظ التغييرات"),
+    "see_all": MessageLookupByLibrary.simpleMessage("عرض الكل"),
     "send_code": MessageLookupByLibrary.simpleMessage("إرسال الرمز"),
     "settings": MessageLookupByLibrary.simpleMessage("الإعدادات"),
     "simple_and_intuitive": MessageLookupByLibrary.simpleMessage(
@@ -174,6 +175,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "skip": MessageLookupByLibrary.simpleMessage("تخطي"),
     "smooth_experience": MessageLookupByLibrary.simpleMessage("تجربة سلسة"),
+    "subscribe_to_new_courses": MessageLookupByLibrary.simpleMessage(
+      "اشترك في دورات جديدة",
+    ),
     "subscribtion": MessageLookupByLibrary.simpleMessage("الاشتراكات"),
     "theme": MessageLookupByLibrary.simpleMessage("السمة"),
     "update": MessageLookupByLibrary.simpleMessage("تحديث"),

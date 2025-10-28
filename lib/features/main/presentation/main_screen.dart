@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lms/core/utils/styling/app_colors.dart';
 import 'package:lms/core/utils/styling/text_style.dart';
 import 'package:lms/core/widgets/spacing_widgets.dart';
+import 'package:lms/features/home/presentation/home_screen.dart';
 import 'package:lms/features/main/presentation/settings_screen.dart';
 import 'package:lms/features/profile/presentation/maneger/user_cubit/user_cubit.dart';
 import 'package:lms/generated/l10n.dart';
@@ -186,7 +187,7 @@ class MainScreenState extends State<MainScreen> {
   ];
 
   List<Widget> listOfWidgets = const [
-    Center(child: Text('Home Screen')),
+    HomeScreen(),
     Center(child: Text('Subscriptions Screen')),
     Center(child: Text('Chat Screen')),
     SettingsScreen(),

@@ -813,6 +813,21 @@ class S {
   String get welcome {
     return Intl.message('Welcome!', name: 'welcome', desc: '', args: []);
   }
+
+  /// `Subscribe to new courses`
+  String get subscribe_to_new_courses {
+    return Intl.message(
+      'Subscribe to new courses',
+      name: 'subscribe_to_new_courses',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `See All`
+  String get see_all {
+    return Intl.message('See All', name: 'see_all', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

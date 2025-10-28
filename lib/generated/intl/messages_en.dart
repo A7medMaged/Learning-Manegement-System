@@ -172,6 +172,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Registration Successful",
     ),
     "save_changes": MessageLookupByLibrary.simpleMessage("Save Changes"),
+    "see_all": MessageLookupByLibrary.simpleMessage("See All"),
     "send_code": MessageLookupByLibrary.simpleMessage("Send Code"),
     "settings": MessageLookupByLibrary.simpleMessage("Settings"),
     "simple_and_intuitive": MessageLookupByLibrary.simpleMessage(
@@ -180,6 +181,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "skip": MessageLookupByLibrary.simpleMessage("Skip"),
     "smooth_experience": MessageLookupByLibrary.simpleMessage(
       "Smooth Experience",
+    ),
+    "subscribe_to_new_courses": MessageLookupByLibrary.simpleMessage(
+      "Subscribe to new courses",
     ),
     "subscribtion": MessageLookupByLibrary.simpleMessage("Subscription"),
     "theme": MessageLookupByLibrary.simpleMessage("Theme"),
