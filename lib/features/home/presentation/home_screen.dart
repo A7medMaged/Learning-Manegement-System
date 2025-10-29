@@ -9,8 +9,8 @@ import 'package:lms/core/widgets/app_text_button.dart';
 import 'package:lms/core/widgets/spacing_widgets.dart';
 import 'package:lms/features/home/presentation/manager/courses_cubit/courses_cubit.dart';
 import 'package:lms/features/home/presentation/widgets/courses_card.dart';
+import 'package:lms/features/home/presentation/widgets/loading/home_screen_loading.dart';
 import 'package:lms/generated/l10n.dart';
-import 'package:skeletonizer/skeletonizer.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -52,15 +52,7 @@ class HomeScreen extends StatelessWidget {
                       physics: const AlwaysScrollableScrollPhysics(),
                       itemCount: 5,
                       itemBuilder: (context, index) {
-                        return const Skeletonizer(
-                          effect: ShimmerEffect(),
-                          child: CoursesCard(
-                            title: 'tamisium appono calcar',
-                            imageUrl: 'https://placehold.co/800x800',
-                            description:
-                                'Consequuntur averto decet. Vos admoveo tamen tonsor verbera. Aliqua casus deputo acquiro custodia crinis bellicus neque commemoro.',
-                          ),
-                        );
+                        return const HomeScreenLoading();
                       },
                     );
                   } else if (state is CoursesError) {

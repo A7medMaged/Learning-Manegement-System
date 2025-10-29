@@ -8,8 +8,8 @@ import 'package:lms/features/home/presentation/manager/course_details_cubit/cour
 import 'package:lms/features/home/presentation/widgets/course_details.dart';
 import 'package:lms/features/home/presentation/widgets/course_sections_list_tile.dart';
 import 'package:lms/features/home/presentation/widgets/cousre_subject.dart';
+import 'package:lms/features/home/presentation/widgets/loading/course_details_screen_loading.dart';
 import 'package:lms/generated/l10n.dart';
-import 'package:skeletonizer/skeletonizer.dart';
 
 class CourseDetailsScreen extends StatelessWidget {
   const CourseDetailsScreen({super.key});
@@ -24,15 +24,7 @@ class CourseDetailsScreen extends StatelessWidget {
       body: BlocBuilder<CourseDetailsCubit, CourseDetailsState>(
         builder: (context, state) {
           if (state is CourseDetailsLoading) {
-            return const Skeletonizer(
-              effect: ShimmerEffect(),
-              child: CourseDetails(
-                title: 'Loading...',
-                imageUrl: 'https://placehold.co/800x450',
-                description: 'Loading...',
-                content: 'Loading...',
-              ),
-            );
+            return const CourseDetailsScreenLoading();
           } else if (state is CourseDetailsError) {
             return Center(
               child: Row(
