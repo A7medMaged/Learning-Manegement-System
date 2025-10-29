@@ -40,22 +40,32 @@ class CourseDetails extends StatelessWidget {
           ),
         ),
         const HeightSpace(8),
-        Text(
-          '${S.of(context).description}:',
-          style: Styles.style18,
-        ),
-        Text(
-          description,
-          style: Styles.style14,
-        ),
-        const HeightSpace(8),
-        Text(
-          '${S.of(context).content}:',
-          style: Styles.style18,
-        ),
-        Text(
-          content,
-          style: Styles.style14,
+        Card(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  '${S.of(context).description}:',
+                  style: Styles.style18,
+                ),
+                Text(
+                  description,
+                  style: Styles.style14,
+                ),
+                const HeightSpace(8),
+                Text(
+                  '${S.of(context).content}:',
+                  style: Styles.style18,
+                ),
+                Text(
+                  content,
+                  style: Styles.style14,
+                ),
+              ],
+            ),
+          ),
         ),
       ],
     );

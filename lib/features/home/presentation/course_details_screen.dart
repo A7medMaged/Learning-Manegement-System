@@ -6,6 +6,7 @@ import 'package:lms/core/utils/styling/text_style.dart';
 import 'package:lms/core/widgets/spacing_widgets.dart';
 import 'package:lms/features/home/presentation/manager/course_details_cubit/course_details_cubit.dart';
 import 'package:lms/features/home/presentation/widgets/course_details.dart';
+import 'package:lms/features/home/presentation/widgets/course_sections_list_tile.dart';
 import 'package:lms/features/home/presentation/widgets/cousre_subject.dart';
 import 'package:lms/generated/l10n.dart';
 import 'package:skeletonizer/skeletonizer.dart';
@@ -26,10 +27,10 @@ class CourseDetailsScreen extends StatelessWidget {
             return const Skeletonizer(
               effect: ShimmerEffect(),
               child: CourseDetails(
-                title: 'corseDetails.title!',
-                imageUrl: 'corseDetails.subject!.icon!',
-                description: 'corseDetails.description!',
-                content: 'corseDetails.content!',
+                title: 'Loading...',
+                imageUrl: 'https://placehold.co/800x450',
+                description: 'Loading...',
+                content: 'Loading...',
               ),
             );
           } else if (state is CourseDetailsError) {
@@ -59,6 +60,7 @@ class CourseDetailsScreen extends StatelessWidget {
               child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     CourseDetails(
                       title: corseDetails.title!,
@@ -66,15 +68,37 @@ class CourseDetailsScreen extends StatelessWidget {
                       description: corseDetails.description!,
                       content: corseDetails.content!,
                     ),
-                    const HeightSpace(16),
-                    Text(
-                      '${S.of(context).subject}:',
-                      style: Styles.style18,
-                    ),
+                    const HeightSpace(8),
                     CousreSubject(
                       name: corseDetails.subject!.name!,
                       description: corseDetails.subject!.description!,
                       price: corseDetails.subject!.defaultPrice!.toString(),
+                    ),
+                    const HeightSpace(8),
+                    Card(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              '${S.of(context).sections}:',
+                              style: Styles.style18,
+                            ),
+                            ListView.builder(
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              itemCount: corseDetails.sections!.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                return CourseSectionsListTile(
+                                  onTap: () {},
+                                  title: corseDetails.sections![index].title!,
+                                );
+                              },
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                   ],
                 ),

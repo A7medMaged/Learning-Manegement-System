@@ -176,6 +176,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Registration Successful",
     ),
     "save_changes": MessageLookupByLibrary.simpleMessage("Save Changes"),
+    "sections": MessageLookupByLibrary.simpleMessage("Sections"),
     "see_all": MessageLookupByLibrary.simpleMessage("See All"),
     "send_code": MessageLookupByLibrary.simpleMessage("Send Code"),
     "settings": MessageLookupByLibrary.simpleMessage("Settings"),

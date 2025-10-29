@@ -95,5 +95,6 @@
   "description": "Description",
   "content": "Content",
   "price": "Price",
-  "subject": "Subject"
+  "subject": "Subject",
+  "sections": "Sections"
 }
