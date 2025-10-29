@@ -94,5 +94,6 @@
   "description": "الوصف",
   "content": "المحتوى",
   "price": "السعر",
-  "subject": "الموضوع"
+  "subject": "الموضوع",
+  "sections": "الأقسام"
 }

@@ -171,6 +171,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "تم التسجيل بنجاح",
     ),
     "save_changes": MessageLookupByLibrary.simpleMessage("حفظ التغييرات"),
+    "sections": MessageLookupByLibrary.simpleMessage("الأقسام"),
     "see_all": MessageLookupByLibrary.simpleMessage("عرض الكل"),
     "send_code": MessageLookupByLibrary.simpleMessage("إرسال الرمز"),
     "settings": MessageLookupByLibrary.simpleMessage("الإعدادات"),

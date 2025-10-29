@@ -16,33 +16,42 @@ class CousreSubject extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(name),
-        const HeightSpace(8),
-        Text(
-          '${S.of(context).description}:',
-          style: Styles.style18,
-        ),
-        Text(
-          description,
-          style: Styles.style14,
-        ),
-        const HeightSpace(8),
-        Row(
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              '${S.of(context).price}: ',
+              '${S.of(context).subject}:',
+              style: Styles.style18,
+            ),
+            Text(name),
+            const HeightSpace(8),
+            Text(
+              '${S.of(context).description}:',
               style: Styles.style18,
             ),
             Text(
-              '\$$price',
+              description,
               style: Styles.style14,
+            ),
+            const HeightSpace(8),
+            Row(
+              children: [
+                Text(
+                  '${S.of(context).price}: ',
+                  style: Styles.style18,
+                ),
+                Text(
+                  '\$$price',
+                  style: Styles.style14,
+                ),
+              ],
             ),
           ],
         ),
-      ],
+      ),
     );
   }
 }
