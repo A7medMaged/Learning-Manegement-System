@@ -97,5 +97,6 @@
   "price": "Price",
   "subject": "Subject",
   "sections": "Sections",
-  "lectutes": "Lectures"
+  "lectutes": "Lectures",
+  "organizations": "Organizations"
 }

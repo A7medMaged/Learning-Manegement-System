@@ -12,6 +12,7 @@ import 'package:lms/features/home/data/repos/courses_repo_impl.dart';
 import 'package:lms/features/home/data/repos/organization_repo_impl.dart';
 import 'package:lms/features/home/presentation/manager/courses_cubit/course_details_cubit/course_details_cubit.dart';
 import 'package:lms/features/home/presentation/manager/courses_cubit/courses_cubit.dart';
+import 'package:lms/features/home/presentation/manager/organization_cubit/organization_cubit.dart';
 import 'package:lms/features/profile/data/repos/profile_repo_impl.dart';
 import 'package:lms/features/profile/presentation/maneger/change_avatar_cubit/change_avatar_cubit.dart';
 import 'package:lms/features/profile/presentation/maneger/change_password_cubit/change_password_cubit.dart';
@@ -99,8 +100,8 @@ Future<void> setupDependencyInjection() async {
   getIt.registerFactory<CourseDetailsCubit>(
     () => CourseDetailsCubit(getIt<CoursesRepoImpl>()),
   );
-  
-  getIt.registerFactory<CourseDetailsCubit>(
-    () => CourseDetailsCubit(getIt<CoursesRepoImpl>()),
+
+  getIt.registerFactory<OrganizationCubit>(
+    () => OrganizationCubit(getIt<OrganizationRepoImpl>()),
   );
 }

@@ -107,6 +107,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "new_password": MessageLookupByLibrary.simpleMessage("كلمة مرور جديدة"),
     "next": MessageLookupByLibrary.simpleMessage("التالي"),
     "no": MessageLookupByLibrary.simpleMessage("لا"),
+    "organizations": MessageLookupByLibrary.simpleMessage("المنظمات"),
     "otp_must_be_6_digits": MessageLookupByLibrary.simpleMessage(
       "يجب أن يكون رمز التحقق مكونًا من 6 أرقام",
     ),
