@@ -6,10 +6,13 @@ import 'package:lms/features/home/data/models/organization_model/organization_mo
 import 'package:lms/features/home/data/repos/organization_repo.dart';
 
 class OrganizationRepoImpl extends OrganizationRepo {
+  final Dio dio;
+  OrganizationRepoImpl({required this.dio});
+
   @override
   Future<Either<Failures, OrganizationModel>> fetchOrganizations() async {
     try {
-      Response response = await Dio().get(
+      Response response = await dio.get(
         ApiKeys.organizations,
       );
 
