@@ -4,4 +4,6 @@ import 'package:lms/features/home/data/models/organization_model/organization_mo
 
 abstract class OrganizationRepo {
   Future<Either<Failures, OrganizationModel>> fetchOrganizations();
+
+  Future<Either<Failures, OrganizationModel>> searchOrganization(String query);
 }

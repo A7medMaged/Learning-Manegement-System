@@ -105,6 +105,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "new_password": MessageLookupByLibrary.simpleMessage("New Password"),
     "next": MessageLookupByLibrary.simpleMessage("Next"),
     "no": MessageLookupByLibrary.simpleMessage("No"),
+    "no_organizations_found": MessageLookupByLibrary.simpleMessage(
+      "No organizations found",
+    ),
     "organizations": MessageLookupByLibrary.simpleMessage("Organizations"),
     "otp_must_be_6_digits": MessageLookupByLibrary.simpleMessage(
       "OTP must be 6 digits",
@@ -178,6 +181,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Registration Successful",
     ),
     "save_changes": MessageLookupByLibrary.simpleMessage("Save Changes"),
+    "search": MessageLookupByLibrary.simpleMessage("Search"),
     "sections": MessageLookupByLibrary.simpleMessage("Sections"),
     "see_all": MessageLookupByLibrary.simpleMessage("See All"),
     "send_code": MessageLookupByLibrary.simpleMessage("Send Code"),

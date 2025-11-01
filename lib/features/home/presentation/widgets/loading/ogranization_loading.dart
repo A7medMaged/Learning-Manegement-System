@@ -10,7 +10,8 @@ class OgranizationLoading extends StatelessWidget {
     return Skeletonizer(
       effect: const ShimmerEffect(),
       child: ListView.builder(
-        physics: const AlwaysScrollableScrollPhysics(),
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
         itemCount: 10,
         itemBuilder: (context, index) {
           return OrganiztionListTile(
