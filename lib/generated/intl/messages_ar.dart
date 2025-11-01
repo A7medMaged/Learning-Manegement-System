@@ -92,6 +92,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "language": MessageLookupByLibrary.simpleMessage("اللغة"),
     "last_name": MessageLookupByLibrary.simpleMessage("الاسم الاخير"),
+    "lectutes": MessageLookupByLibrary.simpleMessage("المحاضرات"),
     "lets_get_started": MessageLookupByLibrary.simpleMessage("هيا نبدأ 🚀."),
     "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
     "login_failed": MessageLookupByLibrary.simpleMessage("فشل تسجيل الدخول"),

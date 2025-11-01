@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:lms/core/widgets/spacing_widgets.dart';
 import 'package:lms/features/home/presentation/widgets/course_details.dart';
-import 'package:lms/features/home/presentation/widgets/course_sections.dart';
+import 'package:lms/features/home/presentation/widgets/course_sections_list_tile.dart';
 import 'package:lms/features/home/presentation/widgets/cousre_subject.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class CourseDetailsScreenLoading extends StatelessWidget {
   const CourseDetailsScreenLoading({super.key});
+  
 
   @override
   Widget build(BuildContext context) {
@@ -44,6 +45,8 @@ class CourseDetailsScreenLoading extends StatelessWidget {
                     return CourseSectionsListTile(
                       onTap: () {},
                       title: 'corseDetails.sections![index].title!',
+                      subTitle:
+                          'corseDetails.sections![index].count!.lectures!.toString()',
                     );
                   },
                 ),

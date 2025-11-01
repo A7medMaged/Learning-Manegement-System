@@ -23,40 +23,45 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RefreshIndicator(
-      onRefresh: () => _onRefresh(context),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  S.of(context).subscribe_to_new_courses,
-                  style: Styles.style18,
-                ),
-                AppTextButton(
-                  text: S.of(context).see_all,
-                  textStyle: Styles.style18,
-                  onTap: () {},
-                ),
-              ],
-            ),
-            const HeightSpace(8),
-            Expanded(
-              child: BlocBuilder<CoursesCubit, CoursesState>(
-                builder: (context, state) {
-                  if (state is CoursesLoading) {
-                    return ListView.builder(
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                S.of(context).subscribe_to_new_courses,
+                style: Styles.style18,
+              ),
+              AppTextButton(
+                text: S.of(context).see_all,
+                textStyle: Styles.style18,
+                onTap: () {},
+              ),
+            ],
+          ),
+          const HeightSpace(8),
+          Expanded(
+            child: BlocBuilder<CoursesCubit, CoursesState>(
+              builder: (context, state) {
+                if (state is CoursesLoading) {
+                  return RefreshIndicator(
+                    onRefresh: () => _onRefresh(context),
+                    color: mainColor,
+                    child: ListView.builder(
                       physics: const AlwaysScrollableScrollPhysics(),
                       itemCount: 5,
                       itemBuilder: (context, index) {
                         return const HomeScreenLoading();
                       },
-                    );
-                  } else if (state is CoursesError) {
-                    return Center(
+                    ),
+                  );
+                } else if (state is CoursesError) {
+                  return RefreshIndicator(
+                    onRefresh: () => _onRefresh(context),
+                    color: mainColor,
+                    child: Center(
                       child: Row(
                         spacing: 10,
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -74,10 +79,14 @@ class HomeScreen extends StatelessWidget {
                           ),
                         ],
                       ),
-                    );
-                  } else if (state is CoursesLoaded) {
-                    final courses = state.coursesModel.data!;
-                    return ListView.builder(
+                    ),
+                  );
+                } else if (state is CoursesLoaded) {
+                  final courses = state.coursesModel.data!;
+                  return RefreshIndicator(
+                    onRefresh: () => _onRefresh(context),
+                    color: mainColor,
+                    child: ListView.builder(
                       physics: const AlwaysScrollableScrollPhysics(),
                       itemCount: courses.length,
                       itemBuilder: (context, index) {
@@ -92,14 +101,14 @@ class HomeScreen extends StatelessWidget {
                           description: course.description!,
                         );
                       },
-                    );
-                  }
-                  return const SizedBox.shrink();
-                },
-              ),
+                    ),
+                  );
+                }
+                return const SizedBox.shrink();
+              },
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
