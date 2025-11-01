@@ -6,7 +6,7 @@ import 'package:lms/core/routes/app_routes.dart';
 import 'package:lms/core/utils/styling/app_colors.dart';
 import 'package:lms/core/utils/styling/text_style.dart';
 import 'package:lms/core/widgets/spacing_widgets.dart';
-import 'package:lms/features/home/presentation/manager/course_details_cubit/course_details_cubit.dart';
+import 'package:lms/features/home/presentation/manager/courses_cubit/course_details_cubit/course_details_cubit.dart';
 import 'package:lms/features/home/presentation/widgets/course_details.dart';
 import 'package:lms/features/home/presentation/widgets/course_sections_list_tile.dart';
 import 'package:lms/features/home/presentation/widgets/cousre_subject.dart';

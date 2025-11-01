@@ -6,7 +6,7 @@ import 'package:lms/lms.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   setupDependencyInjection();
-  
+
   runApp(
     LmsApp(
       appRouter: AppRouter(),

@@ -105,6 +105,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "new_password": MessageLookupByLibrary.simpleMessage("New Password"),
     "next": MessageLookupByLibrary.simpleMessage("Next"),
     "no": MessageLookupByLibrary.simpleMessage("No"),
+    "organizations": MessageLookupByLibrary.simpleMessage("Organizations"),
     "otp_must_be_6_digits": MessageLookupByLibrary.simpleMessage(
       "OTP must be 6 digits",
     ),

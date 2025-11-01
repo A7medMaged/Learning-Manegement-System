@@ -14,7 +14,9 @@ import 'package:lms/features/auth/presentation/verify_email_screen.dart';
 import 'package:lms/features/auth/presentation/widgets/send_code_to_reset_password.dart';
 import 'package:lms/features/auth/presentation/widgets/verify_and_change_password.dart';
 import 'package:lms/features/home/presentation/course_details_screen.dart';
-import 'package:lms/features/home/presentation/manager/course_details_cubit/course_details_cubit.dart';
+import 'package:lms/features/home/presentation/manager/courses_cubit/course_details_cubit/course_details_cubit.dart';
+import 'package:lms/features/home/presentation/manager/organization_cubit/organization_cubit.dart';
+import 'package:lms/features/home/presentation/organization_screen.dart';
 import 'package:lms/features/home/presentation/section_lecture_screen.dart';
 import 'package:lms/features/main/presentation/main_screen.dart';
 import 'package:lms/features/profile/presentation/change_password_screen.dart';
@@ -174,6 +176,14 @@ class AppRouter {
       GoRoute(
         path: AppRoutes.sectionLectureRoute,
         builder: (context, state) => const SectionLectureScreen(),
+      ),
+
+      GoRoute(
+        path: AppRoutes.organizationsRoute,
+        builder: (context, state) => BlocProvider(
+          create: (context) => getIt<OrganizationCubit>()..fetchOrganizations(),
+          child: const OrganizationScreen(),
+        ),
       ),
     ],
   );

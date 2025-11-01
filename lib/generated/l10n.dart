@@ -868,6 +868,16 @@ class S {
   String get lectutes {
     return Intl.message('Lectures', name: 'lectutes', desc: '', args: []);
   }
+
+  /// `Organizations`
+  String get organizations {
+    return Intl.message(
+      'Organizations',
+      name: 'organizations',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
