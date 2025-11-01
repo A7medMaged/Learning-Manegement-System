@@ -878,6 +878,21 @@ class S {
       args: [],
     );
   }
+
+  /// `Search`
+  String get search {
+    return Intl.message('Search', name: 'search', desc: '', args: []);
+  }
+
+  /// `No organizations found`
+  String get no_organizations_found {
+    return Intl.message(
+      'No organizations found',
+      name: 'no_organizations_found',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

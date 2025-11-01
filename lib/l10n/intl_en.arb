@@ -98,5 +98,7 @@
   "subject": "Subject",
   "sections": "Sections",
   "lectutes": "Lectures",
-  "organizations": "Organizations"
+  "organizations": "Organizations",
+  "search": "Search",
+  "no_organizations_found": "No organizations found"
 }

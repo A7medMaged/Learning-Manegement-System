@@ -97,5 +97,7 @@
   "subject": "الموضوع",
   "sections": "الأقسام",
   "lectutes": "المحاضرات",
-  "organizations": "المنظمات"
+  "organizations": "المنظمات",
+  "search": "بحث",
+  "no_organizations_found": "لم يتم العثور على منظمات"
 }

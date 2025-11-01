@@ -16,4 +16,13 @@ class OrganizationCubit extends Cubit<OrganizationState> {
       (success) => emit(OrganizationLoaded(organizationModel: success)),
     );
   }
+
+  Future<void> searchOrganization(String query) async {
+    emit(OrganizationLoading());
+    final result = await organizationRepoImpl.searchOrganization(query);
+    result.fold(
+      (failure) => emit(OrganizationError(errorMessage: failure.error)),
+      (success) => emit(OrganizationLoaded(organizationModel: success)),
+    );
+  }
 }

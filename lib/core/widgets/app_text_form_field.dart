@@ -21,6 +21,7 @@ class AppTextFormField extends StatelessWidget {
   final bool enabled;
   final bool readOnly;
   final void Function()? onTap;
+  final void Function(String)? onChanged;
 
   const AppTextFormField({
     super.key,
@@ -41,6 +42,7 @@ class AppTextFormField extends StatelessWidget {
     this.enabled = true,
     this.readOnly = false,
     this.onTap,
+    this.onChanged,
   });
 
   @override
@@ -49,6 +51,7 @@ class AppTextFormField extends StatelessWidget {
       enabled: enabled,
       readOnly: readOnly,
       onTap: onTap,
+      onChanged: onChanged,
       controller: controller,
       cursorColor: black,
       autovalidateMode: autovalidateMode,

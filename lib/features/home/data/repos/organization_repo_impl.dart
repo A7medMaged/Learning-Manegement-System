@@ -28,4 +28,29 @@ class OrganizationRepoImpl extends OrganizationRepo {
       return Left(ServerFailure(error: e.toString()));
     }
   }
+
+  @override
+  Future<Either<Failures, OrganizationModel>> searchOrganization(
+    String query,
+  ) async {
+    try {
+      Response response = await dio.get(
+        ApiKeys.organizations,
+        queryParameters: {
+          'search': query,
+        },
+      );
+
+      OrganizationModel organizationsResponse = OrganizationModel.fromJson(
+        response.data,
+      );
+
+      return Right(organizationsResponse);
+    } catch (e) {
+      if (e is DioException) {
+        return Left(ServerFailure.fromDioException(e));
+      }
+      return Left(ServerFailure(error: e.toString()));
+    }
+  }
 }

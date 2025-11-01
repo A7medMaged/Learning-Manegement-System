@@ -107,6 +107,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "new_password": MessageLookupByLibrary.simpleMessage("كلمة مرور جديدة"),
     "next": MessageLookupByLibrary.simpleMessage("التالي"),
     "no": MessageLookupByLibrary.simpleMessage("لا"),
+    "no_organizations_found": MessageLookupByLibrary.simpleMessage(
+      "لم يتم العثور على منظمات",
+    ),
     "organizations": MessageLookupByLibrary.simpleMessage("المنظمات"),
     "otp_must_be_6_digits": MessageLookupByLibrary.simpleMessage(
       "يجب أن يكون رمز التحقق مكونًا من 6 أرقام",
@@ -173,6 +176,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "تم التسجيل بنجاح",
     ),
     "save_changes": MessageLookupByLibrary.simpleMessage("حفظ التغييرات"),
+    "search": MessageLookupByLibrary.simpleMessage("بحث"),
     "sections": MessageLookupByLibrary.simpleMessage("الأقسام"),
     "see_all": MessageLookupByLibrary.simpleMessage("عرض الكل"),
     "send_code": MessageLookupByLibrary.simpleMessage("إرسال الرمز"),
