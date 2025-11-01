@@ -190,8 +190,8 @@ class _RegisterFieldsState extends State<RegisterFields> {
         ),
         const HeightSpace(16),
         CityTextFieldSelector(
-          cityNameController: TextEditingController(), 
-          cityIdController: widget.cityIdController!,   
+          cityNameController: TextEditingController(),
+          cityIdController: widget.cityIdController!,
           hintText: S.of(context).city,
         ),
       ],

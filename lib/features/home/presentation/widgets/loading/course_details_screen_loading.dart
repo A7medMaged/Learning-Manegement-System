@@ -7,7 +7,6 @@ import 'package:skeletonizer/skeletonizer.dart';
 
 class CourseDetailsScreenLoading extends StatelessWidget {
   const CourseDetailsScreenLoading({super.key});
-  
 
   @override
   Widget build(BuildContext context) {
