@@ -37,7 +37,9 @@ class HomeScreen extends StatelessWidget {
               AppTextButton(
                 text: S.of(context).see_all,
                 textStyle: Styles.style18,
-                onTap: () {},
+                onTap: () {
+                  context.push(AppRoutes.organizationsRoute);
+                },
               ),
             ],
           ),
