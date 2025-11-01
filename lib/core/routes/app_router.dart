@@ -29,7 +29,7 @@ import 'package:lms/features/onboarding/presentation/onboarding_screen.dart';
 import 'package:lms/features/splash_screen/splash_screen.dart';
 
 class AppRouter {
-  static final GoRouter router = GoRouter(
+  final GoRouter router = GoRouter(
     initialLocation: AppRoutes.splashRoute,
     routes: [
       GoRoute(
