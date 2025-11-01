@@ -88,6 +88,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "language": MessageLookupByLibrary.simpleMessage("Language"),
     "last_name": MessageLookupByLibrary.simpleMessage("Last Name"),
+    "lectutes": MessageLookupByLibrary.simpleMessage("Lectures"),
     "lets_get_started": MessageLookupByLibrary.simpleMessage(
       "Let\'s get started 🚀.",
     ),

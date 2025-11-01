@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
+import 'package:lms/core/routes/app_routes.dart';
 import 'package:lms/core/utils/styling/app_colors.dart';
 import 'package:lms/core/utils/styling/text_style.dart';
 import 'package:lms/core/widgets/spacing_widgets.dart';
@@ -77,14 +79,20 @@ class CourseDetailsScreen extends StatelessWidget {
                               '${S.of(context).sections}:',
                               style: Styles.style18,
                             ),
-                            ListView.builder(
+                            ListView.separated(
                               shrinkWrap: true,
+                              separatorBuilder: (context, index) =>
+                                  const Divider(),
                               physics: const NeverScrollableScrollPhysics(),
                               itemCount: corseDetails.sections!.length,
                               itemBuilder: (BuildContext context, int index) {
                                 return CourseSectionsListTile(
-                                  onTap: () {},
+                                  onTap: () {
+                                    context.push(AppRoutes.sectionLectureRoute);
+                                  },
                                   title: corseDetails.sections![index].title!,
+                                  subTitle:
+                                      '${S.of(context).lectutes}: ${corseDetails.sections![index].count!.lectures!.toString()}',
                                 );
                               },
                             ),
